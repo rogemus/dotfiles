@@ -12,7 +12,7 @@ cleanup_dotfiles() {
     ".config/zsh"
   )
 
-  echo "Removing existing config files"
+  info "Removing existing config files"
   for f in $files; do
     rm -f "$HOME/$f" || true
   done
@@ -25,7 +25,7 @@ cleanup_dotfiles() {
 
 stow_dotfiles() {
   local dotfiles="nvim zsh"
-  echo "Stowing: $dotfiles"
+  info "Stowing: $dotfiles"
   stow --verbose 1 --ignore='.*\.DS_Store' --target $HOME $dotfiles
 }
 

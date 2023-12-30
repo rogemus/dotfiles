@@ -6,7 +6,7 @@ fonts=(
 )
 
 install_fonts() {
-  echo "Installing fonts..."
+  info "Installing fonts..."
   brew tap homebrew/cask-fonts
 
   for font in $fonts; do
