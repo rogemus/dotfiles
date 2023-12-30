@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Aliasses
+## Misc
+alias c="clear"
+alias adPass="cat ~/.gradle/gradle.properties | grep nexusPassword= | cut -d '=' -f 2"
+alias adpass="adPass"
+alias fixpref='killall -u kacperrogowski cfprefsd'
+
+## Configs
+alias zconfig="nvim ~/.config/zsh"
+alias nconfig="nvim ~/.config/nvim"
+
+## Git
+alias gut="git"
+alias got="git"
+alias g="git"
+alias gp="git pull"
+alias gpp="git push"
+alias gc="git commit -am"
+alias gch="git checkout"
+alias ga="git add ."
+alias gm="git merge"
+alias gs="git status"
+alias gd="git diff"
+alias gclean="git branch | grep -v "master" | xargs git branch -D"
+
+## AEM 
+alias aemUp="./gradlew :aemUp"
+alias aemup="aemUp"
+alias aemDown="./gradlew :aemDown"
+alias aemdown="aemDown"
+
+## BG
+alias dbuild="docker-compose up --build"
+alias gbuild="./gradlew bootRun -S -i"
+alias azlogin="az login && az acr login -n dbgcontainers"
+
+## Docker
+alias dockerdie="docker system prune --volumes -a -f"
