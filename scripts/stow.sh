@@ -5,6 +5,7 @@ cleanup_dotfiles() {
     ".zprofile"
     ".zshrc"
     ".zshenv"
+    ".gitconfig"
   )
 
   local folders=(
