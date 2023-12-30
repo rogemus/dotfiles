@@ -1,34 +1,53 @@
-Kicking off my journey to simplify personal development with Neovim. This initial setup is a stepping stone, with future plans to trim down plugins for a sleek and efficient configuration.
-Embracing Neovim as a replacement for VS Code, focusing on simplicity without replication.
+# ZSH
+## Mapping
+| Keybinding | Action |
+| got | `git` |
+| gut | `git` |
+| g | `git` |
+| gp | `git pull` |
+| gpp | `git push` |
+| gch | `git checkout` |
+| gc | `git commit -am` |
+| ga | `git add .` |
+| gm | `git merge` |
+| gs | `git status` |
+| gd | `git diff` |
+| gl | `git lg` |
+| glean | `git branch | grep -v "master" | xargs git branch -D` |
+| dockerdie | `docker system prune --volumes -a -f` |
+| c | `clear` |
 
-![nvim config](./nvim.png)
+# Git
+## Mapping
+| Keybinding | Action |
+| git s | `git status` |
+| git ch | `git checkout` |
+| git ci | `git commit -am` |
+| git a | `git add .` |
+| git m | `git merge` |
+| git d | `git diff` |
+| git p | `git pull` |
+| git pp | `git push` |
+| git lg | `git lg` |
 
-# Prerequisite
-## Terminal
-- [iTerm](https://iterm2.com/)
-- [FiraCode Font](https://www.nerdfonts.com/font-downloads)
-- [iTerm - Profile](./iTerm/iTermProfile-Default.json)
+# NeoVim
+![nvim config](./assets/nvim.png)
 
-## Install deps
-```
-brew install nvim ripgrep
-```
-
-# Mapping
-## Package Menagers
+## Mapping
+### Package Menagers
 | Keybinding | Action |
 | --- | --- |
 | :Lazy | Open Lazy.Vim Package menager to download all plugins |
 | :Mason | Open Mason Package menager to download all LSP configurations |
 
-## Comments
+### Comments
 | Keybinding | Action |
 | gc | Toggles the region using linewise comment |
 | gb | Toggles the region using blockwise comment |
 | gcc | Toggles the current line using linewise comment |
 | gbc | Toggles the current line using blockwise comment |
 
-## Vim
+### Vim
 | Keybinding | Action |
 | --- | --- |
 | :q | Close tab (exit vim if only one tab open) |
@@ -64,11 +83,12 @@ brew install nvim ripgrep
 | e | move to the end of a word
 | E | move to the end of a token
 | 0 (zero) | jump to the beginning of the line
+| Ctrl + z | Undo |
 | $ | jump to the end of the line
 | ^ | jump to the first (non-blank) character of the line
 | #G / #gg / :# | move to a specified line number (replace # with the line number)
 
-## Split pane
+### Split pane
 | Keybinding | Action |
 | --- | --- |
 | Ctrl + w | Focus on next pane |
@@ -77,7 +97,7 @@ brew install nvim ripgrep
 | Ctrl + k | Focus on next pane to top |
 | Ctrl + l | Focus on next pane to right |
 
-## LSP 
+### LSP 
 | Keybinding | Action |
 | --- | --- |
 | Enter | Select autocompletion |
@@ -90,28 +110,27 @@ brew install nvim ripgrep
 | ]d | Move to the next diagnostic |
 | Ctrl + f | Format document |
 
-## Telescope
+### Telescope
 | Keybinding | Action |
 | --- | --- |
 | <leader>ff | Find File |
 | <leader>fs | Grep in files (Find in files) |
 | <leader>gs | Find in  changed git files |
 
-## NeoTree
-### Misc
+### NeoTree
+#### Misc
 | Keybinding | Action |
 | --- | --- |
 | <leader>tt | Toggle sidepanel | 
 
-### Navigation
+#### Navigation
 | Keybinding | Action |
 | --- | --- | 
 | j	| Move the cursor down to the next entry |
 | k | Move the cursor up to the previous entry |
 | o	| Open the selected file or directory | 
 
-### Working with Files and Directories
-
+#### Working with Files and Directories
 | Keybinding | Action |
 | --- | --- |
 | m | Open the Nvim Tree context menu to perform actions on the selected entry |
@@ -122,8 +141,7 @@ brew install nvim ripgrep
 | . | Select current directory as root in the tree |
 
 
-### Filtering and Searching
-
+#### Filtering and Searching
 | Keybinding | Action |
 | --- | --- |
 | /{search term} | Start a search to filter files and directories |

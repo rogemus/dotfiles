@@ -5,12 +5,14 @@
 . scripts/fonts.sh
 . scripts/homebrew.sh
 . scripts/packages.sh
+. scripts/projectdir.sh
 . scripts/stow.sh
 . scripts/xcode.sh
 . scripts/zsh.sh
 
 main() {
 	info "Installing ..."
+  printf "\n"
 
   banner "XCode"
   install_xcode
@@ -42,6 +44,11 @@ main() {
   install_plugins
   install_theme
   success "✅ Finished installing Oh-My-ZSH 🚀"
+  printf "\n"
+
+  banner "Project Directory"
+  create_project_dir
+  success "✅ Finished creating project directory 🚀"
   printf "\n"
 
   success "🎉 Configuration completed!!! 🎉"
