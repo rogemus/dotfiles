@@ -32,7 +32,7 @@ masApps=(
 
 install_apps() {
   info "Installing Brew apps..."
-  for app in $masApps; do
+  for app in $apps; do
     brew install --cask $app
   done
 }

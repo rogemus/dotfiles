@@ -16,7 +16,7 @@ packages=(
   nvm
   pyenv
   wget
-  zshe
+  zsh
   mas
   curl
   wget
@@ -25,7 +25,7 @@ packages=(
 )
 
 configure_tabs() {
-  echo "Configuring Brew tabs..."
+  info "Configuring Brew tabs..."
   
   for tap in $taps; do
     brew tap $tap
@@ -33,7 +33,7 @@ configure_tabs() {
 }
 
 install_packages() {
-  echo "Installing Brew packages..."
+  info "Installing Brew packages..."
   brew install "${packages[@]}"
 }
 

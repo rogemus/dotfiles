@@ -1,5 +1,6 @@
 #!/bin/bash
 
+. scripts/utils.sh
 . scripts/apps.sh
 . scripts/fonts.sh
 . scripts/homebrew.sh
@@ -9,41 +10,41 @@
 . scripts/zsh.sh
 
 main() {
-	echo "Installing ..."
+	info "Installing ..."
 
-	echo "################################################################################"
-	echo "Xcode"
-	echo "################################################################################"
+  banner "XCode"
   install_xcode
+  success "✅ Finished installing Homebrew packages 🚀"
+  printf "\n"
 
-	echo "################################################################################"
-	echo "Homebrew"
-	echo "################################################################################"
-	install_homebrew
+	banner "Homebrew"
+  install_homebrew
   configure_tabs
   install_packages
   install_fonts
-  
-	echo "################################################################################"
-	echo "Apps"
-	echo "################################################################################"
+  success "✅ Finished installing Homebrew and all packages 🚀"
+  printf "\n"
+
+  banner "Apps"
   install_apps
   install_macapps
+  success "✅ Finished installing all apps 🚀"
+  printf "\n"
 
-	echo "################################################################################"
-	echo "Stow"
-	echo "################################################################################"
+  banner "Stow and dotfiles"
   cleanup_dotfiles
   stow_dotfiles
+  success "✅ Finished installing all dotfiles 🚀"
+  printf "\n"
 
-	echo "################################################################################"
-	echo "Oh-My-ZSH"
-	echo "################################################################################"
+  banner "Oh-My-ZSH"
   install_ohmyzsh
   install_plugins
   install_theme
+  success "✅ Finished installing Oh-My-ZSH 🚀"
+  printf "\n"
 
-  echo "🎉 Configuration completed 🎉"
+  success "🎉 Configuration completed!!! 🎉"
 }
 
 main
