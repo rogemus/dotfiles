@@ -1,6 +1,7 @@
 # ZSH
 ## Mapping
 | Keybinding | Action |
+| --- | --- |
 | got | `git` |
 | gut | `git` |
 | g | `git` |
@@ -20,6 +21,7 @@
 # Git
 ## Mapping
 | Keybinding | Action |
+| --- | --- |
 | git s | `git status` |
 | git ch | `git checkout` |
 | git ci | `git commit -am` |
@@ -42,6 +44,7 @@
 
 ### Comments
 | Keybinding | Action |
+| --- | --- |
 | gc | Toggles the region using linewise comment |
 | gb | Toggles the region using blockwise comment |
 | gcc | Toggles the current line using linewise comment |
