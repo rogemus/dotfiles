@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Hooks
+autoload -U add-zsh-hook
+
+function detect-node-version {
+  if [ -f ./.nvmrc ]; then
+    echo "Detected $fg_bold[white].nvmrc$reset_color. Run 'nvm use' or 'fnm use'"
+  fi
+
+  if [ -f ./.node-version ]; then 
+    echo "Detected $fg_bold[white].node-version$reset_color. Run 'nvm use' or 'fnm use'"
+  fi
+}
+
+add-zsh-hook chpwd detect-node-version
+
