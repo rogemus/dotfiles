@@ -1,0 +1,45 @@
+
+# export ZSH="$ZDOTDIR/ohmyzsh"
+
+# Theme
+source $ZDOTDIR/theme.zsh
+source $ZDOTDIR/.aliasesrc
+source $ZDOTDIR/.hooksrc
+source $ZDOTDIR/.exportsrc
+
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=1
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=0
+
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Plugins
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+setopt no_list_ambiguous
+unsetopt menu_complete
+unsetopt flowcontrol
+setopt auto_menu
+setopt complete_in_word
+unsetopt always_to_end
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
