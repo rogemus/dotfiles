@@ -6,11 +6,13 @@ cleanup_dotfiles() {
     ".zshrc"
     ".zshenv"
     ".gitconfig"
+    ".hushlogin"
   )
 
   local folders=(
     ".config/nvim"
     ".config/zsh"
+    ".config/git"
   )
 
   info "Removing existing config files"

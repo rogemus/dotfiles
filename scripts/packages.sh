@@ -22,6 +22,8 @@ packages=(
   wget
   rust
   python3
+  bun
+  fnm
 )
 
 configure_tabs() {

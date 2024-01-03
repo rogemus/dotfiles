@@ -11,7 +11,7 @@
 . scripts/zsh.sh
 
 main() {
-	info "Installing ..."
+  info "Installing ..."
   printf "\n"
 
   banner "XCode"
@@ -19,7 +19,7 @@ main() {
   success "✅ Finished installing Homebrew packages 🚀"
   printf "\n"
 
-	banner "Homebrew"
+  banner "Homebrew"
   install_homebrew
   configure_tabs
   install_packages
@@ -37,6 +37,11 @@ main() {
   cleanup_dotfiles
   stow_dotfiles
   success "✅ Finished installing all dotfiles 🚀"
+  printf "\n"
+
+  banner "ZSH"
+  install_plugins
+  success "✅ Finished installing ZSH 🚀"
   printf "\n"
 
   banner "Oh-My-ZSH"
