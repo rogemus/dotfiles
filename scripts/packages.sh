@@ -24,6 +24,9 @@ packages=(
   python3
   bun
   fnm
+  fdupes
+  btop
+  eza
 )
 
 configure_tabs() {

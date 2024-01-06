@@ -17,6 +17,9 @@
 | glean | `git branch | grep -v "master" | xargs git branch -D` |
 | dockerdie | `docker system prune --volumes -a -f` |
 | c | `clear` |
+| ls | better `ls` | 
+| ll | long 'ls |
+| lt | simple ls with tree (level 2)|
 
 # Git
 ## Mapping
