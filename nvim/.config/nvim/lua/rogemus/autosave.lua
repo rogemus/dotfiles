@@ -4,7 +4,7 @@ local fn = vim.fn
 
 api.nvim_create_augroup("AutoSave", {})
 api.nvim_create_autocmd(
-  "InsertLeave",
+  { "InsertLeave", "TextChanged" },
   {
     pattern = "*",
     callback = function()

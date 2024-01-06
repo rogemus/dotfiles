@@ -48,10 +48,8 @@
 ### Comments
 | Keybinding | Action |
 | --- | --- |
-| gc | Toggles the region using linewise comment |
-| gb | Toggles the region using blockwise comment |
-| gcc | Toggles the current line using linewise comment |
-| gbc | Toggles the current line using blockwise comment |
+| ? (normal mode) | Toggles the region using linewise comment |
+| ? (visual mode) | Toggles the region using blockwise comment |
 
 ### Vim
 | Keybinding | Action |

@@ -39,6 +39,11 @@ main() {
   success "✅ Finished installing all dotfiles 🚀"
   printf "\n"
 
+  banner "NeoVim"
+  install_lsp_servers
+  success "✅ Finished installing NeoVim and all packages 🚀"
+  printf "\n"
+
   banner "ZSH"
   install_plugins
   success "✅ Finished installing ZSH 🚀"

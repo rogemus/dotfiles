@@ -27,21 +27,6 @@ keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>") -- Next to bottom
 keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>") -- Next to top
 keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>") -- Next to right
 
--- LSP
-api.nvim_create_autocmd("LspAttach", {
-  group = api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-
-    keymap.set("n", "<leader>g", l_buf.type_definition)
-    keymap.set("n", "<leader>gg", l_buf.definition)
-    keymap.set("n", "K", l_buf.hover)
-    keymap.set("n", "<leader>vd", diagnostic.open_float)
-    keymap.set("n", "[d", diagnostic.goto_prev)
-    keymap.set("n", "]d", diagnostic.goto_next)
-
-    keymap.set("n", "<C-f>", function()
-      l_buf.format { async = true }
-    end, opts)
-  end,
-})
+-- Comments
+keymap.set("n", "?", "<Cmd>set operatorfunc=CommentOperator<CR>g@l")
+keymap.set("x", "?", ":<C-u>call CommentOperator(visualmode())<CR>")
