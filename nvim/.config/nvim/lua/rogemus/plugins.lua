@@ -68,7 +68,7 @@ return {
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Grep in files (Find in Files)" },
+      { "<leader>fs", "<cmd>Telescope live_grep<cr>",  desc = "Grep in files (Find in Files)" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
       { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>",   desc = "Recent Files" },
@@ -120,15 +120,17 @@ return {
       -- vim.cmd("GitGutterLineHighlightsEnable")
     end
   },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
-  { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
-  { "neovim/nvim-lspconfig" },
-  { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/nvim-cmp" },
-  { "L3MON4D3/LuaSnip" },
   {
-    "numToStr/Comment.nvim",
-    lazy = true,
+    "terrortylor/nvim-comment",
+    config = function()
+      require('nvim_comment').setup({
+        create_mappings = false
+      })
+    end
   },
+  { "neovim/nvim-lspconfig" },
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'saadparwaiz1/cmp_luasnip' },
+  { 'L3MON4D3/LuaSnip' },
 }
