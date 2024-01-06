@@ -7,6 +7,9 @@ alias adPass="cat ~/.gradle/gradle.properties | grep nexusPassword= | cut -d '='
 alias adpass="adPass"
 alias fixpref='killall -u kacperrogowski cfprefsd'
 alias zshtime="time  zsh -i -c exit"
+alias ls="eza --icons=always --group-directories-first"
+alias ll="eza --icons=always --group-directories-first -la --no-user"
+alias lt="eza --icons=always --group-directories-first -T -L=2"
 
 ## Configs
 alias zconfig="nvim ~/.config/zsh"
