@@ -2,5 +2,6 @@
 ohmyzsh
 .zsh_history
 .zcompdump-*
-
+.workrc
+.personalrc
 
