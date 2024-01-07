@@ -36,24 +36,41 @@ return {
       "MunifTanjim/nui.nvim"
     },
     config = function()
+      vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+      vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+      vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+      vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
       require("neo-tree").setup({
+        close_if_last_window = true,
         window = {
           mappings = {
-           ["P"] = function(state)
+            ["<space>"] = {
+              "toggle_node",
+              nowait = true,
+            },
+            ["P"] = function(state)
               local node = state.tree:get_node()
               require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
             end
           }
         },
         source_selector = {
-            winbar = false,
-            statusline = false
+          winbar = true,
+          statusline = false
         },
         default_component_configs = {
           git_status = {
             symbols = {
-              added = "+",
-              modified = "*"
+              added     = "+",
+              modified  = "*",
+              deleted   = "✖",
+              renamed   = "󰁕",
+              untracked = "!!",
+              ignored   = "",
+              unstaged  = "",
+              staged    = "",
+              conflict  = ""
             },
           },
         },
@@ -143,7 +160,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
+    config = function()
       require('lualine').setup({
         options = {
           theme = 'auto',
