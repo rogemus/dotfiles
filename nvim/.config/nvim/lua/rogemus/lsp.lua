@@ -43,6 +43,11 @@ local servers = {
   "svelte",
 }
 
+lspconfig.html.setup{
+  filetypes = { 'html', 'htmldjango' },
+  capabilities = capabilities,
+}
+
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
