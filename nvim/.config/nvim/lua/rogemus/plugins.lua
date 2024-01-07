@@ -4,9 +4,7 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      local config = require("catppuccin")
-
-      config.setup({
+      require("catppuccin").setup({
         integrations = {
           nvimtree = true,
           gitgutter = true,
@@ -38,8 +36,11 @@ return {
       "MunifTanjim/nui.nvim"
     },
     config = function()
-      local config = require("neo-tree")
-      config.setup({
+      require("neo-tree").setup({
+        source_selector = {
+            winbar = false,
+            statusline = false
+        },
         default_component_configs = {
           git_status = {
             symbols = {
@@ -74,8 +75,7 @@ return {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>",   desc = "Recent Files" },
     },
     config = function()
-      local configs = require("telescope")
-      configs.setup({
+      require("telescope").setup({
         pickers = {
           find_files = {
             hidden = true
@@ -88,8 +88,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      local configs = require("nvim-treesitter.configs")
-      configs.setup({
+      require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "lua",
           "vim",
@@ -133,4 +132,18 @@ return {
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'saadparwaiz1/cmp_luasnip' },
   { 'L3MON4D3/LuaSnip' },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+      require('lualine').setup({
+        options = {
+          theme = 'auto',
+          section_separators = '',
+          component_separators = '',
+          disabled_filetypes = { 'neo-tree' }
+        }
+      })
+    end
+  }
 }
