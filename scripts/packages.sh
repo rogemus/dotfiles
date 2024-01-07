@@ -27,6 +27,8 @@ packages=(
   fdupes
   btop
   eza
+  curlie
+  bat
 )
 
 configure_tabs() {
