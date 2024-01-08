@@ -7,7 +7,6 @@ ZSH_THEME="rogemus"
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
-  timer
 )
 
 # Oh My Zsh

@@ -29,6 +29,7 @@ packages=(
   eza
   curlie
   bat
+  git-delta
 )
 
 configure_tabs() {
