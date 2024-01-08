@@ -1,6 +1,7 @@
 local api = vim.api
 local cmd = vim.cmd
 local fn = vim.fn
+local bo = vim.bo
 
 api.nvim_create_augroup("AutoSave", {})
 api.nvim_create_autocmd(
@@ -9,6 +10,14 @@ api.nvim_create_autocmd(
     pattern = "*",
     callback = function()
       local buf = buf or api.nvim_get_current_buf()
+
+      if bo.filetype == '' then
+        return
+      end
+
+      if not api.nvim_buf_get_option(buf, 'modifiable') then
+        return
+      end
 
       if not api.nvim_buf_get_option(buf, "modified") then
         return
