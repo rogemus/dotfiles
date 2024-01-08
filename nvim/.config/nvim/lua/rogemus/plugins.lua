@@ -56,7 +56,7 @@ return {
           }
         },
         source_selector = {
-          winbar = true,
+          winbar = false,
           statusline = false
         },
         default_component_configs = {
