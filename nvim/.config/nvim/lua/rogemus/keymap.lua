@@ -1,9 +1,6 @@
 local keymap = vim.keymap
 local g = vim.g
-local api = vim.api
 local cmd = vim.cmd
-local diagnostic = vim.diagnostic
-local l_buf = vim.lsp.buf
 
 g.mapleader = " "
 -- NVim
@@ -27,6 +24,3 @@ keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>") -- Next to bottom
 keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>") -- Next to top
 keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>") -- Next to right
 
--- Comments
-keymap.set("n", "?", "<Cmd>set operatorfunc=CommentOperator<CR>g@l")
-keymap.set("x", "?", ":<C-u>call CommentOperator(visualmode())<CR>")

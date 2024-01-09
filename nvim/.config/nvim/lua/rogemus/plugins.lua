@@ -94,6 +94,7 @@ return {
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
+      { "<leader>fo", "<cmd>Telescope buffers<cr>",  desc = "Open files" },
       { "<leader>fs", "<cmd>Telescope live_grep<cr>",  desc = "Grep in files (Find in Files)" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
       { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
@@ -147,15 +148,6 @@ return {
     end
   },
   {
-    "terrortylor/nvim-comment",
-    lazy = true,
-    config = function()
-      require('nvim_comment').setup({
-        create_mappings = false
-      })
-    end
-  },
-  {
     "neovim/nvim-lspconfig",
     lazy = true
   },
@@ -183,6 +175,19 @@ return {
           component_separators = '',
           disabled_filetypes = { 'neo-tree' }
         }
+      })
+    end
+  },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({
+        toggler = {
+          line = '?',
+        },
+        opleader = {
+          line = '?',
+        },
       })
     end
   }
