@@ -18,3 +18,6 @@ source $ZDOTDIR/.hooksrc
 source $ZDOTDIR/.exportsrc
 source $ZDOTDIR/.workrc
 source $ZDOTDIR/.personalrc
+
+# bun completions
+[ -s "/Users/kacper.rogowski/.bun/_bun" ] && source "/Users/kacper.rogowski/.bun/_bun"

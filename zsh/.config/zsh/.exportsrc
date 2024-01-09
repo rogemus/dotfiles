@@ -18,3 +18,4 @@ export M2_HOME=/Applications/maven-3.6.3
 export PATH="$M2_HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"

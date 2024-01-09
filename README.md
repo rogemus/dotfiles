@@ -117,6 +117,8 @@
 ### Telescope
 | Keybinding | Action |
 | --- | --- |
+| <leader>fo | Open Files |
+| <leader>fr | Recent Files |
 | <leader>ff | Find File |
 | <leader>fs | Grep in files (Find in files) |
 | <leader>gs | Find in  changed git files |
