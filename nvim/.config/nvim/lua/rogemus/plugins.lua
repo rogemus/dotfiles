@@ -49,14 +49,21 @@ return {
               "toggle_node",
               nowait = true,
             },
-            ["P"] = function(state)
+            ["P"] = {
+              "toggle_preview",
+              config = {
+                use_float = false,
+                use_image_nvim = false
+              }
+            },
+            ["pp"] = function(state)
               local node = state.tree:get_node()
               require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
             end
           }
         },
         source_selector = {
-          winbar = false,
+          winbar = true,
           statusline = false
         },
         default_component_configs = {
@@ -78,7 +85,7 @@ return {
           filtered_items = {
             visible = true,
             hide_dotfiles = false,
-            hide_hidden = false,
+            hide_hidden = false
           },
           follow_current_file = {
             enabled = true,
@@ -94,7 +101,7 @@ return {
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>fo", "<cmd>Telescope buffers<cr>",  desc = "Open files" },
+      { "<leader>fo", "<cmd>Telescope buffers<cr>",    desc = "Open files" },
       { "<leader>fs", "<cmd>Telescope live_grep<cr>",  desc = "Grep in files (Find in Files)" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
       { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
@@ -190,5 +197,5 @@ return {
         },
       })
     end
-  }
+  },
 }
