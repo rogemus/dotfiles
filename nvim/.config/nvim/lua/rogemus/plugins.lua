@@ -9,6 +9,8 @@ return {
           nvimtree = true,
           gitgutter = true,
           treesitter = true,
+          cmp = true,
+          native_lsp = { enabled = true, inlay_hints = { background = true } },
         },
         color_overrides = {
           mocha = {
@@ -20,7 +22,9 @@ return {
         highlight_overrides = {
           mocha = function(mocha)
             return {
-              Whitespace = { fg = mocha.crust }
+              Whitespace = { fg = mocha.crust },
+              Pmenu = { bg = mocha.crust },
+              NormalFloat = { bg = mocha.crust },
             }
           end,
         }
@@ -189,9 +193,9 @@ return {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup({
-        toggler = {
-          line = '?',
-        },
+        -- toggler = {
+        --   line = '?',
+        -- },
         opleader = {
           line = '?',
         },
