@@ -6,11 +6,14 @@ return {
     config = function()
       require("catppuccin").setup({
         integrations = {
-          nvimtree = true,
+          neotree = true,
           gitgutter = true,
           treesitter = true,
           cmp = true,
-          native_lsp = { enabled = true, inlay_hints = { background = true } },
+          native_lsp = {
+            enabled = true,
+            inlay_hints = { background = true }
+          },
         },
         color_overrides = {
           mocha = {
@@ -24,7 +27,7 @@ return {
             return {
               Whitespace = { fg = mocha.crust },
               Pmenu = { bg = mocha.crust },
-              NormalFloat = { bg = mocha.crust },
+              -- NormalFloat = { bg = mocha.crust },
             }
           end,
         }
@@ -159,10 +162,6 @@ return {
     end
   },
   {
-    "neovim/nvim-lspconfig",
-    lazy = true
-  },
-  {
     'hrsh7th/nvim-cmp',
     lazy = true,
     dependencies = {
@@ -173,6 +172,7 @@ return {
       'hrsh7th/cmp-vsnip',
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
+      'rafamadriz/friendly-snippets',
     }
   },
   {
@@ -181,7 +181,7 @@ return {
     config = function()
       require('lualine').setup({
         options = {
-          theme = 'auto',
+          theme = 'catppuccin',
           section_separators = '',
           component_separators = '',
           disabled_filetypes = { 'neo-tree' }
@@ -202,4 +202,29 @@ return {
       })
     end
   },
+  {
+    "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+    }
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+    config = function()
+      require('conform').setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          python = { "isort", "black" },
+          javascript = { { "prettierd", "prettier" } },
+        },
+        format_on_save = {
+          -- These options will be passed to conform.format()
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+      })
+    end
+  }
 }
