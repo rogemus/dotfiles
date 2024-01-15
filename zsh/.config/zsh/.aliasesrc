@@ -30,7 +30,8 @@ alias gm="git merge"
 alias gs="git status"
 alias gd="git diff"
 alias gl="git lg"
-alias gclean="git branch | grep -v "master" | xargs git branch -D"
+alias gf="git fetch"
+alias gclean="git branch | grep -v "main" | xargs git branch -D"
 
 ## AEM 
 alias aemUp="./gradlew :aemUp"
