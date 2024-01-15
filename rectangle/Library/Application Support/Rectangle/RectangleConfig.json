@@ -68,7 +68,7 @@
       "float" : 0.3
     },
     "footprintAnimationDurationMultiplier" : {
-      "float" : 0
+      "float" : 0.75
     },
     "footprintBorderWidth" : {
       "float" : 2
@@ -95,7 +95,7 @@
       "int" : 0
     },
     "landscapeSnapAreas" : {
-
+      "string" : "[7,{\"compound\":-4},5,{\"compound\":-3},2,{\"action\":2},4,{\"compound\":-2}]"
     },
     "launchOnLogin" : {
       "bool" : true
@@ -191,7 +191,7 @@
       "int" : 0
     },
     "SUEnableAutomaticChecks" : {
-      "bool" : false
+      "bool" : true
     },
     "systemWideMouseDown" : {
       "int" : 0
@@ -222,18 +222,6 @@
     }
   },
   "shortcuts" : {
-    "bottomHalf" : {
-      "keyCode" : 125,
-      "modifierFlags" : 1572864
-    },
-    "bottomLeft" : {
-      "keyCode" : 123,
-      "modifierFlags" : 1441792
-    },
-    "bottomRight" : {
-      "keyCode" : 124,
-      "modifierFlags" : 1441792
-    },
     "center" : {
       "keyCode" : 8,
       "modifierFlags" : 1572864
@@ -281,14 +269,6 @@
     "toggleTodo" : {
       "keyCode" : 11,
       "modifierFlags" : 786432
-    },
-    "topLeft" : {
-      "keyCode" : 123,
-      "modifierFlags" : 1310720
-    },
-    "topRight" : {
-      "keyCode" : 124,
-      "modifierFlags" : 1310720
     }
   },
   "version" : "81"

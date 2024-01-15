@@ -14,7 +14,8 @@ cleanup_dotfiles() {
     ".config/zsh"
     ".config/git"
     ".config/btop"
-    "Library/Application\ Support/iTerm2/DynamicProfiles"
+    "Library/Application\ Support/iTerm2/DynamicProfiles",
+    "Library/Application\ Support/Rectangle"
   )
 
   info "Removing existing config files"
@@ -30,7 +31,7 @@ cleanup_dotfiles() {
 }
 
 stow_dotfiles() {
-  local dotfiles="nvim zsh btop git iTerm"
+  local dotfiles="nvim zsh btop git iTerm rectangle"
   info "Stowing: $dotfiles"
   stow --verbose 1 --ignore='.*\.DS_Store' --target $HOME $dotfiles
 }
