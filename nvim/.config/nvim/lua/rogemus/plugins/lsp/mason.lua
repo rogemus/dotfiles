@@ -95,14 +95,6 @@ return {
 			nmap("<leader>wl", function()
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end, "[W]orkspace [L]ist Folders")
-
-			vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-				vim.lsp.buf.format()
-			end, { desc = "Format current buffer with LSP" })
-
-			nmap("n", "<leader>F", function()
-				vim.lsp.buf.format({ async = true })
-			end, { desc = "[F]current buffer with LSP" })
 		end
 
 		mason_lspconfig.setup_handlers({

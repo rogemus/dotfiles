@@ -13,6 +13,8 @@ cleanup_dotfiles() {
     ".config/nvim"
     ".config/zsh"
     ".config/git"
+    ".config/btop"
+    "Library/Application\ Support/iTerm2/DynamicProfiles"
   )
 
   info "Removing existing config files"
@@ -20,6 +22,7 @@ cleanup_dotfiles() {
     rm -f "$HOME/$f" || true
   done
 
+  info "Removing existing config directories"
   for d in $folders; do
     rm -rf "$HOME/$d" || true
     mkdir -p "$HOME/$d"
@@ -27,7 +30,7 @@ cleanup_dotfiles() {
 }
 
 stow_dotfiles() {
-  local dotfiles="nvim zsh"
+  local dotfiles="nvim zsh btop git iTerm"
   info "Stowing: $dotfiles"
   stow --verbose 1 --ignore='.*\.DS_Store' --target $HOME $dotfiles
 }

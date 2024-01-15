@@ -10,7 +10,6 @@ return {
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
-				svelte = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
 				json = { "prettier" },
@@ -23,16 +22,18 @@ return {
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 500,
+				timeout_ms = 1000,
 			},
 		})
 
-		vim.keymap.set({ "n", "v" }, "<leader>f", function()
+		local format_buffer = function()
 			conform.format({
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 500,
+				timeout_ms = 1000,
 			})
-		end, { desc = "Format file or range (in visual mode)" })
+		end
+
+		vim.keymap.set({ "n", "v" }, "<leader>F", format_buffer, { desc = "[F]ormat file or range (in visual mode)" })
 	end,
 }
