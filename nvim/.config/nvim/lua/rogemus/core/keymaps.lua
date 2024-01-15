@@ -18,9 +18,8 @@ keymap.set("n", "<leader>Y", "\"+Y")
 keymap.set("n", "<leader>tt", "<Cmd>Neotree toggle<CR>")
 
 --Split pane
-keymap.set("n", "<C-w>", "<C-w><C-w>") -- Next
+keymap.set("n", "<C-w>", "<C-w><C-w>")        -- Next
 keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>") -- Next to left
 keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>") -- Next to bottom
 keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>") -- Next to top
 keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>") -- Next to right
-
