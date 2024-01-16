@@ -3,7 +3,6 @@
 npmPackages=(
   bash-language-server
   dot-language-server
-  pyright
   svelte-language-server
   typescript
   typescript-language-server

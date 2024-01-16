@@ -19,5 +19,10 @@ source $ZDOTDIR/.exportsrc
 source $ZDOTDIR/.workrc
 source $ZDOTDIR/.personalrc
 
-# bun completions
+# Bun completions
 [ -s "/Users/kacper.rogowski/.bun/_bun" ] && source "/Users/kacper.rogowski/.bun/_bun"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

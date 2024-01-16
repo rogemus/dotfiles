@@ -23,18 +23,18 @@ return {
 		})
 
 		local servers = {
-			"tsserver",
-			"html",
-			"cssls",
-			"graphql",
-			"emmet_ls",
-			"pyright",
-			"bashls",
-			"dotls",
-			"eslint",
-			"jsonls",
-			"lua_ls",
-			"svelte",
+			tsserver = {},
+			html = {
+				filetypes = { "html", "htmldjango" },
+			},
+			cssls = {},
+			bashls = {},
+			dotls = {},
+			jsonls = {},
+			lua_ls = {},
+			svelte = {},
+			pyright = {},
+			-- pylsp = {},
 		}
 
 		local formatters = {
@@ -42,12 +42,11 @@ return {
 			"stylua",
 			"isort",
 			"black",
-			"pylint",
-			"eslint_d",
+			-- "eslint_d",
 		}
 
 		mason_lspconfig.setup({
-			ensure_installed = servers,
+			ensure_installed = vim.tbl_keys(servers),
 			automatic_installation = true, -- not the same as ensure_installed
 		})
 

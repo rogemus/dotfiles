@@ -14,8 +14,10 @@ alias curl="curlie"
 alias cat='bat --paging=never'
 
 ## Configs
-alias zconfig="nvim ~/.config/zsh"
-alias nconfig="nvim ~/.config/nvim"
+alias dotconfig="cd ~/Desktop/Projects/random/dotfiles && nvim ."
+
+## Notes
+alias notes="cd ~/Desktop/Notes && nvim ."
 
 ## Git
 alias gut="git"
