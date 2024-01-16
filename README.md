@@ -1,42 +1,30 @@
-# ZSH
-## Mapping
-| Keybinding | Action |
-| --- | --- |
-| got | `git` |
-| gut | `git` |
-| g | `git` |
-| gp | `git pull` |
-| gpp | `git push` |
-| gch | `git checkout` |
-| gc | `git commit -am` |
-| ga | `git add .` |
-| gm | `git merge` |
-| gs | `git status` |
-| gd | `git diff` |
-| gl | `git lg` |
-| glean | `git branch | grep -v "master" | xargs git branch -D` |
-| dockerdie | `docker system prune --volumes -a -f` |
-| c | `clear` |
-| ls | better `ls` | 
-| ll | long 'ls |
-| lt | simple ls with tree (level 2)|
-
-# Git
-## Mapping
-| Keybinding | Action |
-| --- | --- |
-| git s | `git status` |
-| git ch | `git checkout` |
-| git ci | `git commit -am` |
-| git a | `git add .` |
-| git m | `git merge` |
-| git d | `git diff` |
-| git p | `git pull` |
-| git pp | `git push` |
-| git lg | `git lg` |
+- [NeoVim](#neovim)
+  - [Mapping](#mapping)
+    - [Package Menagers](#package-menagers)
+    - [Comments](#comments)
+    - [Vim](#vim)
+    - [Navigation](#navigation)
+    - [Split pane](#split-pane)
+    - [LSP](#lsp)
+    - [Telescope](#telescope)
+    - [NeoTree](#neotree)
+      - [Misc](#misc)
+      - [Navigation](#navigation-1)
+      - [Working with Files and Directories](#working-with-files-and-directories)
+      - [Filtering and Searching](#filtering-and-searching)
+- [ZSH and iTerm](#zsh-and-iterm)
+  - [Mapping](#mapping-1)
+  - [Btop](#btop)
+- [Git](#git)
+  - [Diff](#diff)
+  - [Mapping](#mapping-2)
+  - [Hooks](#hooks)
+- [Rectangle](#rectangle)
 
 # NeoVim
-![nvim config](./assets/nvim.png)
+| Python | Svelte |
+| --- | --- |
+| ![nvim python](./assets/nvim-python.png) | ![nvim svelte](./assets/nvim-svelte.png)
 
 ## Mapping
 ### Package Menagers
@@ -48,7 +36,6 @@
 ### Comments
 | Keybinding | Action |
 | --- | --- |
-| ? (normal mode) | Toggles the region using linewise comment |
 | ? (visual mode) | Toggles the region using blockwise comment |
 
 ### Vim
@@ -106,8 +93,8 @@
 | --- | --- |
 | Enter | Select autocompletion |
 | Ctrl + Space | Toggle autocomplete dropdown |
-| <leader>g | Jumps to the definition of the type of the symbol under the cursor. |
-| <leader>gg | Jumps to the definition of the symbol under the cursor | 
+| <leader>gd | Jumps to the definition of the type of the symbol under the cursor. |
+| <leader>gD | Jumps to the definition of the symbol under the cursor | 
 | K | Displays hover information about the symbol under the cursor in a floating window |
 | <leader>vd | Show diagnostics in a floating window |
 | [d | Move to the previous diagnostic in the current buffer. |
@@ -146,10 +133,65 @@
 | a | Create a new file or directory in the current directory |
 | . | Select current directory as root in the tree |
 
-
 #### Filtering and Searching
 | Keybinding | Action |
 | --- | --- |
 | /{search term} | Start a search to filter files and directories |
 | n | Move to the next search result |
 | N | Move to the previous search result | 
+
+# ZSH and iTerm
+![zsh](./assets/zsh.png)
+
+## Mapping
+| Keybinding | Action |
+| --- | --- |
+| got | `git` |
+| gut | `git` |
+| g | `git` |
+| gp | `git pull` |
+| gpp | `git push` |
+| gch | `git checkout` |
+| gc | `git commit -am` |
+| ga | `git add .` |
+| gm | `git merge` |
+| gs | `git status` |
+| gd | `git diff` |
+| gl | `git lg` |
+| glean | `git branch | grep -v "master" | xargs git branch -D` |
+| dockerdie | `docker system prune --volumes -a -f` |
+| c | `clear` |
+| ls | better `ls` | 
+| ll | long 'ls |
+| lt | simple ls with tree (level 2) |
+| dotconfig | Navigate to ~/Desktop/random/dotconfig and open nvim |
+| btop | better htop |
+
+## Btop
+![btop](./assets/btop.png)
+
+# Git
+## Diff
+Git diff using delta
+![git diff](./assets/gitdiff.png)
+
+## Mapping
+| Keybinding | Action |
+| --- | --- |
+| git s | `git status` |
+| git ch | `git checkout` |
+| git ci | `git commit -am` |
+| git a | `git add .` |
+| git m | `git merge` |
+| git d | `git diff` |
+| git p | `git pull` |
+| git pp | `git push` |
+| git lg | `git lg` |
+| git f | `git fetch` |
+
+## Hooks
+1. `prepare-commit-msg` - add branch name to commit
+
+# Rectangle
+![Rectangle]('./assets/rectangle.png)
+

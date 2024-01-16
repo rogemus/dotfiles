@@ -5,8 +5,8 @@ vim.opt.scrolloff = 10
 
 -- Whitespaces
 vim.opt.listchars = {
-  space = "·",
-  tab = ">_",
+	space = "·",
+	tab = ">_",
 }
 vim.opt.list = true
 
@@ -23,3 +23,6 @@ vim.opt.updatetime = 50
 -- Search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+
+-- Python
+vim.g.python3_host_prog = "/Users/kacper.rogowski/.pyenv/versions/py3nvim/bin/python"
