@@ -83,3 +83,5 @@
 
 [init]
   templatedir = ~/.config/git/templates
+[push]
+  autoSetupRemote = true

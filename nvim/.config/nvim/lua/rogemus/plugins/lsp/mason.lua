@@ -34,7 +34,6 @@ return {
 			lua_ls = {},
 			svelte = {},
 			pyright = {},
-			-- pylsp = {},
 		}
 
 		local formatters = {
