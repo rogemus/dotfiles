@@ -13,7 +13,6 @@ packages=(
   tree
   ripgrep
   neovim
-  nvm
   pyenv
   wget
   zsh
@@ -29,6 +28,7 @@ packages=(
   eza
   curlie
   bat
+  fzf
   git-delta
 )
 
