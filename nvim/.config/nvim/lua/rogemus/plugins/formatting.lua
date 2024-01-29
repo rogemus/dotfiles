@@ -1,4 +1,4 @@
-vim.g.formater_enabled = true
+vim.g.formater_enabled = false
 
 vim.api.nvim_create_user_command("FormatToggle", function()
 	vim.g.formater_enabled = not vim.g.formater_enabled
