@@ -64,6 +64,7 @@ return {
 				use_libuv_file_watcher = true,
 			},
 		})
-		vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+
+    vim.keymap.set("n", "\\", "<Cmd>Neotree reveal<CR>")
 	end,
 }

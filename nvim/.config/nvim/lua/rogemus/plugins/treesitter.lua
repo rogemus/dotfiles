@@ -22,6 +22,8 @@ return {
 				"bash",
 				"dot",
 				"query",
+				"jsdoc",
+				"comment",
 			},
 			auto_install = true,
 			sync_install = false,
