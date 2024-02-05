@@ -9,6 +9,7 @@ return {
 	config = function()
 		local events = require("neo-tree.events")
 		local popups = require("neo-tree.ui.popups")
+		local inputs = require("neo-tree.ui.inputs")
 
 		vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
 		vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
@@ -58,7 +59,7 @@ return {
 			git_status = {
 				window = {
 					mappings = {
-						["gpp"] = "git_push",
+						["gP"] = "git_push",
 						["gp"] = function()
 							local result = vim.fn.systemlist({ "git", "pull" })
 							events.fire_event(events.GIT_EVENT)
@@ -68,6 +69,68 @@ return {
 							local result = vim.fn.systemlist({ "git", "fetch" })
 							events.fire_event(events.GIT_EVENT)
 							popups.alert("git fetch", result)
+						end,
+						["gb"] = function()
+							local result = vim.fn.systemlist({ "git", "branch" })
+							events.fire_event(events.GIT_EVENT)
+							popups.alert("git branch", result)
+						end,
+						["gch"] = function()
+							local width = vim.fn.winwidth(0) - 2
+							local row = vim.api.nvim_win_get_height(0) - 3
+							local popup_options = {
+								relative = "win",
+								position = {
+									row = row,
+									col = 0,
+								},
+								size = width,
+							}
+
+							inputs.input("Branch Name: ", "", function(msg)
+								local cmd = { "git", "checkout", msg }
+								local title = "git checkout"
+								local result = vim.fn.systemlist(cmd)
+
+								if vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "error:")) then
+									popups.alert("ERROR: git checkout", result)
+									return
+								end
+
+								events.fire_event(events.GIT_EVENT)
+								popups.alert(title, result)
+							end, popup_options)
+						end,
+						["gcH"] = function()
+							local width = vim.fn.winwidth(0) - 2
+							local row = vim.api.nvim_win_get_height(0) - 3
+							local popup_options = {
+								relative = "win",
+								position = {
+									row = row,
+									col = 0,
+								},
+								size = width,
+							}
+
+							inputs.input("New Branch Name: ", "", function(msg)
+								local cmd = { "git", "checkout", "-b", msg }
+								local title = "git checkout -b"
+								local result = vim.fn.systemlist(cmd)
+
+								if vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "error:")) then
+									popups.alert("ERROR: git checkout -b", result)
+									return
+								end
+
+								if vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "fatal:")) then
+									popups.alert("ERROR: git checkout -b", result)
+									return
+								end
+
+								events.fire_event(events.GIT_EVENT)
+								popups.alert(title, result)
+							end, popup_options)
 						end,
 					},
 				},

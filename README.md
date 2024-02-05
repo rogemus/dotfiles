@@ -4,18 +4,21 @@
     - [Comments](#comments)
     - [Vim](#vim)
     - [Navigation](#navigation)
+    - [Tabs](#tabs)
+    - [Buffers](#buffers)
     - [Split pane](#split-pane)
     - [LSP](#lsp)
     - [Telescope](#telescope)
     - [NeoTree](#neotree)
       - [Misc](#misc)
       - [Navigation](#navigation-1)
+      - [Git](#git)
       - [Working with Files and Directories](#working-with-files-and-directories)
       - [Filtering and Searching](#filtering-and-searching)
 - [ZSH and iTerm](#zsh-and-iterm)
   - [Mapping](#mapping-1)
   - [Btop](#btop)
-- [Git](#git)
+- [Git](#git-1)
   - [Diff](#diff)
   - [Mapping](#mapping-2)
   - [Hooks](#hooks)
@@ -79,6 +82,32 @@
 | ^ | jump to the first (non-blank) character of the line
 | #G / #gg / :# | move to a specified line number (replace # with the line number)
 
+### Tabs
+| Keybinding | Action |
+| --- | --- |
+| Ctrl + ! | Go to tab 1 |
+| Ctrl + @ | Go to tab 2 |
+| Ctrl + # | Go to tab 3 |
+| Ctrl + $ | Go to tab 4 |
+| Ctrl + % | Go to tab 5 |
+| Ctrl + ^ | Go to tab 6 |
+| Ctrl + & | Go to tab 7 |
+| Ctrl + * | Go to tab 8 |
+| Ctrl + ( | Go to tab 9 |
+| Ctrl + ) | Go to tab 10 |
+| ]t | Go to next tab |
+| [t | Go to prev tab |
+| ]T | Go to first tab |
+| ]T | Go to last tab |
+
+### Buffers
+| Keybinding | Action |
+| --- | --- |
+| ]b | Go to next buffer |
+| [b | Go to prev buffer |
+| ]B | Go to first buffer |
+| [B | Go to last buffer |
+
 ### Split pane
 | Keybinding | Action |
 | --- | --- |
@@ -115,6 +144,9 @@
 | Keybinding | Action |
 | --- | --- |
 | <leader>tt | Toggle sidepanel | 
+| < | Prev source |
+| > | Next source |
+| ? | Help |
 
 #### Navigation
 | Keybinding | Action |
@@ -122,6 +154,19 @@
 | j	| Move the cursor down to the next entry |
 | k | Move the cursor up to the previous entry |
 | o	| Open the selected file or directory | 
+
+#### Git
+| Keybinding | Action |
+| --- | --- |
+| gc | Git Commit files |
+| ga | Git Add selected file |
+| A | Git Add all files |
+| gP | Git Push |
+| gch | Git checkout |
+| gcH | Git checkout and create branch |
+| gb | List branchs |
+| gf | Git fetch |
+| gp | Git pull |
 
 #### Working with Files and Directories
 | Keybinding | Action |
