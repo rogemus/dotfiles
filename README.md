@@ -151,9 +151,9 @@
 #### Navigation
 | Keybinding | Action |
 | --- | --- | 
-| j	| Move the cursor down to the next entry |
+| j | Move the cursor down to the next entry |
 | k | Move the cursor up to the previous entry |
-| o	| Open the selected file or directory | 
+| o | Open the selected file or directory | 
 
 #### Git
 | Keybinding | Action |
@@ -167,13 +167,15 @@
 | gb | List branchs |
 | gf | Git fetch |
 | gp | Git pull |
+| gh | Get Github Link to file/directory | 
+| gH | Open file/directory in GitHub |
 
 #### Working with Files and Directories
 | Keybinding | Action |
 | --- | --- |
 | m | Open the Nvim Tree context menu to perform actions on the selected entry |
-| d	| Delete the selected file or directory (moves it to the trash) |
-| y	| Copy the path of the selected file or directory to the clipboard |
+| d | Delete the selected file or directory (moves it to the trash) |
+| y | Copy the path of the selected file or directory to the clipboard |
 | r | Rename the selected file or directory | 
 | a | Create a new file or directory in the current directory |
 | . | Select current directory as root in the tree |
