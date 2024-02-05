@@ -7,6 +7,9 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
+		local events = require("neo-tree.events")
+		local popups = require("neo-tree.ui.popups")
+
 		vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
 		vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
 		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
@@ -52,6 +55,23 @@ return {
 					},
 				},
 			},
+			git_status = {
+				window = {
+					mappings = {
+						["gpp"] = "git_push",
+						["gp"] = function()
+							local result = vim.fn.systemlist({ "git", "pull" })
+							events.fire_event(events.GIT_EVENT)
+							popups.alert("git pull", result)
+						end,
+						["gf"] = function()
+							local result = vim.fn.systemlist({ "git", "fetch" })
+							events.fire_event(events.GIT_EVENT)
+							popups.alert("git fetch", result)
+						end,
+					},
+				},
+			},
 			filesystem = {
 				filtered_items = {
 					visible = true,
@@ -65,6 +85,6 @@ return {
 			},
 		})
 
-    vim.keymap.set("n", "\\", "<Cmd>Neotree reveal<CR>")
+		vim.keymap.set("n", "\\", "<Cmd>Neotree reveal<CR>")
 	end,
 }
