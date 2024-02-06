@@ -147,6 +147,7 @@
 | < | Prev source |
 | > | Next source |
 | ? | Help |
+| O | Open file in finder/directory |
 
 #### Navigation
 | Keybinding | Action |

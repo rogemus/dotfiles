@@ -41,6 +41,18 @@ return {
 							use_image_nvim = false,
 						},
 					},
+					["O"] = function(state)
+						local node = state.tree:get_node()
+						if node.type == "message" then
+							return
+						end
+						if node.type == "directory" then
+							vim.fn.systemlist({ "open", node.id })
+							return
+						end
+						local dir = node:get_parent_id()
+						vim.fn.systemlist({ "open", dir })
+					end,
 					["pp"] = function(state)
 						local node = state.tree:get_node()
 						require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
