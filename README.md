@@ -197,8 +197,8 @@
 | gut | `git` |
 | g | `git` |
 | gp | `git pull` |
-| gpp | `git push` |
-| gch | `git checkout` |
+| gP | `git push` |
+| gC | `git checkout` |
 | gc | `git commit -am` |
 | ga | `git add .` |
 | gm | `git merge` |
