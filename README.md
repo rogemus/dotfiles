@@ -163,8 +163,7 @@
 | ga | Git Add selected file |
 | A | Git Add all files |
 | gP | Git Push |
-| gch | Git checkout |
-| gcH | Git checkout and create branch |
+| gC | Git checkout |
 | gb | List branchs |
 | gf | Git fetch |
 | gp | Git pull |
