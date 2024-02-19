@@ -24,7 +24,7 @@ return {
 				-- yaml = { "prettier" },
 				-- markdown = { "prettier" },
 				lua = { "stylua" },
-				python = { "isort", "black" },
+				-- python = { "isort", "black" },
 			},
 			format_on_save = function()
 				if not vim.g.formater_enabled then
