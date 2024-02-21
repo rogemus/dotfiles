@@ -116,7 +116,7 @@ return {
 							events.fire_event(events.GIT_EVENT)
 							popups.alert("git branch", result)
 						end,
-						["gch"] = function()
+						["gC"] = function()
 							local popup_options = {
 								relative = "win",
 								position = {
@@ -125,43 +125,30 @@ return {
 								},
 								size = vim.fn.winwidth(0) - 2,
 							}
-
 							inputs.input("Branch Name: ", "", function(msg)
 								local result = vim.fn.systemlist({ "git", "checkout", msg })
 
 								if vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "error:")) then
-									popups.alert("ERROR: git checkout", result)
+									result = vim.fn.systemlist({ "git", "checkout", "-b", msg })
+
+									if
+										vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "fatal:"))
+									then
+										popups.alert("ERROR: git checkout -b", result)
+										return
+									end
+
+									events.fire_event(events.GIT_EVENT)
+									popups.alert("git checkout -b", result)
+								end
+
+								if vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "fatal:")) then
+									popups.alert("git checkout -b", result)
 									return
 								end
 
 								events.fire_event(events.GIT_EVENT)
 								popups.alert("git checkout", result)
-							end, popup_options)
-						end,
-						["gcH"] = function()
-							local popup_options = {
-								relative = "win",
-								position = {
-									row = vim.api.nvim_win_get_height(0) - 3,
-									col = 0,
-								},
-								size = vim.fn.winwidth(0) - 2,
-							}
-							inputs.input("New Branch Name: ", "", function(msg)
-								local result = vim.fn.systemlist({ "git", "checkout", "-b", msg })
-
-								if vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "error:")) then
-									popups.alert("ERROR: git checkout -b", result)
-									return
-								end
-
-								if vim.v.shell_error ~= 0 or (#result > 0 and vim.startswith(result[1], "fatal:")) then
-									popups.alert("ERROR: git checkout -b", result)
-									return
-								end
-
-								events.fire_event(events.GIT_EVENT)
-								popups.alert("git checkout -b", result)
 							end, popup_options)
 						end,
 					},

@@ -1,29 +1,3 @@
-- [NeoVim](#neovim)
-  - [Mapping](#mapping)
-    - [Package Menagers](#package-menagers)
-    - [Comments](#comments)
-    - [Vim](#vim)
-    - [Navigation](#navigation)
-    - [Tabs](#tabs)
-    - [Buffers](#buffers)
-    - [Split pane](#split-pane)
-    - [LSP](#lsp)
-    - [Telescope](#telescope)
-    - [NeoTree](#neotree)
-      - [Misc](#misc)
-      - [Navigation](#navigation-1)
-      - [Git](#git)
-      - [Working with Files and Directories](#working-with-files-and-directories)
-      - [Filtering and Searching](#filtering-and-searching)
-- [ZSH and iTerm](#zsh-and-iterm)
-  - [Mapping](#mapping-1)
-  - [Btop](#btop)
-- [Git](#git-1)
-  - [Diff](#diff)
-  - [Mapping](#mapping-2)
-  - [Hooks](#hooks)
-- [Rectangle](#rectangle)
-
 # NeoVim
 | Python | Svelte |
 | --- | --- |
@@ -163,8 +137,7 @@
 | ga | Git Add selected file |
 | A | Git Add all files |
 | gP | Git Push |
-| gch | Git checkout |
-| gcH | Git checkout and create branch |
+| gC | Git checkout |
 | gb | List branchs |
 | gf | Git fetch |
 | gp | Git pull |
@@ -198,8 +171,8 @@
 | gut | `git` |
 | g | `git` |
 | gp | `git pull` |
-| gpp | `git push` |
-| gch | `git checkout` |
+| gP | `git push` |
+| gC | `git checkout` |
 | gc | `git commit -am` |
 | ga | `git add .` |
 | gm | `git merge` |
