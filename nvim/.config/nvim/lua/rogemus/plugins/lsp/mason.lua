@@ -33,15 +33,18 @@ return {
 			jsonls = {},
 			lua_ls = {},
 			svelte = {},
+			ruff_lsp = {},
 			pyright = {},
 		}
 
-		local formatters = {
+		local formatters_linters = {
 			"prettier",
 			"stylua",
-			"isort",
-			"black",
+			-- "isort",
+			-- "black",
 			-- "eslint_d",
+			-- LINTERS
+			"ruff",
 		}
 
 		mason_lspconfig.setup({
@@ -50,7 +53,7 @@ return {
 		})
 
 		mason_tool_installer.setup({
-			ensure_installed = formatters,
+			ensure_installed = formatters_linters,
 		})
 
 		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview

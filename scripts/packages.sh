@@ -30,6 +30,7 @@ packages=(
   bat
   fzf
   git-delta
+  zoxide
 )
 
 configure_tabs() {
