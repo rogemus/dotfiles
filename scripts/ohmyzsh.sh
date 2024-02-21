@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 install_ohmyzsh() {
   info "Installing Oh-My-ZSH..."

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 cleanup_dotfiles() {
   local files=(
@@ -14,6 +14,7 @@ cleanup_dotfiles() {
     ".config/zsh"
     ".config/git"
     ".config/btop"
+    ".oh-my-zsh"
     "Library/Application\ Support/iTerm2/DynamicProfiles",
     "Library/Application\ Support/Rectangle"
   )

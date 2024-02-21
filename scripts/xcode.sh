@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 install_xcode() {
   info "Installing xCode Command Line Tools..."
