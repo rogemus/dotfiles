@@ -3,23 +3,23 @@
 apps=(
   alt-tab
   bruno
+  google-chrome
+  hiddenbar
   iterm2
-  slack
+  itsycal
+  microsoft-edge
+  microsoft-office
   microsoft-teams
+  rectangle
+  slack
+  spotify
+  telegram
   the-unarchiver
   transmission
-  microsoft-office
-  microsoft-edge
-  itsycal
-  spotify
-  hiddenbar
-  rectangle
-  whatsapp
-  telegram
-  vlc
-  zoom
   visual-studio-code
-  google-chrome
+  vlc
+  whatsapp
+  zoom
 )
 
 masApps=(
