@@ -3,7 +3,7 @@ export ZSH="$ZDOTDIR/ohmyzsh"
 # Theme
 ZSH_THEME="rogemus"
 
-# Plugins 
+# Plugins
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting

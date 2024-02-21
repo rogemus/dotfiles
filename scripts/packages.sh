@@ -8,29 +8,27 @@ taps=(
 )
 
 packages=(
+  bat
+  btop
+  curl
+  curlie
+  eza
+  fdupes
+  fnm
+  fzf
   git
+  git-delta
   grep
-  tree
-  ripgrep
+  mas
   neovim
   pyenv
-  wget
-  zsh
-  mas
-  curl
-  wget
-  rust
   python3
-  bun
-  fnm
-  fdupes
-  btop
-  eza
-  curlie
-  bat
-  fzf
-  git-delta
+  ripgrep
+  rust
+  tree
+  wget
   zoxide
+  zsh
 )
 
 configure_tabs() {

@@ -1,39 +1,41 @@
-#!/bin/zsh
+#!/bin/bash
 
 cleanup_dotfiles() {
   local files=(
-    ".zprofile"
-    ".zshrc"
-    ".zshenv"
-    ".gitconfig"
-    ".hushlogin"
+    "~/.zprofile"
+    "~/.zshrc"
+    "~/.zshenv"
+    "~/.gitconfig"
+    "~/.hushlogin"
   )
 
   local folders=(
-    ".config/nvim"
-    ".config/zsh"
-    ".config/git"
-    ".config/btop"
-    ".oh-my-zsh"
-    "Library/Application\ Support/iTerm2/DynamicProfiles",
-    "Library/Application\ Support/Rectangle"
+    "~/.config/nvim"
+    "~/.config/zsh"
+    "~/.config/git"
+    "~/.config/btop"
+    "~/.oh-my-zsh"
+    "~/Library/Application Support/iTerm2/DynamicProfiles",
+    "~/Library/Application Support/Rectangle"
   )
 
-  info "Removing existing config files"
-  for f in $files; do
-    rm -f "$HOME/$f" || true
-  done
+  # info "Removing existing config files"
+  rm -f ${files[@]}
 
-  info "Removing existing config directories"
-  for d in $folders; do
-    rm -rf "$HOME/$d" || true
-    mkdir -p "$HOME/$d"
-  done
+  # info "Removing existing config directories"
+  rm -rf ${folders[@]}
 }
 
 stow_dotfiles() {
   local dotfiles="nvim zsh btop git iTerm rectangle"
-  info "Stowing: $dotfiles"
-  stow --verbose 1 --ignore='.*\.DS_Store' --target $HOME $dotfiles
+  local dirPath=$(pwd)
+  # info "Stowing: $dotfiles"
+  stow --verbose 1 --target ~/ $dotfiles
 }
 
+unstow_dotfiles() {
+  local dotfiles="nvim zsh btop git iTerm rectangle"
+  stow --delete --verbose 1 --target ~/ $dotfiles
+}
+
+"$@"
