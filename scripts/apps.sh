@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 apps=(
   alt-tab
@@ -32,9 +32,7 @@ masApps=(
 
 install_apps() {
   info "Installing Brew apps..."
-  for app in $apps; do
-    brew install --cask $app
-  done
+  brew install --cask "${packages[@]}"
 }
 
 install_macapps() {

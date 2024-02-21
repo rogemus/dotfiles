@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 . scripts/utils.sh
 . scripts/apps.sh
@@ -14,13 +14,13 @@ main() {
   info "Installing ..."
   printf "\n"
 
-  banner "XCode"
-  install_xcode
-  success "✅ Finished installing Homebrew packages 🚀"
-  printf "\n"
+  # banner "XCode"
+  # install_xcode
+  # success "✅ Finished installing Homebrew packages 🚀"
+  # printf "\n"
 
   banner "Homebrew"
-  install_homebrew
+  # install_homebrew
   configure_tabs
   install_packages
   install_fonts

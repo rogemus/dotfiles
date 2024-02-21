@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 taps=(
   homebrew/bundle
