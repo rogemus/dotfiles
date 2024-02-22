@@ -85,3 +85,6 @@
   templatedir = ~/.config/git/templates
 [push]
   autoSetupRemote = true
+[user]
+	email = kacper.rogowski@vml.com
+	name = Kacper Rogowski
