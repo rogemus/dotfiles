@@ -35,6 +35,7 @@ return {
 			svelte = {},
 			ruff_lsp = {},
 			pyright = {},
+			gopls = {},
 		}
 
 		local formatters_linters = {
@@ -45,6 +46,7 @@ return {
 			-- "eslint_d",
 			-- LINTERS
 			"ruff",
+			"golangci-lint",
 		}
 
 		mason_lspconfig.setup({

@@ -83,6 +83,7 @@
 
 [init]
   templatedir = ~/.config/git/templates
+	defaultBranch = master
 [push]
   autoSetupRemote = true
 [user]

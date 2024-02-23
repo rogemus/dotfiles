@@ -18,6 +18,7 @@ packages=(
   fzf
   git
   git-delta
+  go
   grep
   mas
   neovim
