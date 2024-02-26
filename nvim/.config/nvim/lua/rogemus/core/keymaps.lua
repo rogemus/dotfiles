@@ -1,4 +1,4 @@
-  local keymap = vim.keymap
+local keymap = vim.keymap
 local g = vim.g
 local cmd = vim.cmd
 
@@ -16,7 +16,7 @@ keymap.set("v", "<leader>y", '"+y')
 keymap.set("n", "<leader>Y", '"+Y')
 
 -- Neotree
-keymap.set("n", "<leader>tt", "<Cmd>Neotree toggle<CR>")
+keymap.set("n", "<C-b>", "<Cmd>Neotree toggle<CR>")
 
 -- Split pane
 keymap.set("n", "<C-w>", "<C-w><C-w>") -- Next

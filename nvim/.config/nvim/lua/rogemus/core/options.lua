@@ -1,3 +1,6 @@
+-- Mouse
+vim.opt.mouse = "a"
+
 -- Line Number
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -21,7 +24,7 @@ vim.opt.wrap = false
 vim.opt.updatetime = 50
 
 -- Search
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Python
