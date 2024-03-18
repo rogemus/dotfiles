@@ -107,17 +107,17 @@
 ### Telescope
 | Keybinding | Action |
 | --- | --- |
-| <leader>fo | Open Files |
-| <leader>fr | Recent Files |
-| <leader>ff | Find File |
-| <leader>fs | Grep in files (Find in files) |
-| <leader>gs | Find in  changed git files |
+| fo | Open Files |
+| fr | Recent Files |
+| ff | Find File |
+| fs | Grep in files (Find in files) |
+| <leader>gs | Find in changed git files |
 
 ### NeoTree
 #### Misc
 | Keybinding | Action |
 | --- | --- |
-| <leader>tt | Toggle sidepanel | 
+| Ctrl + b | Toggle sidepanel | 
 | < | Prev source |
 | > | Next source |
 | ? | Help |
@@ -129,6 +129,7 @@
 | j | Move the cursor down to the next entry |
 | k | Move the cursor up to the previous entry |
 | o | Open the selected file or directory | 
+| pp | Select parent |
 
 #### Git
 | Keybinding | Action |
