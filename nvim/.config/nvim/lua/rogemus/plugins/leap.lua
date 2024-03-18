@@ -14,5 +14,12 @@ return {
 		leap.add_default_mappings(true)
 		vim.keymap.del({ "x", "o" }, "x")
 		vim.keymap.del({ "x", "o" }, "X")
+
+		-- leap.opts.special_keys = {
+		-- 	prev_target = "<S-tab>",
+		-- 	next_target = "<tab>",
+		-- 	next_group = "<CR>",
+		-- 	prev_group = "<S-CR>"
+		-- }
 	end,
 }

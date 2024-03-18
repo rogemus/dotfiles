@@ -9,7 +9,8 @@ vim.opt.scrolloff = 10
 -- Whitespaces
 vim.opt.listchars = {
 	space = "·",
-	tab = ">_",
+	-- tab = ">_",
+	tab = "⇾ ",
 }
 vim.opt.list = true
 
@@ -24,7 +25,7 @@ vim.opt.wrap = false
 vim.opt.updatetime = 50
 
 -- Search
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 -- Python
