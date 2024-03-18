@@ -19,7 +19,7 @@ alias t="touch"
 alias dotconfig="cd ~/Desktop/Projects/random/dotfiles && nvim ."
 
 ## Notes
-alias notes="cd ~/Desktop/Notes && nvim ."
+alias notes="cd ~/Desktop/notes && nvim ."
 
 ## Git
 alias gut="git"

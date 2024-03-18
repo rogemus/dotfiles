@@ -20,6 +20,7 @@ packages=(
   git-delta
   go
   grep
+  hugo
   mas
   neovim
   pyenv
