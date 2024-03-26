@@ -16,6 +16,7 @@ return {
 
 		require("luasnip.loaders.from_vscode").load({
 			include = {
+				"go",
 				"lua",
 				"python",
 				"javascript",
@@ -24,6 +25,9 @@ return {
 				"djangohtml",
 				"markdown",
 				"css",
+				"svelte",
+				"javascriptreact",
+				"typescriptreact",
 			},
 		})
 
