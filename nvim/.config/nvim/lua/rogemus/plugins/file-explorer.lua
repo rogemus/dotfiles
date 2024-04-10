@@ -29,7 +29,12 @@ return {
 		require("neo-tree").setup({
 			-- close_if_last_window = true,
 			window = {
+				position = "left",
+				width = 30,
 				mappings = {
+					["\\"] = function()
+						vim.cmd("wincmd l")
+					end,
 					["<space>"] = {
 						"toggle_node",
 						nowait = true,
@@ -37,7 +42,7 @@ return {
 					["P"] = {
 						"toggle_preview",
 						config = {
-							use_float = false,
+							use_float = true,
 							use_image_nvim = false,
 						},
 					},
@@ -97,9 +102,23 @@ return {
 					},
 				},
 			},
+			buffers = {
+				window = {
+					mappings = {
+						["\\"] = function()
+							vim.cmd("Neotree reveal")
+							vim.cmd("wincmd l")
+						end,
+					},
+				},
+			},
 			git_status = {
 				window = {
 					mappings = {
+						["\\"] = function()
+							vim.cmd("Neotree reveal")
+							vim.cmd("wincmd l")
+						end,
 						["gP"] = "git_push",
 						["gp"] = function()
 							local result = vim.fn.systemlist({ "git", "pull" })
