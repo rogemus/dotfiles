@@ -10,7 +10,7 @@ alias zshtime="time  zsh -i -c exit"
 alias ls="eza --icons=always --group-directories-first"
 alias ll="eza --icons=always --group-directories-first -la --no-user"
 alias lt="eza --icons=always --group-directories-first -T -L=2"
-alias curl="curlie"
+# alias curl="curlie"
 alias cat='bat --paging=never'
 alias cd="z"
 alias t="touch"
