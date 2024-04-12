@@ -27,7 +27,12 @@ return {
 						Whitespace = { fg = mocha.crust },
 						Pmenu = { bg = mocha.crust },
 						-- NormalFloat = { bg = mocha.crust },
-						NeoTreeGitUntracked = { fg = "#F34141" },
+						NeoTreeGitUntracked = {
+							fg = "#F34141",
+						},
+						NeoTreeWinSeparator = {
+							fg = mocha.crust,
+						},
 					}
 				end,
 			},

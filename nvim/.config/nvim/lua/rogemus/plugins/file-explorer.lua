@@ -30,7 +30,6 @@ return {
 			-- close_if_last_window = true,
 			window = {
 				position = "left",
-				width = 30,
 				mappings = {
 					["\\"] = function()
 						vim.cmd("wincmd l")
@@ -181,6 +180,7 @@ return {
 				},
 				follow_current_file = {
 					enabled = true,
+          leave_dirs_open = false,
 				},
 				use_libuv_file_watcher = true,
 			},
