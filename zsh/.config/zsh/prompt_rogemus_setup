@@ -1,38 +1,26 @@
 # Prompt
 prompt_rogemus_setup() {
-# Colors
-  local RED=$(tput setaf 1)
-  local GREEN=$(tput setaf 2)
-  local YELLOW=$(tput setaf 3)
-  local BLUE=$(tput setaf 4)
-  local MAGENTA=$(tput setaf 5)
-  local CYAN=$(tput setaf 6)
-  local WHITE=$(tput setaf 7)
-  local BOLD=$(tput bold)
-  local NORMAL=$(tput sgr0)
-
-  PS1="${BOLD}${GREEN}%1~ %#${NORMAL} "
-  PS1="$(directory)$(vsc)$(arrow)"
+  PS1='╭─ $(directory) $(vsc)
+╰▶ '
   RPROMPT=""
 }
-
 
 # Git
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr "${BOLD}${YELLOW} *${NORMAL}"
-zstyle ':vcs_info:*' stagedstr "${BOLD}${GREEN} +${NOMAL}"
-zstyle ':vcs_info:git:*' formats       "${BOLD}${WHITE}(${CYAN}%b${NORMAL}%u%c${BOLD}${WHITE})${NORMAL}"
-zstyle ':vcs_info:git:*' actionformats '%b|%a%u%c'
+zstyle ':vcs_info:*' unstagedstr "*"
+zstyle ':vcs_info:*' stagedstr "+"
+zstyle ':vcs_info:git:*' formats "%{$fg_bold[cyan]%}(%{$fg_bold[red]%}%b%{$fg_bold[cyan]%}) %{$fg_bold[yellow]%}%u%{$fg_bold[magenta]%}%c"
+zstyle ':vcs_info:git:*' actionformats "%{$fg_bold[cyan]%}(%{$fg_bold[red]%}%b%{$fg_bold[cyan]%}) %{$fg_bold[cyan]%}[%{$fg_bold[blue]%}%a]%{$fg_bold[cyan]%} %{$fg_bold[yellow]%}%u%{$fg_bold[magenta]%}%c"
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 +vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep -q '^?? ' 2> /dev/null ; then
-        hook_com[staged]+="${BOLD}${RED}!${NOMAL}"
-    fi
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+    git status --porcelain | grep -q '^?? ' 2> /dev/null ; then
+    hook_com[staged]+="!"
+  fi
 }
 
 precmd() {
@@ -40,25 +28,11 @@ precmd() {
 }
 
 vsc() {
-  echo "${vcs_info_msg_0_} "
+  echo "${vcs_info_msg_0_}%{$reset_color%}"
 }
 
 directory() {
-    echo "${BOLD}${GREEN}%1~ %#${NORMAL} "
-}
-
-arrow() {
-  echo "${BOLD}${WHITE}-> ${NORMAL}" 
-}
-
-prompt_rogemus_preview () {
-  if (( ! $#* )); then
-    prompt_preview_theme rogemus
-    print
-    prompt_preview_theme rogemus red magenta blue white white white 
-  else
-    prompt_preview_theme rogemus "$@"
-  fi
+  echo "%{$fg_bold[green]%}%2~%{$reset_color%}"
 }
 
 prompt_rogemus_setup "$@"
