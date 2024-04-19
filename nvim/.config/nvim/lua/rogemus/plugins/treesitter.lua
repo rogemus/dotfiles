@@ -10,7 +10,6 @@ return {
 				"bash",
 				"comment",
 				"css",
-				"csv",
 				"dot",
 				"git_config",
 				"gitignore",
@@ -36,6 +35,12 @@ return {
 			sync_install = false,
 			highlight = {
 				enable = true,
+				is_supported = function(lang)
+					if lang == "csv" then
+						return false
+					end
+					return true
+				end,
 			},
 			indent = {
 				enable = true,
