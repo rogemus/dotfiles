@@ -11,9 +11,19 @@ alias ls="eza --icons=always --group-directories-first"
 alias ll="eza --icons=always --group-directories-first -la --no-user"
 alias lt="eza --icons=always --group-directories-first -T -L=2"
 # alias curl="curlie"
-alias cat='bat --paging=never'
+alias cat='bat --paging=never --style="header,grid"'
+# cat full
+alias catf='bat --paging=never'
 alias cd="z"
 alias t="touch"
+
+## fzf
+alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+alias fzfv="fzf --bind 'enter:become(nvim {})'"
+
+## PostgreSQL
+alias pgsqlStart="pg_ctl -D '~/.config/pgsql/data' -l logfile start"
+alias pgsqlStop="pg_ctl -D '~/.config/pgsql/data' -l logfile stop"
 
 ## Configs
 alias dotconfig="cd ~/Desktop/Projects/random/dotfiles && nvim ."
