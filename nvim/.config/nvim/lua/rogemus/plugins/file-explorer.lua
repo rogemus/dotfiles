@@ -33,6 +33,7 @@ return {
 				mappings = {
 					["\\"] = function()
 						vim.cmd("wincmd l")
+						vim.cmd("Neotree toggle")
 					end,
 					["<space>"] = {
 						"toggle_node",
@@ -107,6 +108,7 @@ return {
 						["\\"] = function()
 							vim.cmd("Neotree reveal")
 							vim.cmd("wincmd l")
+							vim.cmd("Neotree toggle")
 						end,
 					},
 				},
@@ -117,6 +119,7 @@ return {
 						["\\"] = function()
 							vim.cmd("Neotree reveal")
 							vim.cmd("wincmd l")
+							vim.cmd("Neotree toggle")
 						end,
 						["gP"] = "git_push",
 						["gp"] = function()
@@ -180,12 +183,14 @@ return {
 				},
 				follow_current_file = {
 					enabled = true,
-          leave_dirs_open = false,
+					leave_dirs_open = false,
 				},
-				use_libuv_file_watcher = true,
+				hijack_netrw_behavior = "disabled",
+        use_libuv_file_watcher = true,
 			},
 		})
 
-		vim.keymap.set("n", "\\", "<Cmd>Neotree reveal<CR>")
+		-- vim.keymap.set("n", "\\", "<Cmd>Neotree reveal<CR>")
+		vim.keymap.set("n", "\\", "<Cmd>Neotree float reveal<CR>")
 	end,
 }

@@ -11,7 +11,6 @@ packages=(
   bat
   btop
   curl
-  curlie
   eza
   fdupes
   fnm
@@ -23,10 +22,13 @@ packages=(
   hugo
   mas
   neovim
+  postgresql@15
   pyenv
   python3
   ripgrep
   rust
+  thefuck
+  tldr
   tree
   wget
   zoxide
