@@ -63,9 +63,15 @@ return {
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
 	},
 	config = function()
+		local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
 				file_ignore_patterns = { ".git", "node_modules" },
+				mappings = {
+					i = {
+						["<C-b>"] = actions.delete_buffer,
+					},
+				},
 			},
 			pickers = {
 				find_files = {

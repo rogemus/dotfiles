@@ -16,7 +16,7 @@ keymap.set("v", "<leader>y", '"+y')
 keymap.set("n", "<leader>Y", '"+Y')
 
 -- Neotree
-keymap.set("n", "<C-b>", "<Cmd>Neotree toggle<CR>")
+keymap.set("n", "<C-]>", "<Cmd>Neotree toggle<CR>")
 
 -- Split pane
 keymap.set("n", "<C-w>", "<C-w><C-w>") -- Next
