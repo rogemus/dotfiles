@@ -1,7 +1,7 @@
 export ZSH="$ZDOTDIR/ohmyzsh"
 
 # Theme
-ZSH_THEME="rogemus"
+ZSH_THEME="rogemus2"
 
 # Plugins
 plugins=(
@@ -37,3 +37,6 @@ eval "$(zoxide init zsh)"
 # thefuck
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
+
+# angular
+source <(ng completion script)

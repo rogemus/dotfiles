@@ -186,7 +186,7 @@ return {
 					leave_dirs_open = false,
 				},
 				hijack_netrw_behavior = "disabled",
-        use_libuv_file_watcher = true,
+				use_libuv_file_watcher = true,
 			},
 		})
 

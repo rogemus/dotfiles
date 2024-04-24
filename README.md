@@ -77,10 +77,13 @@
 ### Buffers
 | Keybinding | Action |
 | --- | --- |
+| <leader>] | Go to last open buffer |
 | ]b | Go to next buffer |
 | [b | Go to prev buffer |
-| ]B | Go to first buffer |
-| [B | Go to last buffer |
+| ]B | Go to next buffer |
+| [B | Go to prev buffer |
+| <leader>bd | Buffer Delete (Close Buffer) |
+| <leader>bda | All Buffers Delete (Close all buffers) |
 
 ### Split pane
 | Keybinding | Action |
@@ -107,17 +110,20 @@
 ### Telescope
 | Keybinding | Action |
 | --- | --- |
-| fo | Open Files |
-| fr | Recent Files |
-| ff | Find File |
-| fs | Grep in files (Find in files) |
+| <leader>fo | Open Files |
+| <leader>o | Open Files |
+| <leader>fr | Recent Files |
+| <leader>ff | Find File |
+| - | Find File |
+| <leader>fs | Grep in files (Find in files) |
 | <leader>gs | Find in changed git files |
+| Ctrl + b | Close selected buffer while exploring using Telescope Open Files Modal |
 
 ### NeoTree
 #### Misc
 | Keybinding | Action |
 | --- | --- |
-| Ctrl + b | Toggle sidepanel | 
+| Ctrl + ] | Toggle sidepanel | 
 | < | Prev source |
 | > | Next source |
 | ? | Help |
