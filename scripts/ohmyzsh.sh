@@ -14,7 +14,7 @@ install_plugins() {
 
 install_theme() {
   info "Installing Oh-My-ZSH Theme..."
-  curl -L -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/rogemus.zsh-theme https://gist.githubusercontent.com/rogemus/a0db270ce9da824d53532f00754c5170/raw/962c6731c678e06c074a21b66976acd2fc8fbec3/rogemus.zsh-theme
+  curl -L -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/rogemus.zsh-theme https://gist.githubusercontent.com/rogemus/b565bf7ed054f1146f456bf43e780de0/raw/61a879f4f081860cc58b8dd197470e328684cbb0/rogemus2.zsh-theme
 }
 
 "$@"

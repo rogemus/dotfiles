@@ -41,9 +41,6 @@ return {
 		local formatters_linters = {
 			"prettier",
 			"stylua",
-			-- "isort",
-			-- "black",
-			-- "eslint_d",
 			-- LINTERS
 			"ruff",
 			"golangci-lint",

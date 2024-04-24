@@ -43,6 +43,7 @@ keymap.set("n", "]T", "<Cmd>tabfir<CR>", { desc = "Go to first tab" })
 keymap.set("n", "]T", "<Cmd>tablast<CR>", { desc = "Go to last tab" })
 
 -- Buffer
+keymap.set("n", "<leader>]", "<Cmd>b#<CR>", { desc = "Go to last seen buffer" })
 keymap.set("n", "]b", "<Cmd>bnext<CR>", { desc = "Go to next buffer" })
 keymap.set("n", "[b", "<Cmd>bprevious<CR>", { desc = "Go to prev buffer" })
 keymap.set("n", "]B", "<Cmd>bfirst<CR>", { desc = "Go to first buffer" })
