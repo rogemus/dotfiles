@@ -44,6 +44,7 @@ return {
 	tag = "0.1.5",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
+		{ "=", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{ "<leader>o", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{ "<leader>fo", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{
@@ -74,7 +75,6 @@ return {
 			end,
 			desc = "Find File",
 		},
-		{ "<leader>r", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
 	},
