@@ -20,7 +20,7 @@ require("lazy").setup({
 	},
 }, {
 	ui = {
-		size = { width = 0.9, height = 0.4 },
+		size = { width = 0.9, height = 0.6 },
 		border = "rounded",
 	},
 })
