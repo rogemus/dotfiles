@@ -5,14 +5,14 @@ export HISTFILE=$ZDOTDIR/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=50000
 
-setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
 export LANG=en_US.UTF-8
@@ -39,6 +39,11 @@ export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 export PGDATA="/var/lib/pgsql/data"
 
+# curl
+export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+
 # Paths
 export PATH="$M2_HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -47,3 +52,4 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"

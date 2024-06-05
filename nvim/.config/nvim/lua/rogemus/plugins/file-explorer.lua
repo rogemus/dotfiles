@@ -181,6 +181,14 @@ return {
 					hide_dotfiles = false,
 					hide_hidden = false,
 				},
+				find_args = {
+					fd = {
+						"--exclude",
+						".git",
+						"--exclude",
+						"node_modules",
+					},
+				},
 				follow_current_file = {
 					enabled = true,
 					leave_dirs_open = false,
