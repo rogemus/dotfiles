@@ -77,6 +77,8 @@ return {
 		},
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
+		{ "<leader>F", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
+		{ "<leader>D", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },
 	},
 	config = function()
 		local actions = require("telescope.actions")

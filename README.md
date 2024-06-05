@@ -102,7 +102,8 @@
 | <leader>gd | Jumps to the definition of the type of the symbol under the cursor. |
 | <leader>gD | Jumps to the definition of the symbol under the cursor | 
 | K | Displays hover information about the symbol under the cursor in a floating window |
-| <leader>vd | Show diagnostics in a floating window |
+| <leader>D | Show diagnostics in a floating window |
+| <leader>ds | Show symbol in the workspace | 
 | [d | Move to the previous diagnostic in the current buffer. |
 | ]d | Move to the next diagnostic |
 | Ctrl + f | Format document |
@@ -117,6 +118,8 @@
 | - | Find File |
 | <leader>fs | Grep in files (Find in files) |
 | <leader>gs | Find in changed git files |
+| <leader>F | Find in current file |
+| <leader>D | Dagnostics
 | Ctrl + b | Close selected buffer while exploring using Telescope Open Files Modal |
 
 ### NeoTree
