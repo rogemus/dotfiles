@@ -38,5 +38,3 @@ eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 
-# angular
-source <(ng completion script)
