@@ -28,6 +28,9 @@ return {
 
 		require("neo-tree").setup({
 			commands = {
+				close_all_hidden_buffers = function()
+					vim.cmd("WipeWindowlessBufs")
+				end,
 				open_in_finder = function(state)
 					local node = state.tree:get_node()
 					if node.type == "message" then
@@ -161,6 +164,7 @@ return {
 				window = {
 					mappings = {
 						["\\"] = "filetree_toggle",
+						["D"] = "close_all_hidden_buffers",
 					},
 				},
 			},

@@ -47,6 +47,8 @@ alias gl="git lg"
 alias gf="git fetch"
 alias gclear="git branch | grep -v "main" | xargs git branch -D"
 alias greset="git reset --hard HEAD"
+alias gb="git checkout \$(git branch | fzf --height=30% --border --info=inline)"
+alias gd="git diff"
 
 ## AEM 
 alias aemUp="./gradlew :aemUp"
