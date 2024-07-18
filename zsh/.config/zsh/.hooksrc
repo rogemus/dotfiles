@@ -5,11 +5,35 @@ autoload -U add-zsh-hook
 
 function detect-node-version {
   if [ -f ./.nvmrc ]; then
-    echo "Detected $fg_bold[white].nvmrc$reset_color. Run 'nvm use' or 'fnm use'"
+    echo "Detected $fg_bold[white].nvmrc$reset_color."
+
+    if command -v fnm &> /dev/null 
+    then 
+      echo "Switching to new version..."
+      fnm use
+    fi
+
+    if command -v nvm &> /dev/null 
+    then
+      echo "Switching to new version..."
+      nvm use
+    fi
   fi
 
   if [ -f ./.node-version ]; then 
-    echo "Detected $fg_bold[white].node-version$reset_color. Run 'nvm use' or 'fnm use'"
+    echo "Detected $fg_bold[white].node-version$reset_color."
+
+    if command -v fnm &> /dev/null 
+    then 
+      echo "Switching to new version..."
+      fnm use
+    fi
+
+    if command -v nvm &> /dev/null 
+    then
+      echo "Switching to new version..."
+      nvm use
+    fi
   fi
 }
 
