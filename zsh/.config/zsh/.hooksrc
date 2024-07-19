@@ -3,37 +3,22 @@
 # Hooks
 autoload -U add-zsh-hook
 
+function switch_to_new_version {
+  echo "Switching to new version..."
+  if command -v fnm &> /dev/null; then 
+    fnm use
+  elif command -v nvm &> /dev/null; then
+    nvm use
+  fi
+}
+
 function detect-node-version {
   if [ -f ./.nvmrc ]; then
     echo "Detected $fg_bold[white].nvmrc$reset_color."
-
-    if command -v fnm &> /dev/null 
-    then 
-      echo "Switching to new version..."
-      fnm use
-    fi
-
-    if command -v nvm &> /dev/null 
-    then
-      echo "Switching to new version..."
-      nvm use
-    fi
-  fi
-
-  if [ -f ./.node-version ]; then 
+    switch_to_new_version 
+  elif [ -f ./.node-version ]; then 
     echo "Detected $fg_bold[white].node-version$reset_color."
-
-    if command -v fnm &> /dev/null 
-    then 
-      echo "Switching to new version..."
-      fnm use
-    fi
-
-    if command -v nvm &> /dev/null 
-    then
-      echo "Switching to new version..."
-      nvm use
-    fi
+    switch_to_new_version
   fi
 }
 
