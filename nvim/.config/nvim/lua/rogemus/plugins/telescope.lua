@@ -82,6 +82,13 @@ return {
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
 		{ "<leader>F", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
 		{ "<leader>D", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },
+		{
+			"<leader>gb",
+			function()
+				require("telescope.builtin").git_branches()
+			end,
+			desc = "Git branches",
+		},
 	},
 	config = function()
 		local actions = require("telescope.actions")
