@@ -46,7 +46,7 @@
     "slogin",
     "telnet"
   ],
-  "Scrollback Lines" : 2000,
+  "Scrollback Lines" : 20000,
   "Draw Powerline Glyphs" : false,
   "Flashing Bell" : false,
   "Cursor Guide Color" : {

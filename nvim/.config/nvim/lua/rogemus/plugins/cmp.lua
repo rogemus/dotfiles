@@ -7,29 +7,29 @@ return {
 		"hrsh7th/cmp-path",
 
 		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-		"rafamadriz/friendly-snippets",
+		-- "saadparwaiz1/cmp_luasnip",
+		-- "rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 
-		require("luasnip.loaders.from_vscode").load({
-			include = {
-				"go",
-				"lua",
-				"python",
-				"javascript",
-				"typescript",
-				"html",
-				"djangohtml",
-				"markdown",
-				"css",
-				"svelte",
-				"javascriptreact",
-				"typescriptreact",
-			},
-		})
+		-- require("luasnip.loaders.from_vscode").load({
+		-- 	include = {
+		-- 		"go",
+		-- 		"lua",
+		-- 		"python",
+		-- 		"javascript",
+		-- 		"typescript",
+		-- 		"html",
+		-- 		"djangohtml",
+		-- 		"markdown",
+		-- 		"css",
+		-- 		"svelte",
+		-- 		"javascriptreact",
+		-- 		"typescriptreact",
+		-- 	},
+		-- })
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -94,8 +94,7 @@ return {
 				{ name = "buffer" },
 				{ name = "nvim_lsp" },
 				{ name = "path" },
-				{ name = "luasnip", option = { show_autosnippets = true } },
-				-- { name = "vsnip" },
+				-- { name = "luasnip", option = { show_autosnippets = true } },
 			},
 		})
 
