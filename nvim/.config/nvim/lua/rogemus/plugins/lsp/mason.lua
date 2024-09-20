@@ -23,7 +23,7 @@ return {
 		})
 
 		local servers = {
-			tsserver = {},
+			ts_ls = {},
 			html = {
 				filetypes = { "html", "htmldjango" },
 			},

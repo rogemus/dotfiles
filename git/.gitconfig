@@ -89,3 +89,5 @@
 [user]
 	email = rogemus@gmail.com
 	name = Kacper Rogowski
+[help]
+	autocorrect = prompt

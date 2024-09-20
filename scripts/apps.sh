@@ -19,7 +19,6 @@ apps=(
   visual-studio-code
   vlc
   whatsapp
-  zoom
 )
 
 masApps=(
