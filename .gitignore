@@ -4,4 +4,4 @@ ohmyzsh
 .zcompdump-*
 .workrc
 .personalrc
-
+zsh/.config/zsh/plugins

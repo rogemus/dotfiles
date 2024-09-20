@@ -1,40 +1,51 @@
-export ZSH="$ZDOTDIR/ohmyzsh"
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
 
-# Theme
-ZSH_THEME="rogemus2"
+if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
+  git clone --quiet https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
+fi
 
-# Plugins
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
+
+repos=(
+  zsh-users/zsh-completions
+  romkatv/zsh-defer
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+  zsh-users/zsh-autosuggestions
 )
 
-# Oh My Zsh
-# DISABLE_UPDATE_PROMPT="true"
-source $ZSH/oh-my-zsh.sh
+plugin-load $repos
 
 source $ZDOTDIR/.aliasesrc
 source $ZDOTDIR/.hooksrc
 source $ZDOTDIR/.exportsrc
 source $ZDOTDIR/.workrc
 source $ZDOTDIR/.personalrc
+source $ZDOTDIR/.appsrc
 
-# Bun completions
-[ -s "/Users/kacper.rogowski/.bun/_bun" ] && source "/Users/kacper.rogowski/.bun/_bun"
+# Prompt
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '*'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git:*' formats '%F{blue}(%f%F{red}%b%f%F{blue})%f %F{yellow}%u%f%F{cyan}%c%f'
+zstyle ':vcs_info:git:*' actionformats '%F{blue}(%f%F{red}%b%f%F{blue})%f%F{blue}[%f%F{cyan}%a%f%F{blue}]%f %F{yellow}%u%f%F{cyan}%c%f'
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
-# fzf
-eval "$(fzf --zsh)"
+setopt prompt_subst
 
-# Zoxide
-eval "$(zoxide init zsh)"
++vi-git-untracked(){
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+    git status --porcelain | grep -q '^?? ' 2> /dev/null ; then
+    hook_com[staged]+="!"
+  fi
+}
 
-# thefuck
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
-
+PS1='%B%F{green}%2~%f ${vcs_info_msg_0_}
+>%b '
+RPROMPT=""

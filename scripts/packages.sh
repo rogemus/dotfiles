@@ -9,7 +9,6 @@ taps=(
 
 packages=(
   bat
-  btop
   curl
   eza
   fdupes
@@ -19,18 +18,11 @@ packages=(
   git-delta
   go
   grep
-  hugo
   mas
   neovim
-  postgresql@15
-  pyenv
   python3
   ripgrep
-  rust
-  thefuck
-  tldr
   tree
-  wget
   zoxide
   zsh
 )

@@ -13,8 +13,6 @@ cleanup_dotfiles() {
     "~/.config/nvim"
     "~/.config/zsh"
     "~/.config/git"
-    "~/.config/btop"
-    "~/.oh-my-zsh"
     "~/Library/Application Support/iTerm2/DynamicProfiles",
     "~/Library/Application Support/Rectangle"
   )
@@ -27,14 +25,14 @@ cleanup_dotfiles() {
 }
 
 stow_dotfiles() {
-  local dotfiles="nvim zsh btop git iTerm rectangle"
+  local dotfiles="nvim zsh git iTerm rectangle"
   local dirPath=$(pwd)
   # info "Stowing: $dotfiles"
   stow --verbose 1 --target ~/ $dotfiles
 }
 
 unstow_dotfiles() {
-  local dotfiles="nvim zsh btop git iTerm rectangle"
+  local dotfiles="nvim zsh git iTerm rectangle"
   stow --delete --verbose 1 --target ~/ $dotfiles
 }
 

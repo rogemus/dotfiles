@@ -89,3 +89,5 @@
 [user]
 	email = kacper.rogowski@vml.com
 	name = Kacper Rogowski
+[help]
+	autocorrect = prompt

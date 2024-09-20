@@ -83,6 +83,19 @@ return {
 		{ "<leader>F", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
 		{ "<leader>D", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },
 		{
+			"<leader>D",
+			function()
+				require("telescope.builtin").diagnostics({
+					layout_strategy = "vertical",
+					wrap_results = true,
+					path_display = {
+						shorten = { len = 3, exclude = { -3, -2, -1 } },
+					},
+				})
+			end,
+			desc = "LSP diagnostics",
+		},
+		{
 			"<leader>gb",
 			function()
 				require("telescope.builtin").git_branches()
@@ -102,7 +115,7 @@ return {
 				},
 			},
 			defaults = {
-				file_ignore_patterns = { ".git", "node_modules" },
+				file_ignore_patterns = { ".git", "node_modules", "yarn.lock" },
 				mappings = {
 					i = {
 						["<C-b>"] = actions.delete_buffer,
