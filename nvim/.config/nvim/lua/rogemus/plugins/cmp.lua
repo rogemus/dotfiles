@@ -91,7 +91,7 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = {
-				{ name = "buffer" },
+				-- { name = "buffer" },
 				{ name = "nvim_lsp" },
 				{ name = "path" },
 				-- { name = "luasnip", option = { show_autosnippets = true } },

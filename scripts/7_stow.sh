@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./utils.sh 
+
 cleanup_dotfiles() {
   local files=(
     "~/.zprofile"
@@ -36,4 +38,4 @@ unstow_dotfiles() {
   stow --delete --verbose 1 --target ~/ $dotfiles
 }
 
-"$@"
+stow_dotfiles

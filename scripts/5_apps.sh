@@ -1,4 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
+
+source ./utils.sh 
 
 apps=(
   alt-tab
@@ -41,3 +43,5 @@ install_macapps() {
   done
 }
 
+install_apps
+install_macapps

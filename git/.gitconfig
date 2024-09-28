@@ -46,9 +46,6 @@
   features = arctic-fox
   side-by-side = true
 
-[merge]
-  conflictstyle = diff3
-
 [diff]
   colorMoved = default
 
@@ -84,10 +81,26 @@
 [init]
   templatedir = ~/.config/git/templates
 	defaultBranch = master
+
 [push]
   autoSetupRemote = true
+
 [user]
 	email = kacper.rogowski@vml.com
 	name = Kacper Rogowski
+
 [help]
 	autocorrect = prompt
+
+[diff "image"]
+    textconv = imgcat
+
+[merge]
+  conflictstyle = diff3
+	tool = nvimdiff3
+
+[mergetool "nvimdiff3"]
+  cmd = nvim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+
+[mergetool]
+  prompt = false

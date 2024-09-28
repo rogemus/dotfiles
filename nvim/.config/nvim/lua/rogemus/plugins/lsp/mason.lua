@@ -1,3 +1,20 @@
+local function preview_location_callback(_, result, method, _)
+	if result == nil or vim.tbl_isempty(result) then
+		vim.lsp.log.info(method, "No location found")
+		return nil
+	end
+	if vim.tbl_islist(result) then
+		vim.lsp.util.preview_location(result[1])
+	else
+		vim.lsp.util.preview_location(result)
+	end
+end
+
+local function peek_definition()
+	local params = vim.lsp.util.make_position_params()
+	return vim.lsp.buf_request(0, "textDocument/definition", params, preview_location_callback)
+end
+
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
@@ -42,7 +59,6 @@ return {
 			"prettier",
 			"stylua",
 			-- LINTERS
-			"ruff",
 			"golangci-lint",
 		}
 
@@ -56,6 +72,7 @@ return {
 		})
 
 		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+
 		function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 			opts = opts or {}
 			opts.border = opts.border or "rounded"
@@ -83,17 +100,9 @@ return {
 			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
-			-- See `:help K` for why this vim.keymap
-			nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+			nmap("K", peek_definition, "Hover Documentation")
 			nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-
-			-- Lesser used LSP functionality
 			nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-			nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-			nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-			nmap("<leader>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, "[W]orkspace [L]ist Folders")
 		end
 
 		mason_lspconfig.setup_handlers({

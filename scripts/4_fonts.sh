@@ -1,4 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
+
+source ./utils.sh 
 
 fonts=(
   font-fira-code
@@ -13,3 +15,5 @@ install_fonts() {
     brew install --cask $font
   done
 }
+
+install_fonts
