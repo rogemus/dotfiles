@@ -1,4 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
+
+source ./utils.sh 
 
 taps=(
   homebrew/bundle
@@ -24,7 +26,7 @@ packages=(
   ripgrep
   tree
   zoxide
-  zsh
+  eddieantonio/eddieantonio/imgcat
 )
 
 configure_tabs() {
@@ -40,3 +42,5 @@ install_packages() {
   brew install "${packages[@]}"
 }
 
+configure_tabs
+install_packages
