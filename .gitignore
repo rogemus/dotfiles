@@ -5,3 +5,4 @@ ohmyzsh
 .workrc
 .personalrc
 zsh/.config/zsh/plugins
+rectangle
