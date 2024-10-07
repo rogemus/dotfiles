@@ -12,9 +12,9 @@
   hunk-header-file-style = blue ul bold
   hunk-header-line-number-style = yellow box bold
   hunk-header-style = file line-number syntax bold italic
-  plus-style = brightgreen
+  plus-style = syntax "#002600"
   plus-emph-style = black green
-  minus-style = brightred
+  minus-style = syntax "#3A0800"
   minus-emph-style = black red
   line-numbers = true
   line-numbers-minus-style = brightred
@@ -45,6 +45,7 @@
   light = false
   features = arctic-fox
   side-by-side = true
+  true-color = always
 
 [diff]
   colorMoved = default
@@ -104,3 +105,5 @@
 
 [mergetool]
   prompt = false
+[pager]
+	diff = diffnav
