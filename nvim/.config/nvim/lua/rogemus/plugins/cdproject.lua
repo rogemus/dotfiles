@@ -4,25 +4,49 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 
-local function get_project_entries(names, paths)
-	local entries = {}
-	for key, value in ipairs(names) do
-		local project_name = value
-		local project_path = paths[key]
-		entries[project_name] = project_path
-	end
-
-	return entries
-end
-
 return {
 	"LintaoAmons/cd-project.nvim",
 	init = function()
+		local cdproject = require("cd-project")
 		local api = require("cd-project.api")
 
-		require("cd-project").setup({
+		cdproject.setup({
 			choice_format = "name",
 		})
+
+		local function get_project_names()
+			local cwd = vim.fn.getcwd()
+			local cwd_project_name = cwd:match("([^/]+)$")
+			local names = api.get_project_names()
+			local project_names = vim.tbl_filter(function(n)
+				return n ~= cwd_project_name
+			end, names)
+			return project_names
+		end
+
+		local function get_project_paths()
+			local cwd = vim.fn.getcwd()
+			local paths = api.get_project_paths()
+
+			local project_paths = vim.tbl_filter(function(c)
+				return c ~= cwd
+			end, paths)
+			return project_paths
+		end
+
+		local function get_project_entries()
+			local names = get_project_names()
+			local paths = get_project_paths()
+			local entries = {}
+
+			for key, value in ipairs(names) do
+				local project_name = value
+				local project_path = paths[key]
+				entries[project_name] = project_path
+			end
+
+			return entries
+		end
 
 		local dirsPicker = function(opts)
 			opts = opts or {
@@ -30,15 +54,13 @@ return {
 				layout_config = { height = 0.35 },
 			}
 
-			local project_names = api.get_project_names()
-			local project_paths = api.get_project_paths()
-			local project_entries = get_project_entries(project_names, project_paths)
+			local project_entries = get_project_entries()
 
 			pickers
 				.new(opts, {
 					prompt_title = "project name",
 					finder = finders.new_table({
-						results = project_names,
+						results = get_project_names(),
 					}),
 					sorter = conf.generic_sorter(opts),
 					attach_mappings = function(prompt_bufnr, map)
@@ -64,10 +86,7 @@ return {
 							api.delete_project(project_obj)
 							action_state
 								.get_current_picker(prompt_bufnr)
-								:refresh(
-									finders.new_table({ results = api.get_project_names() }),
-									{ reset_prompt = true }
-								)
+								:refresh(finders.new_table({ results = get_project_names() }), { reset_prompt = true })
 						end)
 
 						return true

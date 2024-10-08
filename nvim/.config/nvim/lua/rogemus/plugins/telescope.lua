@@ -41,7 +41,7 @@ end
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.5",
+	tag = "0.1.8",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -50,38 +50,14 @@ return {
 		{ "=", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{ "<leader>o", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{ "<leader>fo", "<cmd>Telescope buffers<cr>", desc = "Open files" },
-		{
-			"<leader>s",
-			function()
-				live_grep_from_project_git_root()
-			end,
-			desc = "Grep in files (Find in Files)",
-		},
-		{
-			"<leader>fs",
-			function()
-				live_grep_from_project_git_root()
-			end,
-			desc = "Grep in files (Find in Files)",
-		},
-		{
-			"-",
-			function()
-				find_files_from_project_git_root()
-			end,
-			desc = "Find File",
-		},
-		{
-			"<leader>ff",
-			function()
-				find_files_from_project_git_root()
-			end,
-			desc = "Find File",
-		},
+		{ "<leader>fs", live_grep_from_project_git_root, desc = "Grep in files (Find in Files)" },
+		{ "-", find_files_from_project_git_root, desc = "Find File" },
+		{ "<leader>ff", find_files_from_project_git_root, desc = "Find File" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
 		{ "<leader>F", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
 		{ "<leader>D", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },
+		{ "<leader>gb", require("telescope.builtin").git_branches, desc = "Git branches" },
 		{
 			"<leader>D",
 			function()
@@ -94,13 +70,6 @@ return {
 				})
 			end,
 			desc = "LSP diagnostics",
-		},
-		{
-			"<leader>gb",
-			function()
-				require("telescope.builtin").git_branches()
-			end,
-			desc = "Git branches",
 		},
 	},
 	config = function()
