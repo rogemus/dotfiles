@@ -22,17 +22,6 @@ return {
 
 		require("cd-project").setup({
 			choice_format = "name",
-			projects_picker = "telescope",
-			hooks = {
-				{
-					callback = function(_)
-						require("telescope").extensions.smart_open.smart_open({
-							cwd_only = true,
-							filename_first = false,
-						})
-					end,
-				},
-			},
 		})
 
 		local dirsPicker = function(opts)
@@ -60,10 +49,9 @@ return {
 							local project_name = selected[1]
 							local project_path = project_entries[project_name]
 
-							vim.g.cd_project_last_project = vim.g.cd_project_current_project
-							vim.g.cd_project_current_project = project_path
+							vim.cmd("bufdo bd")
+							api.cd_project(project_path)
 							vim.notify("Switched to project: " .. project_path, vim.log.levels.INFO)
-							vim.fn.execute("cd " .. vim.fn.fnameescape(project_path))
 						end)
 
 						-- Remove project
@@ -95,10 +83,9 @@ return {
 				return
 			end
 
-			vim.g.cd_project_last_project = vim.g.cd_project_current_project
-			vim.g.cd_project_current_project = last_project
+			vim.cmd("bufdo bd")
+			api.cd_project(last_project)
 			vim.notify("Switched to project: " .. last_project, vim.log.levels.INFO)
-			vim.fn.execute("cd " .. vim.fn.fnameescape(last_project))
 		end
 
 		vim.keymap.set("n", "cb", goBack, { desc = "Switch to prev project" })

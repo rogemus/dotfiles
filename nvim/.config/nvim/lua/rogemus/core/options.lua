@@ -29,6 +29,3 @@ vim.opt.updatetime = 50
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.go.ignorecase = true
-
--- Python
-vim.g.python3_host_prog = "/Users/kacper.rogowski/.pyenv/versions/py3nvim/bin/python"

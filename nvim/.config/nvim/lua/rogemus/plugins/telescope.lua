@@ -105,7 +105,9 @@ return {
 	},
 	config = function()
 		local actions = require("telescope.actions")
-		require("telescope").setup({
+		local telescope = require("telescope")
+
+		telescope.setup({
 			extensions = {
 				fzf = {
 					fuzzy = true, -- false will only do exact matching
@@ -129,6 +131,6 @@ return {
 			},
 		})
 
-		require("telescope").load_extension("fzf")
+		telescope.load_extension("fzf")
 	end,
 }
