@@ -121,7 +121,6 @@ return {
 				end,
 			},
 			window = {
-				position = "left",
 				mappings = {
 					["\\"] = "filetree_toggle",
 					["<space>"] = {

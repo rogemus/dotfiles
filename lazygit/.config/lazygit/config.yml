@@ -1,6 +1,21 @@
 gui:
   sidePanelWidth: 0.25
+  branchColors:
+    "feat": "#008FC6"
+    "fix": "#ef766d"
+    "poc": "#8cf67a"
 git:
+  autoFetch: true
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+  mainBranches:
+    - master
+    - main
+    - develop
+  refresher:
+    fetchInterval: 600
+os:
+  editPreset: "nvim"
+confirmOnQuit: true
+notARepository: skip
