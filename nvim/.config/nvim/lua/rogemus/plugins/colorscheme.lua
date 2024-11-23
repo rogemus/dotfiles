@@ -18,7 +18,8 @@ return {
 				mocha = {
 					base = "#000000",
 					mantle = "#000000",
-					crust = "#212136",
+					crust = "#1d1d30",
+					-- crust = "#212136",
 				},
 			},
 			highlight_overrides = {

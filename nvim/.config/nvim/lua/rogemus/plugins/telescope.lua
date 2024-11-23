@@ -34,10 +34,21 @@ local function find_files_from_project_git_root()
 	if is_git_repo() then
 		opts = {
 			cwd = get_git_root(),
+			find_command = { "fd", "--type", "f", "--color", "never" },
 		}
 	end
 	require("telescope.builtin").find_files(opts)
 end
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "TelescopeResults",
+	callback = function(ctx)
+		vim.api.nvim_buf_call(ctx.buf, function()
+			vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+			vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+		end)
+	end,
+})
 
 return {
 	"nvim-telescope/telescope.nvim",
@@ -51,8 +62,9 @@ return {
 		{ "<leader>o", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{ "<leader>fo", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{ "<leader>fs", live_grep_from_project_git_root, desc = "Grep in files (Find in Files)" },
-		{ "-", find_files_from_project_git_root, desc = "Find File" },
-		{ "<leader>ff", find_files_from_project_git_root, desc = "Find File" },
+		{ "-", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File" },
+		{ "ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files" },
+		-- { "<leader>ff", find_files_from_project_git_root, desc = "Find File" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
 		{ "<leader>F", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
@@ -65,7 +77,10 @@ return {
 					layout_strategy = "vertical",
 					wrap_results = true,
 					path_display = {
-						shorten = { len = 3, exclude = { -3, -2, -1 } },
+						shorten = {
+							len = 3,
+							exclude = { -3, -2, -1 },
+						},
 					},
 				})
 			end,
@@ -81,12 +96,19 @@ return {
 				fzf = {
 					fuzzy = true, -- false will only do exact matching
 					override_generic_sorter = true, -- override the generic sorter
-					override_file_sorter = true, -- override the file sorter
+					override_file_sorter = false, -- override the file sorter
 					case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 				},
 			},
 			defaults = {
-				file_ignore_patterns = { ".git", "node_modules", "yarn.lock" },
+				file_ignore_patterns = { "^.git/", "^node_modules/", "yarn.lock" },
+				path_display = {
+					-- search_dirs = false,
+					shorten = {
+						len = 3,
+						exclude = { -3, -2, -1 },
+					},
+				},
 				mappings = {
 					i = {
 						["<C-b>"] = actions.delete_buffer,
@@ -95,7 +117,7 @@ return {
 			},
 			pickers = {
 				find_files = {
-					hidden = true,
+					find_command = { "fd", "--type", "f", "--color", "never" },
 				},
 			},
 		})

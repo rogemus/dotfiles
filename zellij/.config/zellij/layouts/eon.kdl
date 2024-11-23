@@ -1,0 +1,54 @@
+layout {
+   default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }   
+  tab name="editor" focus=true {
+    pane {
+      cwd "~/Desktop/Projects/e.on/panda-fe"
+      command "nvim"
+      borderless true
+    }
+  }
+  tab name="dev scripts" {
+    pane split_direction="horizontal" {
+      pane split_direction="vertical" {
+        pane {
+          cwd "~/Desktop/Projects/e.on/zebra-fe"
+          name "dev:zebra"
+        }
+        pane {
+          cwd "~/Desktop/Projects/e.on/anakonda-fe"
+          name "dev:anakonda"
+        }
+      }
+      pane split_direction="vertical" {
+        pane {
+          cwd "~/Desktop/Projects/e.on"
+          name "dev:eon"
+        }
+        pane {
+          cwd "~/Desktop/Projects/e.on/panda-fe"
+          name "dev:panda"
+        }
+        pane {
+          cwd "~/Desktop/Projects/e.on/lama-fe"
+          name "dev:lama"
+        }
+      }
+    }
+  }
+  tab name="lazygit" {
+    pane {
+      borderless true
+      cwd "~/Desktop/Projects/e.on/panda-fe"
+      command "lazygit"
+      size 1
+    }
+  }
+}
