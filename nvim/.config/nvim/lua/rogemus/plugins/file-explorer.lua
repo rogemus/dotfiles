@@ -135,7 +135,7 @@ return {
 						},
 					},
 					["O"] = "open_in_finder",
-					["pp"] = "focus_parent",
+					["U"] = "focus_parent",
 					["gh"] = "github_file_link",
 					["gH"] = "github_open_file",
 				},
@@ -143,6 +143,16 @@ return {
 			source_selector = {
 				winbar = true,
 				statusline = false,
+				sources = {
+					{
+						source = "filesystem",
+						display_name = " 󰉓 Files ",
+					},
+					-- {
+					-- 	source = "git_status",
+					-- 	display_name = " 󰊢 Git ",
+					-- },
+				},
 			},
 			default_component_configs = {
 				git_status = {
@@ -184,6 +194,7 @@ return {
 					visible = true,
 					hide_dotfiles = false,
 					hide_hidden = false,
+					hide_gitignored = true,
 				},
 				find_args = {
 					fd = {

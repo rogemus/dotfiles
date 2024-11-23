@@ -1,9 +1,15 @@
 gui:
   sidePanelWidth: 0.25
+  showDivergenceFromBaseBranch: arrowAndNumber
+  mouseEvents: false
+  showBottomLine: false
+  showIcons: true
+  nerdFontsVersion: "3"
   branchColors:
-    "feat": "#008FC6"
-    "fix": "#ef766d"
-    "poc": "#8cf67a"
+    "feat": "#51bf37"
+    "feature": "#51bf37"
+    "fix": "#b83019"
+    "poc": "#53c2c5"
 git:
   autoFetch: true
   paging:
@@ -13,8 +19,9 @@ git:
     - master
     - main
     - develop
+    - dev/S27
   refresher:
-    fetchInterval: 600
+    fetchInterval: 60
 os:
   editPreset: "nvim"
 confirmOnQuit: true

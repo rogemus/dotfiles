@@ -56,7 +56,7 @@ return {
 			completion = {
 				completeopt = "menu,menuone,noinsert",
 			},
-			preselect = cmp.PreselectMode.None,
+			preselect = cmp.PreselectMode.Item,
 			mapping = cmp.mapping.preset.insert({
 				-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
 				-- ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
@@ -66,7 +66,7 @@ return {
 				["<C-k>"] = cmp.mapping.select_prev_item(),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
+					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
 				["<Tab>"] = cmp.mapping(function(fallback)

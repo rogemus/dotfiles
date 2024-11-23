@@ -50,7 +50,7 @@ return {
 			jsonls = {},
 			lua_ls = {},
 			svelte = {},
-			ruff_lsp = {},
+			ruff = {},
 			pyright = {},
 			gopls = {},
 		}
@@ -82,7 +82,18 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-		local on_attach = function(_, bufnr)
+		local on_attach = function(client, bufnr)
+			if client.name == "svelte" then
+				vim.api.nvim_create_autocmd("BufWritePost", {
+					pattern = { "*.js", "*.ts" },
+					group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
+					callback = function(ctx)
+						-- Here use ctx.match instead of ctx.file
+						client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+					end,
+				})
+			end
+
 			local nmap = function(keys, func, desc)
 				if desc then
 					desc = "LSP: " .. desc
@@ -100,7 +111,8 @@ return {
 			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
-			nmap("K", peek_definition, "Hover Documentation")
+			nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+			-- nmap("K", peek_definition, "Hover Documentation")
 			nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 			nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 		end

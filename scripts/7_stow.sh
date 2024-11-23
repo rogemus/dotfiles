@@ -13,8 +13,10 @@ cleanup_dotfiles() {
     "~/.config/nvim"
     "~/.config/zsh"
     "~/.config/git"
+    "~/.config/yazi"
     "~/.config/lazygit"
-    "~/Library/Application Support/iTerm2/DynamicProfiles",
+    "~/.config/iTerm"
+    # "~/Library/Application Support/iTerm2/DynamicProfiles",
     "~/Library/Application Support/Rectangle"
   )
 
@@ -26,14 +28,14 @@ cleanup_dotfiles() {
 }
 
 stow_dotfiles() {
-  local dotfiles="nvim zsh git iTerm rectangle lazygit"
+  local dotfiles="nvim zsh git iTerm rectangle lazygit yazi iTerm"
   local dirPath=$(pwd)
   # info "Stowing: $dotfiles"
   stow --verbose 1 --target ~/ $dotfiles
 }
 
 unstow_dotfiles() {
-  local dotfiles="nvim zsh git iTerm rectangle lazygit"
+  local dotfiles="nvim zsh git iTerm rectangle lazygit yazi iTerm"
   stow --delete --verbose 1 --target ~/ $dotfiles
 }
 
