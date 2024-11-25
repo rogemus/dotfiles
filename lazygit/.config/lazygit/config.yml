@@ -5,11 +5,33 @@ gui:
   showBottomLine: false
   showIcons: true
   nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - '#74c7ec'
+      - bold
+    inactiveBorderColor:
+      - '#a6adc8'
+    optionsTextColor:
+      - '#89b4fa'
+    selectedLineBgColor:
+      - '#313244'
+    cherryPickedCommitBgColor:
+      - '#45475a'
+    cherryPickedCommitFgColor:
+      - '#74c7ec'
+    unstagedChangesColor:
+      - '#f38ba8'
+    defaultFgColor:
+      - '#cdd6f4'
+    searchingActiveBorderColor:
+      - '#f9e2af'
+  authorColors:
+    '*': '#b4befe'
   branchColors:
-    "feat": "#51bf37"
-    "feature": "#51bf37"
-    "fix": "#b83019"
-    "poc": "#53c2c5"
+    "feat": "#a6e3a1"
+    "feature": "#a6e3a1"
+    "fix": "#f38ba8"
+    "poc": "#b4befe"
 git:
   autoFetch: true
   paging:

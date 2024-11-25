@@ -58,6 +58,7 @@ return {
 		local formatters_linters = {
 			"prettier",
 			"stylua",
+			"biome",
 			-- LINTERS
 			"golangci-lint",
 		}

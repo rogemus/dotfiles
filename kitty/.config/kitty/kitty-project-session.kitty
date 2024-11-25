@@ -1,0 +1,11 @@
+new_tab editor
+launch nvim
+
+new_tab dev:scripts
+layout splits
+
+# dev
+launch --var window=dev
+
+new_tab lazygit
+launch lazygit

@@ -7,19 +7,18 @@ apps=(
   bruno
   google-chrome
   hiddenbar
-  iterm2
   itsycal
   microsoft-edge
   microsoft-office
   microsoft-teams
   rectangle
   slack
-  spotify
   telegram
   the-unarchiver
   transmission
   visual-studio-code
   vlc
+  kitty
   whatsapp
 )
 
