@@ -17,6 +17,11 @@ alias catf='bat --paging=never'
 alias cd="z"
 alias t="touch"
 
+## zellij
+alias zeli="ls ~/.config/zellij/layouts --icons=never --absolute=on | fzf --bind 'enter:execute(zellij --layout {})' --height=20%"
+alias zel="zellij"
+alias zelij="zellij"
+
 ## fzf
 alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 alias fzfv="fzf --bind 'enter:become(nvim {})'"

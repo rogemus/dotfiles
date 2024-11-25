@@ -29,3 +29,6 @@ vim.opt.updatetime = 50
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.go.ignorecase = true
+
+-- -- Cursor
+-- vim.o.guicursor = "n:blinkon0"
