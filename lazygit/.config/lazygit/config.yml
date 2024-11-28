@@ -25,8 +25,8 @@ gui:
       - '#cdd6f4'
     searchingActiveBorderColor:
       - '#f9e2af'
-  authorColors:
-    '*': '#b4befe'
+  # authorColors:
+  #   '*': '#b4befe'
   branchColors:
     "feat": "#a6e3a1"
     "feature": "#a6e3a1"
@@ -41,7 +41,7 @@ git:
     - master
     - main
     - develop
-    - dev/S27
+    - dev/S28
   refresher:
     fetchInterval: 60
 os:

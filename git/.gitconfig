@@ -105,5 +105,3 @@
 
 [mergetool]
   prompt = false
-[pager]
-	diff = diffnav

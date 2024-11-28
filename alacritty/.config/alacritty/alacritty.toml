@@ -1,0 +1,14 @@
+# [general]
+# working_directory = "~/Desktop/Projects"
+
+[window]
+padding = { x = 7, y = 26 }
+decorations = "transparent"
+option_as_alt = "Both"
+
+[font]
+size = 15.0
+normal = { family = "FiraCode Nerd Font Mono" }
+
+[colors]
+primary.background = "#000000"
