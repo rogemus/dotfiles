@@ -1,12 +1,15 @@
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-local conf = require("telescope.config").values
-
 return {
 	"LintaoAmons/cd-project.nvim",
+	dependencies = {
+		"nvim-telescope/telescope.nvim",
+	},
 	init = function()
+		local pickers = require("telescope.pickers")
+		local finders = require("telescope.finders")
+		local actions = require("telescope.actions")
+		local action_state = require("telescope.actions.state")
+		local conf = require("telescope.config").values
+
 		local cdproject = require("cd-project")
 		local api = require("cd-project.api")
 
