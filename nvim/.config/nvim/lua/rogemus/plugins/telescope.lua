@@ -76,12 +76,12 @@ return {
 				require("telescope.builtin").diagnostics({
 					layout_strategy = "vertical",
 					wrap_results = true,
-					path_display = {
-						shorten = {
-							len = 3,
-							exclude = { -3, -2, -1 },
-						},
-					},
+					-- path_display = {
+					-- 	shorten = {
+					-- 		len = 3,
+					-- 		exclude = { -3, -2, -1 },
+					-- 	},
+					-- },
 				})
 			end,
 			desc = "LSP diagnostics",
@@ -102,13 +102,13 @@ return {
 			},
 			defaults = {
 				file_ignore_patterns = { "^.git/", "^node_modules/", "yarn.lock" },
-				path_display = {
-					-- search_dirs = false,
-					shorten = {
-						len = 3,
-						exclude = { -3, -2, -1 },
-					},
-				},
+				-- path_display = {
+				-- 	-- search_dirs = false,
+				-- 	shorten = {
+				-- 		len = 3,
+				-- 		exclude = { -3, -2, -1 },
+				-- 	},
+				-- },
 				mappings = {
 					i = {
 						["<C-b>"] = actions.delete_buffer,

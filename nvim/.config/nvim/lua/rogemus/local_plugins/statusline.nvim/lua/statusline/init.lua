@@ -1,11 +1,13 @@
 local devicons = require("nvim-web-devicons")
 
+local utils = require("statusline.utils")
+
 local M = {}
 
 vim.api.nvim_set_hl(0, "StatusLineModeNormal", { fg = "#181825", bg = "#89b4fa", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineModeNormalB", { fg = "#89b4fa", bg = "#313244", bold = true })
+vim.api.nvim_set_hl(0, "StatusLineModeNormalB", { fg = "#89b4fa", bg = "#313244", bold = false })
 vim.api.nvim_set_hl(0, "StatusLineModeInsert", { fg = "#1e1e2e", bg = "#a6e3a1", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineModeInsertB", { fg = "#a6e3a1", bg = "#313244", bold = true })
+vim.api.nvim_set_hl(0, "StatusLineModeInsertB", { fg = "#a6e3a1", bg = "#313244", bold = false })
 vim.api.nvim_set_hl(0, "StatusLineModeVisual", { fg = "#1e1e2e", bg = "#94e2d5", bold = true })
 vim.api.nvim_set_hl(0, "StatusLineModeReplace", { fg = "#1e1e2e", bg = "#f38ba8", bold = true })
 vim.api.nvim_set_hl(0, "StatusLineModeCommand", { fg = "#1e1e2e", bg = "#fab387", bold = true })
@@ -111,9 +113,10 @@ function M.init()
 	vim.api.nvim_set_hl(0, icon_highlight, { fg = icon_color })
 	local file_icon = string.format("%%#%s#%s%%*", icon_highlight, icon or "")
 
-	local line = vim.fn.line(".")
-	local column = vim.fn.col(".")
-	local location = string.format("%%#StatusLineModeInsert# %d:%d %%*", line, column)
+	local line = utils.lpad(string.format("%d", vim.fn.line(".")), 2)
+	local column = utils.rpad(string.format("%d", vim.fn.col(".")), 2)
+
+	local location = string.format("%%#StatusLineModeInsert# %s:%s %%*", line, column)
 
 	local file = string.format("%s%s", file_name, file_modified)
 	local filetype = string.format("%s %s", file_icon, file_type)
@@ -124,7 +127,7 @@ function M.init()
 
 	local align_right = "%="
 
-	return string.format("%s%s %s  %s %s%s%s", mode, reponame, file, align_right, filetype, branch, location)
+	return string.format("%s%s %s  %s %s %s%s", mode, reponame, file, align_right, filetype, branch, location)
 end
 
 return M
