@@ -19,7 +19,7 @@ alias t="touch"
 
 ## zellij
 alias zeli="ls ~/.config/zellij/layouts --icons=never --absolute=on | fzf --bind 'enter:execute(zellij --layout {})' --height=20%"
-alias zel="zellij"
+alias zel="zellij -l welcome"
 alias zelij="zellij"
 
 ## fzf
