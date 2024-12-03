@@ -55,7 +55,7 @@ alias greset="git reset --hard HEAD"
 alias gb="git checkout \$(git branch | fzf --height=30% --border --info=inline)"
 alias gd="git diff"
 
-## AEM 
+## AEM
 alias aemUp="./gradlew :aemUp"
 alias aemup="aemUp"
 alias aemDown="./gradlew :aemDown"
@@ -68,3 +68,7 @@ alias azlogin="az login && az acr login -n dbgcontainers"
 
 ## Docker
 alias dockerdie="docker system prune --volumes -a -f"
+
+## Tmux
+alias txu="tmux-utils"
+alias tx="tmux"

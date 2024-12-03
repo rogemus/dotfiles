@@ -29,6 +29,8 @@ return {
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
+				bash = { "shfmt" },
+				sh = { "shfmt" },
 				-- python = { "isort", "black" },
 			},
 			format_on_save = function()
