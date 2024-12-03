@@ -1,0 +1,27 @@
+#!/usr/bin/env lua
+
+local function get_file_location()
+	local info = debug.getinfo(1, "S")
+	local script_path = info.source:sub(2)
+
+	local dir = script_path:match("(.*/)")
+	dir = string.sub(dir, 1, -2)
+	return dir or "."
+end
+
+local dirs = {
+	"/",
+	"/cmds/",
+	"/config/",
+	"/utils/",
+}
+
+local location = get_file_location()
+
+for _, dir in ipairs(dirs) do
+	package.path = package.path .. ";" .. location .. dir .. "?.lua;" .. location .. dir .. "?/init.lua"
+end
+
+local tmuxUtils = require(".")
+
+tmuxUtils.init()
