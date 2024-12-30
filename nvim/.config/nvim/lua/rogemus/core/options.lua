@@ -22,8 +22,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.showmode = false
 
-vim.opt.wrap = false
-vim.opt.updatetime = 50
+-- vim.opt.wrap = false
+-- vim.opt.updatetime = 50
 
 -- Search
 vim.opt.hlsearch = false

@@ -18,5 +18,17 @@
   {
     "name": "anakonda-fe",
     "path": "/Users/kacper.rogowski/Desktop/Projects/e.on/anakonda-fe"
+  },
+  {
+    "name": "eon-api",
+    "path": "/Users/kacper.rogowski/Desktop/Projects/e.on/api-be"
+  },
+  {
+    "name": "todo-tui",
+    "path": "/Users/kacper.rogowski/Desktop/Projects/random/todo-tui"
+  },
+  {
+    "name": "croco-fe",
+    "path": "/Users/kacper.rogowski/Desktop/Projects/e.on/croco-fe"
   }
 ]

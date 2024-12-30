@@ -4,6 +4,18 @@ local run_command = require("../utils/cmd").run_command
 local M = {}
 
 function M.save_session()
+	local answer
+
+	repeat
+		io.write("Save current session to file .tmux-session (y/n)? ")
+		io.flush()
+		answer = io.read()
+	until answer == "y" or answer == "n"
+
+	if answer == "n" then
+		os.exit()
+	end
+
 	local file = io.open(session_file, "w")
 
 	if not file then
