@@ -1,26 +1,41 @@
-session dotfiles
+session dot
 window 1 editor
 pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
-layout 1 cb04,166x47,0,0,7
+layout 1 b17d,140x51,0,0,0
 window 2 dev:scripts
-pane 1 dev /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
-layout 2 cb05,166x47,0,0,8
+pane 1 dev:script /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
+layout 2 b17e,140x51,0,0,1
 window 3 lazygit
 pane 1 lazygit /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
-layout 3 cb06,166x47,0,0,9
+layout 3 b180,140x51,0,0,3
 
 session eon
-window 1 zsh
+window 1 editor
 pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/e.on/panda-fe
-layout 1 cafd,166x47,0,0,0
+layout 1 b3a4,282x51,0,0,7
 window 2 dev:scripts
 pane 1 dev:zebra /Users/kacper.rogowski/Desktop/Projects/e.on/zebra-fe
 pane 2 dev:anakonda /Users/kacper.rogowski/Desktop/Projects/e.on/anakonda-fe
-pane 3 dev:panda /Users/kacper.rogowski/Desktop/Projects/e.on/panda-fe
-pane 4 dev:lama /Users/kacper.rogowski/Desktop/Projects/e.on/lama-fe
-pane 5 dev:eon /Users/kacper.rogowski/Desktop/Projects/e.on
-layout 2 49fe,166x47,0,0[166x22,0,0{83x22,0,0,1,82x22,84,0,2},166x24,0,23{83x24,0,23,3,82x24,84,23[82x12,84,23,4,82x11,84,36,6]}]
+pane 3 dev:croco /Users/kacper.rogowski/Desktop/Projects/e.on/croco-fe
+pane 4 dev:panda /Users/kacper.rogowski/Desktop/Projects/e.on/panda-fe
+pane 5 dev:lama /Users/kacper.rogowski/Desktop/Projects/e.on/lama-fe
+pane 6 dev:eon /Users/kacper.rogowski/Desktop/Projects/e.on
+layout 2 de73,282x51,0,0[282x25,0,0{96x25,0,0,8,95x25,97,0,16,89x25,193,0,17},282x25,0,26{96x25,0,26,11,95x25,97,26,14,89x25,193,26,15}]
 window 3 lazygit
 pane 1 lazygit /Users/kacper.rogowski/Desktop/Projects/e.on/panda-fe
-layout 3 cb02,166x47,0,0,5
+layout 3 b3a6,282x51,0,0,9
+window 4 zsh
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/e.on
+layout 4 58ef,140x51,0,0,10
+
+session totodo
+window 1 editor
+pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/totodo
+layout 1 b181,140x51,0,0,4
+window 2 dev:scripts
+pane 1 dev:go /Users/kacper.rogowski/Desktop/Projects/random/totodo
+layout 2 b182,140x51,0,0,5
+window 3 lazygit
+pane 1 lazygit /Users/kacper.rogowski/Desktop/Projects/random/totodo
+layout 3 b183,140x51,0,0,6
 

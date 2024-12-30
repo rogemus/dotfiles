@@ -66,7 +66,7 @@ return {
 				["<C-k>"] = cmp.mapping.select_prev_item(),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Insert,
+					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				}),
 				["<Tab>"] = cmp.mapping(function(fallback)
