@@ -26,7 +26,7 @@ return {
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
 				css = { "prettier" },
-				yaml = { "prettier" },
+				yaml = { "yamlfmt" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
 				bash = { "shfmt" },
