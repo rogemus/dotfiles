@@ -53,6 +53,7 @@ return {
 			ruff = {},
 			pyright = {},
 			gopls = {},
+			yamlls = {},
 		}
 
 		local formatters_linters = {

@@ -43,8 +43,6 @@ git:
     - develop
     - dev/S28
     - dev/S29
-  refresher:
-    fetchInterval: 60
 os:
   editPreset: "nvim"
 confirmOnQuit: true
