@@ -1,5 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	event = "VeryLazy",
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -173,7 +174,7 @@ return {
 				window = {
 					mappings = {
 						["\\"] = "filetree_toggle",
-						["D"] = "close_all_hidden_buffers",
+						["X"] = "close_all_hidden_buffers",
 					},
 				},
 			},
@@ -190,26 +191,41 @@ return {
 				},
 			},
 			filesystem = {
-				filtered_items = {
-					visible = true,
-					hide_dotfiles = false,
-					hide_hidden = false,
-					hide_gitignored = true,
-				},
+				check_gitignore_in_search = true,
+				hijack_netrw_behavior = "disabled",
+				use_libuv_file_watcher = true,
+				find_command = "fd",
 				find_args = {
 					fd = {
 						"--exclude",
 						".git",
 						"--exclude",
+						"dist",
+						"--exclude",
 						"node_modules",
+						"--exclude",
+						".idea",
+						"--exclude",
+						"storybook-static",
+						"--exclude",
+						"coverage",
+					},
+				},
+				filtered_items = {
+					visible = false,
+					hide_dotfiles = false,
+					hide_hidden = false,
+					hide_gitignored = true,
+					always_show_by_pattern = { ".env*" },
+					never_show = {
+						".DS_Store",
+						"thumbs.db",
 					},
 				},
 				follow_current_file = {
 					enabled = true,
 					leave_dirs_open = false,
 				},
-				hijack_netrw_behavior = "disabled",
-				use_libuv_file_watcher = true,
 			},
 		})
 

@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 return {
 	"nvim-telescope/telescope.nvim",
+	event = "VeryLazy",
 	tag = "0.1.8",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -68,7 +69,7 @@ return {
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
 		{ "<leader>F", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
-		{ "<leader>D", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },
+		{ "<leader>ds", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },
 		{ "<leader>gb", require("telescope.builtin").git_branches, desc = "Git branches" },
 		{
 			"<leader>D",

@@ -20,7 +20,7 @@ return {
 				-- typescriptreact = { "biome" },
 				-- css = { "biome" },
 				-- json = { "biome" },
-				html = { "prettier" },
+				-- html = { "prettier" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
