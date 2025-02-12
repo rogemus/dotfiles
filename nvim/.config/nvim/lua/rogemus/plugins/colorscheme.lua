@@ -38,6 +38,11 @@ return {
 				end,
 			},
 		})
+
 		vim.cmd("colorscheme catppuccin-mocha")
+
+		vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#282828" })
+		vim.api.nvim_set_hl(0, "LineNr", { fg = "#8186a6" })
+		vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#4e4e4e" })
 	end,
 }

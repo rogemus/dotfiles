@@ -19,6 +19,10 @@ require("lazy").setup({
 		import = "rogemus.plugins.lsp.mason",
 	},
 }, {
+	change_detection = {
+		enabled = false,
+		notify = false,
+	},
 	ui = {
 		size = { width = 0.9, height = 0.6 },
 		border = "rounded",

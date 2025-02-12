@@ -30,6 +30,7 @@ return {
 				"vim",
 				"vimdoc",
 				"yaml",
+				"gotmpl",
 			},
 			auto_install = true,
 			sync_install = false,
@@ -52,5 +53,12 @@ return {
 				templ = "templ",
 			},
 		})
+		vim.filetype.add({
+			extension = {
+				tmpl = "gotmpl",
+			},
+		})
+
+		vim.treesitter.language.register("gotmpl", "gotmpl")
 	end,
 }

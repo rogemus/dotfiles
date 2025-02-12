@@ -1,35 +1,34 @@
 return {
 	"hrsh7th/nvim-cmp",
+	event = "VeryLazy",
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 
 		"L3MON4D3/LuaSnip",
-		-- "saadparwaiz1/cmp_luasnip",
-		-- "rafamadriz/friendly-snippets",
+		"saadparwaiz1/cmp_luasnip",
+		"rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 
-		-- require("luasnip.loaders.from_vscode").load({
-		-- 	include = {
-		-- 		"go",
-		-- 		"lua",
-		-- 		"python",
-		-- 		"javascript",
-		-- 		"typescript",
-		-- 		"html",
-		-- 		"djangohtml",
-		-- 		"markdown",
-		-- 		"css",
-		-- 		"svelte",
-		-- 		"javascriptreact",
-		-- 		"typescriptreact",
-		-- 	},
-		-- })
+		require("luasnip.loaders.from_vscode").lazy_load({
+			include = {
+				"go",
+				"lua",
+				"javascript",
+				"typescript",
+				"html",
+				"markdown",
+				"css",
+				"javascriptreact",
+				"typescriptreact",
+			},
+		})
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -58,8 +57,6 @@ return {
 			},
 			preselect = cmp.PreselectMode.Item,
 			mapping = cmp.mapping.preset.insert({
-				-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-				-- ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
 				["<C-Up>"] = cmp.mapping.scroll_docs(-4), -- Up
 				["<C-Down>"] = cmp.mapping.scroll_docs(4), -- Down
 				["<C-j>"] = cmp.mapping.select_next_item(),
@@ -72,8 +69,8 @@ return {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					-- elseif luasnip.expand_or_jumpable() then
-					-- 	luasnip.expand_or_jump()
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
 					elseif has_words_before() then
 						cmp.complete()
 					else
@@ -90,21 +87,26 @@ return {
 					end
 				end, { "i", "s" }),
 			}),
-			sources = {
-				-- { name = "buffer" },
-				{ name = "nvim_lsp" },
-				{ name = "path" },
-				-- { name = "luasnip", option = { show_autosnippets = true } },
+			sorting = {
+				comparators = {
+					cmp.config.compare.offset,
+					cmp.config.compare.exact,
+					cmp.config.compare.score,
+					cmp.config.compare.recently_used,
+					cmp.config.compare.locality,
+					cmp.config.compare.kind,
+					cmp.config.compare.sort_text,
+					cmp.config.compare.length,
+					cmp.config.compare.order,
+				},
 			},
-		})
-
-		-- Set configuration for specific filetype.
-		cmp.setup.filetype("gitcommit", {
-			sources = cmp.config.sources({
-				{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-			}, {
-				{ name = "buffer" },
-			}),
+			sources = {
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "nvim_lsp" },
+				{ name = "luasnip", option = { show_autosnippets = true } },
+				{ name = "path" },
+				{ name = "buffer", keyword_length = 3 },
+			},
 		})
 
 		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).

@@ -17,6 +17,7 @@ end
 
 return {
 	"williamboman/mason.nvim",
+	event = "VeryLazy",
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"williamboman/mason-lspconfig.nvim",
@@ -42,7 +43,7 @@ return {
 		local servers = {
 			ts_ls = {},
 			html = {
-				filetypes = { "html", "htmldjango" },
+				filetypes = { "html", "htmldjango", "gotmpl" },
 			},
 			cssls = {},
 			bashls = {},
@@ -52,7 +53,14 @@ return {
 			svelte = {},
 			ruff = {},
 			pyright = {},
-			gopls = {},
+			gopls = {
+				experimentalPostfixCompletions = true,
+				analyses = {
+					unusedparams = true,
+					shadow = true,
+				},
+				staticcheck = true,
+			},
 			yamlls = {},
 		}
 
@@ -66,7 +74,7 @@ return {
 
 		mason_lspconfig.setup({
 			ensure_installed = vim.tbl_keys(servers),
-			automatic_installation = true, -- not the same as ensure_installed
+			automatic_installation = true,
 		})
 
 		mason_tool_installer.setup({
@@ -81,10 +89,15 @@ return {
 			return orig_util_open_floating_preview(contents, syntax, opts, ...)
 		end
 
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		local on_attach = function(client, bufnr)
+			local function buf_set_option(...)
+				vim.api.nvim_buf_set_option(bufnr, ...)
+			end
+
+			buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
 			if client.name == "svelte" then
 				vim.api.nvim_create_autocmd("BufWritePost", {
 					pattern = { "*.js", "*.ts" },
@@ -110,7 +123,12 @@ return {
 			nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 			nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 			nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+			nmap("<leader>D", function()
+				require("telescope.builtin").lsp_document_symbols({
+					symbols = { "method", "function", "struct", "constant" },
+					symbol_width = 50,
+				})
+			end, "[D]ocument [S]ymbols")
 			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 			nmap("K", vim.lsp.buf.hover, "Hover Documentation")
