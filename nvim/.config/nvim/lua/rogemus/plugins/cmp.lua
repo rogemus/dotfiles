@@ -10,31 +10,29 @@ return {
 
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
-		"rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
+		local types = require("luasnip.util.types")
 		local luasnip = require("luasnip")
-
-		require("luasnip.loaders.from_vscode").lazy_load({
-			include = {
-				"go",
-				"lua",
-				"javascript",
-				"typescript",
-				"html",
-				"markdown",
-				"css",
-				"javascriptreact",
-				"typescriptreact",
+		luasnip.config.setup({
+			history = true,
+			updateevents = "TextChanged,TextChangedI",
+			ext_opts = {
+				[types.choiceNode] = {
+					active = {
+						virt_text = { { "●", "#f5c2e7" } },
+					},
+					[types.insertNode] = {
+						active = {
+							virt_text = { { "●", "#f9e2af" } },
+						},
+					},
+				},
 			},
 		})
 
-		local has_words_before = function()
-			unpack = unpack or table.unpack
-			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-		end
+		require("luasnip.loaders.from_snipmate").lazy_load()
 
 		cmp.setup({
 			window = {
@@ -57,11 +55,6 @@ return {
 			},
 			preselect = cmp.PreselectMode.Item,
 			mapping = cmp.mapping.preset.insert({
-				["<C-Up>"] = cmp.mapping.scroll_docs(-4), -- Up
-				["<C-Down>"] = cmp.mapping.scroll_docs(4), -- Down
-				["<C-j>"] = cmp.mapping.select_next_item(),
-				["<C-k>"] = cmp.mapping.select_prev_item(),
-				["<C-Space>"] = cmp.mapping.complete(),
 				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
@@ -69,10 +62,8 @@ return {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
+					elseif luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
-					elseif has_words_before() then
-						cmp.complete()
 					else
 						fallback()
 					end
@@ -103,7 +94,7 @@ return {
 			sources = {
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "nvim_lsp" },
-				{ name = "luasnip", option = { show_autosnippets = true } },
+				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "buffer", keyword_length = 3 },
 			},

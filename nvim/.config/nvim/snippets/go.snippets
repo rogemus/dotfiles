@@ -1,0 +1,187 @@
+snippet inf "full interface "
+  type ${1:name} interface {
+    ${2:/* methods */}
+  }
+
+snippet if "if condition"
+  if $1 {
+    ${2:${VISUAL}}
+  }
+
+snippet ife "if else condition"
+  if $1 {
+    ${2:${VISUAL}}
+  } else {
+    ${0}
+  }
+
+snippet el "else"
+  else {
+    ${0:${VISUAL}}
+  }
+
+snippet ir "if error not nil, return err"
+  if err != nil {
+    return err
+  }
+  ${0}
+
+snippet forr "for range loop"
+  for ${1:e} := range ${2:collection} {
+    ${0:${VISUAL}}
+  }
+
+snippet fun "function"
+  func ${1:funcName}(${2}) ${3:error} {
+    ${4}
+  }
+  ${0}
+
+snippet fum "method"
+  func (${1:receiver} ${2:type}) ${3:funcName}(${4}) ${5:error} {
+    ${6}
+  }
+  ${0}
+
+snippet fumh "http handler function on receiver"
+  func (${1:receiver} ${2:type}) ${3:funcName}(${4:w} http.ResponseWriter, ${5:r} *http.Request) {
+    ${0:${VISUAL}}
+  }
+
+snippet inf "full interface "
+  type ${1:name} interface {
+    ${2:/* methods */}
+  }
+
+snippet if "if condition"
+  if $1 {
+    ${2:${VISUAL}}
+  }
+
+snippet ife "if else condition"
+  if $1 {
+    ${2:${VISUAL}}
+  } else {
+    ${0}
+  }
+
+snippet el "else"
+  else {
+    ${0:${VISUAL}}
+  }
+
+snippet ir "if error not nil, return err"
+  if err != nil {
+    return err
+  }
+  ${0}
+
+snippet forr "for range loop"
+  for ${1:e} := range ${2:collection} {
+    ${0:${VISUAL}}
+  }
+
+snippet fun "function"
+  func ${1:funcName}(${2}) ${3:error} {
+    ${4}
+  }
+  ${0}
+
+snippet fum "method"
+  func (${1:receiver} ${2:type}) ${3:funcName}(${4}) ${5:error} {
+    ${6}
+  }
+  ${0}
+
+snippet fumh "http handler function on receiver"
+  func (${1:receiver} ${2:type}) ${3:funcName}(${4:w} http.ResponseWriter, ${5:r} *http.Request) {
+    ${0:${VISUAL}}
+  }
+
+snippet main "func main()"
+  func main() {
+    ${1}
+  }
+  ${0}
+
+snippet st "struct"
+  type ${1:name} struct {
+    ${2:/* data */}
+  }
+  ${0}
+
+snippet sw "switch"
+  switch ${1:var} {
+  case ${2:value1}:
+    ${3}
+  case ${4:value2}:
+    ${5}
+  default:
+    ${0}
+  }
+
+snippet test "test function"
+  func Test${1:name}(t *testing.T) {
+    ${0:${VISUAL}}
+  }
+
+snippet testt "table test function"
+  func Test${1:name}(t *testing.T) {
+    tests := []struct {
+      name string
+    }{
+      {
+        name: "${2:test name}",
+      },
+    }
+
+    for _, test := range tests {
+      t.Run(test.name, func(t *testing.T) {
+        ${0:${VISUAL}}
+      })
+    }
+  }
+
+snippet main "func main()"
+  func main() {
+    ${1}
+  }
+  ${0}
+
+snippet st "struct"
+  type ${1:name} struct {
+    ${2:/* data */}
+  }
+  ${0}
+
+snippet sw "switch"
+  switch ${1:var} {
+  case ${2:value1}:
+    ${3}
+  case ${4:value2}:
+    ${5}
+  default:
+    ${0}
+  }
+
+snippet test "test function"
+  func Test${1:name}(t *testing.T) {
+    ${0:${VISUAL}}
+  }
+
+snippet testt "table test function"
+  func Test${1:name}(t *testing.T) {
+    tests := []struct {
+      name string
+    }{
+      {
+        name: "${2:test name}",
+      },
+    }
+
+    for _, test := range tests {
+      t.Run(test.name, func(t *testing.T) {
+        ${0:${VISUAL}}
+      })
+    }
+  }
