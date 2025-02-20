@@ -50,9 +50,11 @@ return {
 			dotls = {},
 			jsonls = {},
 			lua_ls = {},
-			svelte = {},
-			ruff = {},
-			pyright = {},
+			-- svelte = {},
+			-- pyright = {},
+			-- ruff = {},
+			-- yamlls = {},
+			sqlls = {},
 			gopls = {
 				experimentalPostfixCompletions = true,
 				analyses = {
@@ -61,13 +63,12 @@ return {
 				},
 				staticcheck = true,
 			},
-			yamlls = {},
 		}
 
 		local formatters_linters = {
 			"prettier",
 			"stylua",
-			"biome",
+			-- "biome",
 			-- LINTERS
 			"golangci-lint",
 		}
