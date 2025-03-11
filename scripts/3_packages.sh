@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./utils.sh 
+source ./utils.sh
 
 taps=(
   homebrew/bundle
@@ -26,12 +26,14 @@ packages=(
   ripgrep
   tree
   zoxide
+  docker
+  colima
   eddieantonio/eddieantonio/imgcat
 )
 
 configure_tabs() {
   info "Configuring Brew tabs..."
-  
+
   for tap in $taps; do
     brew tap $tap
   done
