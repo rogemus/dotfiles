@@ -41,6 +41,10 @@ export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 export PGDATA="/var/lib/pgsql/data"
 
+# docker
+export COLIMA_HOME="${HOME}/.config/colima"
+export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
+
 # curl
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"

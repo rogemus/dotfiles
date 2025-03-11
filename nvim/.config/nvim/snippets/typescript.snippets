@@ -1,0 +1,9 @@
+snippet sctype "component type with sc type"
+  import type { ComponentProps } from "lib/component-props";
+
+  type ${1:typeName} = ComponentProps & {
+    ${2:types}
+  };
+
+  export type { ${1:typeName} }
+

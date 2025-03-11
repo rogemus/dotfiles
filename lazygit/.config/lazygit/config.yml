@@ -41,9 +41,9 @@ git:
     - master
     - main
     - develop
-    - dev/S28
-    - dev/S29
 os:
   editPreset: "nvim"
 confirmOnQuit: true
 notARepository: skip
+refresher:
+  fetchInterval: 300

@@ -1,0 +1,5 @@
+gui:
+  language: "en"
+  expandFocusedSidePanel: true
+commandTemplates:
+  dockerCompose: docker compose
