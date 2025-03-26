@@ -63,7 +63,7 @@ return {
 		{ "<leader>fo", "<cmd>Telescope buffers<cr>", desc = "Open files" },
 		{ "<leader>fs", live_grep_from_project_git_root, desc = "Grep in files (Find in Files)" },
 		{ "-", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File" },
-		{ "ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files" },
+		{ "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files" },
 		-- { "<leader>ff", find_files_from_project_git_root, desc = "Find File" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },

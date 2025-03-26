@@ -1,9 +1,9 @@
 session dot
-window 1 nvim
+window 1 editor
 pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
 layout 1 b17f,140x51,0,0,2
 window 2 dev:scripts
-pane 1 dev:script 
+pane 1 dev:script /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
 layout 2 b180,140x51,0,0,3
 window 3 lazygit
 pane 1 lazygit /Users/kacper.rogowski/Desktop/Projects/random/dotfiles

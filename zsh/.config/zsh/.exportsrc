@@ -65,3 +65,5 @@ export PATH=$PATH:$GOROOT/bin
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH=$PATH:$FQJ_PATH
+export PATH="$PATH:/Users/kacper.rogowski/.dotnet/tools"
+export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
