@@ -5,6 +5,7 @@ gui:
   showBottomLine: false
   showIcons: true
   nerdFontsVersion: "3"
+  tabWidth: 2
   theme:
     activeBorderColor:
       - "#74c7ec"

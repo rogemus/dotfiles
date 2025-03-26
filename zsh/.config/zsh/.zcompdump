@@ -1,7 +1,6 @@
 #files: 1148	version: 5.9
 
 _comps=(
-''\''brew' '_brew_services'
 '-' '_precommand'
 '-array-value-' '_value'
 '-assign-parameter-' '_assign'
@@ -431,6 +430,7 @@ _comps=(
 'do-release-upgrade' '_do-release-upgrade'
 'doas' '_doas'
 'docker' '_docker'
+'docker-buildx' '_docker-buildx'
 'dockerd' '_docker'
 'docpad' '_docpad'
 'domainname' '_yp'
@@ -1469,7 +1469,6 @@ _comps=(
 'seq' '_seq'
 'serialver' '_java'
 'service' '_service'
-'services'\''' '_brew_services'
 'set' '_set'
 'setcap' '_setcap'
 'setfacl' '_setfacl'
@@ -2036,8 +2035,8 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _alacritty _bat _brew _brew_services _cargo \
-            _colima _delta _docker _eza _fd \
+autoload -Uz _alacritty _bat _brew _cargo _colima \
+            _delta _docker _docker-buildx _eza _fd \
             _fnm _ghostty _git _hugo _hurl \
             _hurlfmt _just _limactl _luarocks _pastel \
             _rg _watchexec _ya _yazi _zellij \
