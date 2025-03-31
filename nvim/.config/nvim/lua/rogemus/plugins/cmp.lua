@@ -12,63 +12,14 @@ return {
 	},
 	config = function()
 		local cmp = require("cmp")
-		local types = require("luasnip.util.types")
 		local luasnip = require("luasnip")
+
 		luasnip.config.setup({
 			history = true,
 			updateevents = "TextChanged,TextChangedI",
-			ext_opts = {
-				[types.choiceNode] = {
-					active = {
-						virt_text = { { "●", "#f5c2e7" } },
-					},
-					[types.insertNode] = {
-						active = {
-							virt_text = { { "●", "#f9e2af" } },
-						},
-					},
-				},
-			},
 		})
 
 		require("luasnip.loaders.from_snipmate").lazy_load()
-
-		local select_next = false
-		vim.keymap.set({ "i" }, "<c-s>", function()
-			local ok, _ = pcall(luasnip.activate_node, {
-				strict = true,
-				select = select_next,
-			})
-
-			if not ok then
-				print("No node.")
-				return
-			end
-
-			if select_next then
-				return
-			end
-
-			local curbuf = vim.api.nvim_get_current_buf()
-			local hl_duration_ms = 100
-
-			local node = luasnip.session.current_nodes[curbuf]
-			local from, to = node:get_buf_position({ raw = true })
-
-			local id = vim.api.nvim_buf_set_extmark(curbuf, luasnip.session.ns_id, from[1], from[2], {
-				end_row = to[1],
-				end_col = to[2],
-				hl_group = "Visual",
-			})
-			vim.defer_fn(function()
-				vim.api.nvim_buf_del_extmark(curbuf, luasnip.session.ns_id, id)
-			end, hl_duration_ms)
-
-			select_next = true
-			vim.uv.new_timer():start(1000, 0, function()
-				select_next = false
-			end)
-		end)
 
 		cmp.setup({
 			window = {
