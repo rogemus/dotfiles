@@ -26,23 +26,29 @@ return {
 				mocha = function(mocha)
 					return {
 						Whitespace = { fg = mocha.crust },
+						-- Pmenu = { bg = "#a6f578" },
 						Pmenu = { bg = mocha.crust },
-						-- NormalFloat = { bg = mocha.crust },
+						-- NormalFloat = { bg = "#0a0a0a" },
 						NeoTreeGitUntracked = {
 							fg = "#F34141",
 						},
 						NeoTreeWinSeparator = {
-							fg = mocha.crust,
+							fg = "#212136",
+						},
+						LineNr = {
+							fg = "#8186a6",
 						},
 					}
 				end,
 			},
+			custom_highlights = function()
+				return {
+					LineNrAbove = { fg = "#282828" },
+					LineNrBelow = { fg = "#4e4e4e" },
+				}
+			end,
 		})
 
 		vim.cmd("colorscheme catppuccin-mocha")
-
-		vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#282828" })
-		vim.api.nvim_set_hl(0, "LineNr", { fg = "#8186a6" })
-		vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#4e4e4e" })
 	end,
 }

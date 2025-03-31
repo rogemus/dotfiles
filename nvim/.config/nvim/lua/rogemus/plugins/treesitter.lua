@@ -3,45 +3,36 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			autotag = {
-				enable = true,
-			},
 			ensure_installed = {
 				"bash",
 				"comment",
 				"css",
+				"diff",
 				"dot",
 				"git_config",
 				"gitignore",
 				"go",
 				"gosum",
+				"gotmpl",
 				"gowork",
 				"html",
-				"htmldjango",
 				"javascript",
 				"jsdoc",
 				"json",
 				"lua",
-				"python",
+				"luadoc",
+				"markdown",
+				"markdown_inline",
 				"query",
 				"scss",
-				"svelte",
 				"typescript",
 				"vim",
 				"vimdoc",
-				"yaml",
-				"gotmpl",
 			},
 			auto_install = true,
 			sync_install = false,
 			highlight = {
 				enable = true,
-				is_supported = function(lang)
-					if lang == "csv" then
-						return false
-					end
-					return true
-				end,
 			},
 			indent = {
 				enable = true,

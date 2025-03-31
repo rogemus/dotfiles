@@ -21,25 +21,6 @@ local function live_grep_from_project_git_root()
 	require("telescope.builtin").live_grep(opts)
 end
 
-local function find_files_from_project_git_root()
-	local function is_git_repo()
-		vim.fn.system("git rev-parse --is-inside-work-tree")
-		return vim.v.shell_error == 0
-	end
-	local function get_git_root()
-		local dot_git_path = vim.fn.finddir(".git", ".;")
-		return vim.fn.fnamemodify(dot_git_path, ":h")
-	end
-	local opts = {}
-	if is_git_repo() then
-		opts = {
-			cwd = get_git_root(),
-			find_command = { "fd", "--type", "f", "--color", "never" },
-		}
-	end
-	require("telescope.builtin").find_files(opts)
-end
-
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "TelescopeResults",
 	callback = function(ctx)
@@ -56,6 +37,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	keys = {
 		{ "=", "<cmd>Telescope buffers<cr>", desc = "Open files" },
@@ -67,21 +49,14 @@ return {
 		-- { "<leader>ff", find_files_from_project_git_root, desc = "Find File" },
 		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
 		{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
-		{ "<leader>F", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
+		{ "<leader>s/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
 		{ "<leader>ds", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },
-		{ "<leader>gb", require("telescope.builtin").git_branches, desc = "Git branches" },
 		{
 			"<leader>D",
 			function()
 				require("telescope.builtin").diagnostics({
 					layout_strategy = "vertical",
 					wrap_results = true,
-					-- path_display = {
-					-- 	shorten = {
-					-- 		len = 3,
-					-- 		exclude = { -3, -2, -1 },
-					-- 	},
-					-- },
 				})
 			end,
 			desc = "LSP diagnostics",
@@ -93,6 +68,11 @@ return {
 
 		telescope.setup({
 			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({
+						-- even more opts
+					}),
+				},
 				fzf = {
 					fuzzy = true, -- false will only do exact matching
 					override_generic_sorter = true, -- override the generic sorter
@@ -102,13 +82,6 @@ return {
 			},
 			defaults = {
 				file_ignore_patterns = { "^.git/", "^node_modules/", "yarn.lock" },
-				-- path_display = {
-				-- 	-- search_dirs = false,
-				-- 	shorten = {
-				-- 		len = 3,
-				-- 		exclude = { -3, -2, -1 },
-				-- 	},
-				-- },
 				mappings = {
 					i = {
 						["<C-b>"] = actions.delete_buffer,
@@ -123,5 +96,6 @@ return {
 		})
 
 		telescope.load_extension("fzf")
+    telescope.load_extension("ui-select")
 	end,
 }
