@@ -56,6 +56,6 @@ return {
 			print("File formatted!")
 		end
 
-		vim.keymap.set("n", "<leader>f", format_buffer, { desc = "[F]ormat file or range (in visual mode)" })
+		vim.keymap.set("n", "<leader>F", format_buffer, { desc = "[F]ormat file or range (in visual mode)" })
 	end,
 }
