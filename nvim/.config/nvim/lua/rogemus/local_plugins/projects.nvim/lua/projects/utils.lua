@@ -1,9 +1,16 @@
 local state = require("projects.state")
 
----@param msg string
 ---Print msg in editor
-local echo = function(msg)
-	vim.api.nvim_echo({ { msg } }, false, {})
+---@param msg string Message
+---@param is_error? boolean Check msg color to error
+local echo = function(msg, is_error)
+	local color = "MoreMsg"
+
+	if is_error == true then
+		color = "ErrorMsg"
+	end
+
+	vim.api.nvim_echo({ { msg, color } }, false, {})
 end
 
 ---@param project string Project name

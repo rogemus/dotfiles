@@ -11,6 +11,13 @@ function M.setup()
 	M.project_name_input = input.setup(api.create_project)
 end
 
+---Delete current project
+function M.delete_project()
+	local current_project = state.current_project
+
+	api.delete_project(current_project)
+end
+
 ---Save current project
 function M.save_project()
 	local current_project = state.current_project
