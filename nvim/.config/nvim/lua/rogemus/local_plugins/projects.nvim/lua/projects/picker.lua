@@ -5,6 +5,7 @@ local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local themes = require("telescope.themes")
 local utils = require("projects.utils")
+local state = require("projects.state")
 
 ---Open Telescope picker with Projects
 ---@param projects_files string[] Project files
@@ -13,10 +14,14 @@ local open = function(projects_files, action)
 	local projects = {}
 
 	for _, file in ipairs(projects_files) do
-		table.insert(projects, {
-			name = utils.get_filename_without_extension(file),
-			file = file,
-		})
+		local name = utils.get_filename_without_extension(file)
+
+		if name ~= state.current_project then
+			table.insert(projects, {
+				name = name,
+				file = file,
+			})
+		end
 	end
 
 	pickers
@@ -38,7 +43,7 @@ local open = function(projects_files, action)
 				actions.select_default:replace(function()
 					actions.close(prompt_bufnr)
 					local selection = action_state.get_selected_entry()
-					action(selection)
+					action(selection.value)
 				end)
 				return true
 			end,

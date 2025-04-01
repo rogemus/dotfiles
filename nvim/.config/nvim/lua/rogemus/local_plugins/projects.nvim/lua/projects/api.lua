@@ -31,7 +31,6 @@ local save_project = function(project)
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.api.nvim_get_option_value("buflisted", { buf = buf }) then
 			local buffer_name = vim.api.nvim_buf_get_name(buf)
-			utils.echo(buffer_name)
 
 			if buffer_name ~= "" then
 				local win_for_buffer = vim.fn.bufwinid(buf)
@@ -89,7 +88,9 @@ end
 ---Restore all buffers from session
 ---@param buffers Buffer[]
 local restore_buffers = function(buffers)
-	for _, buf_info in ipairs(buffers) do
+	for i = #buffers, 1, -1 do
+		local buf_info = buffers[i]
+
 		vim.cmd("edit " .. buf_info.path)
 
 		-- Set cursor position
@@ -133,14 +134,14 @@ local load_project = function(project)
 end
 
 ---Switch project and restore session
----@param project string Project name
+---@param project { name: string, file: string } Project name
 local switch_project = function(project)
 	---Save current project
-	if state.current_project ~= nil then
+	if state.current_project ~= nil and state.current_project ~= "" then
 		save_project(state.current_project)
 	end
 
-	local project_data = load_project(project)
+	local project_data = load_project(project.name)
 	restore_project(project_data)
 end
 

@@ -7,6 +7,7 @@ local M = {}
 ---@param on_submit_action function On submit action
 function M.setup(on_submit_action)
 	M.input = Input({
+		prompt = "ProjectsPrompt",
 		position = "50%",
 		size = {
 			width = 40,
@@ -33,6 +34,14 @@ end
 ---Open Input
 function M.open()
 	M.input:mount()
+
+	M.input:map("n", "<Esc>", function()
+		M.input:unmount()
+	end, { noremap = true })
+
+	M.input:map("n", "q", function()
+		M.input:unmount()
+	end, { noremap = true })
 end
 
 ---Close Input

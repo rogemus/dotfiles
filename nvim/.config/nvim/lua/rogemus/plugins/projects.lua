@@ -2,6 +2,7 @@ return {
 	dir = "~/.config/nvim/lua/rogemus/local_plugins/projects.nvim",
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
+		"MunifTanjim/nui.nvim",
 	},
 	init = function()
 		local projects = require("projects")

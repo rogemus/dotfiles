@@ -2,7 +2,7 @@ local M = {}
 
 M = {
 	last_project = "",
-	current_project = "dotfiles",
+	current_project = "",
 }
 
 M.options = {

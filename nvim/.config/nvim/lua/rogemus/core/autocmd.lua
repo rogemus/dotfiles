@@ -22,9 +22,12 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 			"NeoTree",
 			"neo-tree-popup",
 			"neo-tree",
+			"NuiText",
+			"ProjectsPrompt",
 		}
 
-		if not vim.tbl_contains(disabled_for, buf_ft) and is_modified then
+		local disbaled = vim.tbl_contains(disabled_for, buf_ft) or buf_ft == ""
+		if not disbaled and is_modified then
 			local time = os.date("%H:%M:%S")
 			local filename = vim.fn.expand("%:t")
 
