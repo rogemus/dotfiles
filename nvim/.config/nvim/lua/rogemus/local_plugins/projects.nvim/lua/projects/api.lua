@@ -15,11 +15,30 @@ local cwd = require("projects.cwd")
 ---@field current_tab integer current tab
 ---@field buffers Buffer[] Open buffers in session
 
+---Delete project
+---@param project string Project name
+local delete_project = function(project)
+	if project == nil or project == "" then
+		utils.echo("Invalid project. Cannot delete project", true)
+		return
+	end
+
+	local project_file = utils.get_project_file(project)
+	local result = vim.fn.delete(project_file)
+
+	if result == 0 then
+		utils.echo("Successfully deleted project: " .. project)
+		return
+	end
+
+	utils.echo("Failed to delete project " .. project, true)
+end
+
 ---Save project to file
 ---@param project string Project name
 local save_project = function(project)
-	if project == nil then
-		utils.echo("Invalid project. Cannot save project")
+	if project == nil or project == "" then
+		utils.echo("Invalid project name. Cannot save project.", true)
 		return
 	end
 
@@ -57,7 +76,7 @@ local save_project = function(project)
 	local project_cwd = cwd.get_root()
 
 	if project_cwd == "" then
-		utils.echo("Invalid root. .git directory not found")
+		utils.echo("Invalid root. .git directory not found.", true)
 		return
 	end
 
@@ -161,4 +180,5 @@ return {
 	save_project = save_project,
 	switch_project = switch_project,
 	create_project = create_project,
+  delete_project = delete_project
 }

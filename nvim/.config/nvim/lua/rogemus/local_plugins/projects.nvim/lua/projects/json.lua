@@ -11,7 +11,7 @@ local save_json = function(path, data)
 		file:close()
 		utils.echo("Project saved to: " .. path)
 	else
-		utils.echo("Failed to write project to: " .. path)
+		utils.echo("Failed to write project to: " .. path, true)
 	end
 end
 
