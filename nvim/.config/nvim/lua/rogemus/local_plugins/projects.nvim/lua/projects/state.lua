@@ -3,6 +3,7 @@ local M = {}
 M = {
   last_project = "",
   current_project = "",
+  switching = false,
 }
 
 M.options = {

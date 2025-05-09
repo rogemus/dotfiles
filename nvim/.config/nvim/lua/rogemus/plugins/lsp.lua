@@ -11,6 +11,8 @@ return {
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
+    require("lspconfig").postgres_lsp.setup({})
+
     local servers = {
       ts_ls = {},
       html = {
@@ -44,7 +46,7 @@ return {
       -- pyright = {},
       -- ruff = {},
       -- yamlls = {},
-      sqlls = {},
+      -- sqlls = {},
       gopls = {
         experimentalPostfixCompletions = true,
         analyses = {
@@ -84,6 +86,10 @@ return {
           vim.lsp.buf.hover({ border = "rounded" })
         end, "Hover Documentation")
 
+        map("CTRL-S", function()
+          vim.lsp.buf.signature_help({ border = "rounded" })
+        end, "Show signature help")
+
         local function client_supports_method(client, method, bufnr)
           if vim.fn.has("nvim-0.11") == 1 then
             return client:supports_method(method, bufnr)
@@ -117,12 +123,6 @@ return {
               vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
             end,
           })
-
-          if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map("<leader>th", function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-            end, "[T]oggle Inlay [H]ints")
-          end
         end
       end,
     })
@@ -162,8 +162,8 @@ return {
 
     vim.diagnostic.config({
       severity_sort = true,
-      float = { border = "rounded" },
-      underline = { severity = vim.diagnostic.severity.ERROR },
+      float = { border = "rounded", source = "if_many" },
+      -- underline = { severity = vim.diagnostic.severity.HINT }
       signs = vim.g.have_nerd_font and {
         text = {
           [vim.diagnostic.severity.ERROR] = "󰅚 ",

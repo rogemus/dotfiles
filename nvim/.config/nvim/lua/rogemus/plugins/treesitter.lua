@@ -14,7 +14,6 @@ return {
         "go",
         "gosum",
         "gotmpl",
-        "gowork",
         "html",
         "javascript",
         "jsdoc",
@@ -22,9 +21,6 @@ return {
         "lua",
         "luadoc",
         "markdown",
-        "markdown_inline",
-        "query",
-        "scss",
         "typescript",
         "vim",
         "vimdoc",
@@ -42,10 +38,6 @@ return {
     vim.filetype.add({
       extension = {
         templ = "templ",
-      },
-    })
-    vim.filetype.add({
-      extension = {
         tmpl = "gotmpl",
       },
     })

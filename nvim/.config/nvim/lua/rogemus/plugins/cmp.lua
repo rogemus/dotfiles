@@ -6,21 +6,26 @@ return {
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
 
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
+    -- "L3MON4D3/LuaSnip",
+    -- "saadparwaiz1/cmp_luasnip",
+
+    "dcampos/nvim-snippy",
+    "dcampos/cmp-snippy",
   },
   config = function()
     local cmp = require("cmp")
-    local luasnip = require("luasnip")
+    -- local luasnip = require("luasnip")
+    --
+    -- luasnip.config.setup({
+    --   updateevents = "TextChanged,TextChangedI",
+    --   history = false,
+    --   -- region_check_events = "InsertEnter",
+    --   -- delete_check_events = "TextChanged,InsertLeave",
+    --   enable_autosnippets = false,
+    -- })
 
-    luasnip.config.setup({
-      history = true,
-      updateevents = "TextChanged,TextChangedI",
-    })
-
-    require("luasnip.loaders.from_snipmate").lazy_load()
+    -- require("luasnip.loaders.from_snipmate").lazy_load()
 
     cmp.setup({
       window = {
@@ -35,7 +40,9 @@ return {
       },
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body)
+          -- luasnip.lsp_expand(args.body)
+          -- require('snippy').expand_snippet(args.body)
+          vim.snippet.expand(args.body)
         end,
       },
       completion = {
@@ -43,46 +50,52 @@ return {
       },
       preselect = cmp.PreselectMode.Item,
       mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
+          elseif vim.snippet.jumpable(1) then
+            vim.snippet.jump(1)
           else
             fallback()
           end
         end, { "i", "s" }),
+
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
+          elseif vim.snippet.jumpable(-1) then
+            vim.snippet.jump(-1)
           else
             fallback()
           end
         end, { "i", "s" }),
+        --
+        -- ["<Tab>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_next_item()
+        --   -- elseif luasnip.locally_jumpable(1) then
+        --   --   luasnip.jump(1)
+        --   else
+        --     fallback()
+        --   end
+        -- end, { "i", "s" }),
+        --
+        -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_prev_item()
+        --   elseif luasnip.locally_jumpable(-1) then
+        --     luasnip.jump(-1)
+        --   else
+        --     fallback()
+        --   end
+        -- end, { "i", "s" }),
       }),
-      sorting = {
-        comparators = {
-          cmp.config.compare.offset,
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-          cmp.config.compare.recently_used,
-          cmp.config.compare.locality,
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
-        },
-      },
       sources = {
         { name = "nvim_lsp" },
-        { name = "nvim_lsp_signature_help" },
-        { name = "luasnip" },
+        -- { name = "luasnip" },
+        { name = "snippy" },
         { name = "path" },
         { name = "buffer", keyword_length = 3 },
       },

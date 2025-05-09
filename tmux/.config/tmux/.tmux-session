@@ -1,79 +1,65 @@
 session dot
-window 1 editor
+window 1 nvim
 pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
-layout 1 b17f,140x51,0,0,2
+layout 1 cebd,198x57,0,0,0
 window 2 dev:scripts
 pane 1 dev:script /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
-layout 2 b180,140x51,0,0,3
+layout 2 b39e,282x51,0,0,1
 window 3 lazygit
 pane 1 lazygit /Users/kacper.rogowski/Desktop/Projects/random/dotfiles
-layout 3 b181,140x51,0,0,4
+layout 3 cebf,198x57,0,0,2
 
-session eon
-window 1 editor
-pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/e.on/zebra-fe
-layout 1 cb02,166x47,0,0,5
-window 2 dev:scripts
-pane 1 dev:panda /Users/kacper.rogowski/Desktop/Projects/e.on/zebra-fe
-pane 2 dev:lama /Users/kacper.rogowski/Desktop/Projects/e.on
-layout 2 bb72,166x47,0,0{77x47,0,0,8,88x47,78,0,9}
+session dyna
+window 1 zsh
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/dynatrace
+layout 1 b300,105x51,0,0,3
+window 2 dev:script
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/dynatrace
+layout 2 b301,105x51,0,0,4
 window 3 git
-pane 1 lazygit /Users/kacper.rogowski/Desktop/Projects/e.on/zebra-fe
-layout 3 65af,166x47,0,0,10
-window 4 docker
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/e.on
-layout 4 65b8,166x47,0,0,38
-window 5 lua
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/e.on
-layout 5 e5b4,166x47,0,0,44
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/dynatrace
+layout 3 b162,211x51,0,0,5
 
 session floating
 window 1 zsh
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/e.on
-layout 1 e514,139x37,0,0,25
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/open/wpp-open-time-management-frontend
+layout 1 b303,105x51,0,0,6
 
-session greenlight
-window 1 editor
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/let's go tutorial/greenlight
-layout 1 d8f5,140x51,0,0,26
-window 2 dev:script
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/let's go tutorial/greenlight
-pane 2 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/let's go tutorial/greenlight
-layout 2 dc97,140x51,0,0[140x25,0,0,27,140x25,0,26,29]
+session open
+window 1 nvim
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/open/wpp-open-time-management-frontend
+layout 1 cec4,198x57,0,0,7
+window 2 zsh
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/open/wpp-open-time-management-frontend
+pane 2 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/open/wpp-open-time-management-frontend
+layout 2 5d02,198x57,0,0{99x57,0,0,8,98x57,100,0,20}
 window 3 zsh
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/let's go tutorial/greenlight
-layout 3 e5b7,166x47,0,0,28
-
-session krogowski-site
-window 1 editor
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/rogemus.github.io
-layout 1 58f2,140x51,0,0,32
-window 2 dev:script
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/rogemus.github.io
-layout 2 58f3,140x51,0,0,33
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/open/wpp-open-time-management-frontend
+layout 3 678f,198x57,0,0,10
 
 session recipies
-window 1 editor
-pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/recipies
-layout 1 e5af,166x47,0,0,20
-window 2 dev:script
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/recipies
-layout 2 e5b0,166x47,0,0,21
-window 3 lazygit
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/recipies
-layout 3 e5b1,166x47,0,0,22
-
-session totodo
 window 1 zsh
-pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/totodo
-layout 1 65b5,166x47,0,0,16
+pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/recipies
+layout 1 6321,87x28,0,0,12
 window 2 dev:script
-pane 1 dev:tui /Users/kacper.rogowski/Desktop/Projects/random/totodo
-layout 2 65b6,166x47,0,0,17
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/recipies/ui
+pane 2 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/recipies/api
+layout 2 9c90,140x51,0,0[140x25,0,0,13,140x25,0,26,14]
 window 3 lazygit
-pane 1 lazygit /Users/kacper.rogowski/Desktop/Projects/random/totodo
-layout 3 65b7,166x47,0,0,18
-window 4 tail
-pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/totodo
-layout 4 5a08,282x51,0,0,19
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/recipies
+layout 3 58f4,140x51,0,0,15
+window 4 zsh
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/recipies/ui
+layout 4 58f5,140x51,0,0,16
+
+session tuts
+window 1 zsh
+pane 1 nvim /Users/kacper.rogowski/Desktop/Projects/random/tuts/nextjs-tut
+layout 1 6126,87x27,0,0,17
+window 2 dev:script
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/tuts/nextjs-tut
+layout 2 66e7,211x58,0,0,18
+window 3 lazygit
+pane 1 kacperrogowski-MacBook-Pro /Users/kacper.rogowski/Desktop/Projects/random/tuts/nextjs-tut
+layout 3 5a08,282x51,0,0,19
 

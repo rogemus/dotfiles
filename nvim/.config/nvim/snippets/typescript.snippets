@@ -1,12 +1,19 @@
 snippet ex "export * from ..."
   export * from "./${1:filename}";
 
-snippet sctype "component type with sc type"
-  import type { ComponentProps } from "lib/component-props";
+snippet exd "export default from ..."
+  export { default } from "./${1:filename}";
 
-  type ${1:typeName} = ComponentProps & {
-    ${2:types}
-  };
+snippet ctype "component type"
+  export type ${1:typeName}Props = {
+  }
 
-  export type { ${1:typeName} }
+snippet testv "testing with vitest"
+  import { expect, test, describe } from 'vitest'
+  import { ${1} } from "./${1}";
 
+  describe("@name/${1}", () => {
+    test("${1}", () => {
+      ${0}
+    });
+  })

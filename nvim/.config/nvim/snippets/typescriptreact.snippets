@@ -1,13 +1,4 @@
-snippet eep
-  const { sitecoreContext } = useSitecoreContext();
-  const isEditing = sitecoreContext?.pageEditing;
-
-  // NOTE: Displaying only component name and nested components for Sitecore Experience Editor
-  if (isEditing) {
-    return <EditingPlaceholderLAMA name="ChangeServicePhoneWrapper" rendering={rendering} />;
-  }
-
-snippet com
+snippet comp "component boilerplate"
   import type { FC } from "react";
   import type { ${TM_FILENAME_BASE}Props } from "./${TM_FILENAME_BASE}.types";
 
@@ -17,9 +8,9 @@ snippet com
     );
   };
 
-  export default ${TM_FILENAME_BASE};
+  export { ${TM_FILENAME_BASE} };
 
-snippet story
+snippet story "storybook boilerplate"
   import { ${1} } from "./${1}";
 
   import type { Meta, StoryObj } from "@storybook/react";
@@ -34,9 +25,9 @@ snippet story
   type Story = StoryObj<typeof ${1}>;
 
   export const Default: Story = {}
-  ${0}
 
-snippet tsnap
+snippet snap "snapshot testing with vitest"
+  import { expect, test, describe } from 'vitest'
   import { render } from "@testing-library/react";
   import { ${1} } from "./${1}";
 
@@ -49,3 +40,10 @@ snippet tsnap
       expect(container).toMatchSnapshot();
     });
   })
+
+snippet ex "export * from ..."
+  export * from "./${1:filename}";
+
+snippet exd "export default from ..."
+  export { default } from "./${1:filename}";
+

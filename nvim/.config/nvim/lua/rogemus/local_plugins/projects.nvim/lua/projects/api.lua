@@ -36,7 +36,10 @@ end
 
 ---Save project to file
 ---@param project string Project name
-local save_project = function(project)
+---@param silent boolean Save without msg
+local save_project = function(project, silent)
+  local is_silent = silent or false
+
   if project == nil or project == "" then
     utils.echo("Invalid project name. Cannot save project.", true)
     return
@@ -89,7 +92,15 @@ local save_project = function(project)
     cwd = project_cwd,
   }
 
-  json.save_json(project_file, project_data)
+  local result = json.save_json(project_file, project_data)
+
+  if is_silent ~= true then
+    if result == 1 then
+      utils.echo("Project saved to: " .. project_file)
+    else
+      utils.echo("Failed to write project to: " .. project_file, true)
+    end
+  end
 end
 
 ---Change editor path to session project
@@ -131,9 +142,11 @@ end
 ---Restore project
 ---@param project Project
 local restore_project = function(project)
+  state.switching = true
   cd_project(project.project, project.cwd)
   close_all_buffers()
   restore_buffers(project.buffers)
+  state.switching = false
 end
 
 --- Get all projects files
