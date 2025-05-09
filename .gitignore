@@ -7,3 +7,5 @@ ohmyzsh
 .personalrc
 zsh/.config/zsh/plugins
 rectangle
+.tmux-session
+.tmux-sessions
