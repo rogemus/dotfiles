@@ -13,3 +13,4 @@
 --     vim.keymap.set("n", "<leader>pn", projects.create_project, { desc = "Create new project" })
 --   end,
 -- }
+return {}
