@@ -2,7 +2,7 @@
 _projects
 ohmyzsh
 .zsh_history
-.zcompdump-*
+.zcompdump
 .workrc
 .personalrc
 zsh/.config/zsh/plugins
