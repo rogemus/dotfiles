@@ -49,6 +49,8 @@ return {
       end,
     })
 
+    local test = "Rwa"
+
     vim.cmd("colorscheme catppuccin-mocha")
   end,
 }

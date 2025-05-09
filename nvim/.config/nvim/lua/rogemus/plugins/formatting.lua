@@ -1,8 +1,8 @@
-vim.g.formater_enabled = false
+vim.g.auto_formater_enabled = false
 
 vim.api.nvim_create_user_command("FormatToggle", function()
-  vim.g.formater_enabled = not vim.g.formater_enabled
-  local msg = vim.g.formater_enabled and "Format on Save enabled!" or "Format on Save disabled!"
+  vim.g.auto_formater_enabled = not vim.g.auto_formater_enabled
+  local msg = vim.g.auto_formater_enabled and "Format on Save enabled!" or "Format on Save disabled!"
   print(msg)
 end, { desc = "Toggle AutoFormatter" })
 
@@ -14,29 +14,28 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        -- javascript = { "biome" },
-        -- typescript = { "biome" },
-        -- javascriptreact = { "biome" },
-        -- typescriptreact = { "biome" },
+        javascript = { "biome" },
+        typescript = { "biome" },
+        javascriptreact = { "biome" },
+        typescriptreact = { "biome" },
         -- css = { "biome" },
-        -- json = { "biome" },
+        json = { "biome" },
         -- html = { "prettier" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        css = { "prettier" },
+        -- javascript = { "prettier" },
+        -- typescript = { "prettier" },
+        -- javascriptreact = { "prettier" },
+        -- typescriptreact = { "prettier" },
+        -- css = { "prettier" },
+        -- markdown = { "prettier" },
         yaml = { "yamlfmt" },
-        markdown = { "prettier" },
         lua = { "stylua" },
         bash = { "shfmt" },
         sh = { "shfmt" },
-        sql = { "sqlfluff" },
         go = { "gofmt", "goimports" },
-        -- python = { "isort", "black" },
+        sql = { "pgformatter" },
       },
       format_on_save = function()
-        if not vim.g.formater_enabled then
+        if not vim.g.auto_formater_enabled then
           return
         end
         return {

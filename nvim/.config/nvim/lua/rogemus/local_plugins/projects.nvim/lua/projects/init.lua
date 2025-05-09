@@ -6,6 +6,8 @@ local state = require("projects.state")
 local picker = require("projects.picker")
 local input = require("projects.input")
 
+require("projects.autocmd")
+
 ---Setup plugin
 function M.setup()
   M.project_name_input = input.setup(api.create_project)

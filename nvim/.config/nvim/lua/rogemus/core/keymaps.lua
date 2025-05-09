@@ -24,10 +24,9 @@ vim.keymap.set("n", "<leader>]", "<Cmd>bnext<CR>", { desc = "Go to next buffer" 
 vim.keymap.set("n", "<leader>[", "<Cmd>bprevious<CR>", { desc = "Go to prev buffer" })
 vim.keymap.set("n", "<leader>{", "<Cmd>bfirst<CR>", { desc = "Go to first buffer" })
 vim.keymap.set("n", "<leader>}", "<Cmd>blast<CR>", { desc = "Go to last buffer" })
-vim.keymap.set("n", "<leader>bd", "<Cmd>bdelete<CR>", { desc = "[B]uffer [D]elete (close buffer)" })
 vim.keymap.set(
-	"n",
-	"<leader>bda",
-	"<Cmd>WipeWindowlessBufs<CR>",
-	{ desc = "[B]uffer [D]elete [A]ll (close buffer all)" }
+  "n",
+  "<leader>bD",
+  "<Cmd>WipeWindowlessBufs<CR>",
+  { desc = "[B]uffer [D]elete [A]ll (close buffer all)" }
 )
