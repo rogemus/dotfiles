@@ -1,4 +1,5 @@
-vim.g.mapleader = " "
+-- Search
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- NeoVim
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line up" })
