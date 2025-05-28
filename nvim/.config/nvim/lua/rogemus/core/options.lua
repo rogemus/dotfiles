@@ -7,12 +7,12 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
 
 -- Whitespaces
-vim.opt.listchars = {
-	space = "·",
-	-- tab = ">_",
-	tab = "⇾ ",
-}
 vim.opt.list = true
+vim.opt.listchars = {
+  space = "·",
+  -- tab = ">_",
+  tab = "⇾ ",
+}
 
 -- Tab size
 vim.opt.tabstop = 2
@@ -28,7 +28,13 @@ vim.opt.showmode = false
 -- Search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.go.ignorecase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
--- -- Cursor
--- vim.o.guicursor = "n:blinkon0"
+-- Save undo history
+vim.o.undofile = true
+
+--- Clipboard
+vim.schedule(function()
+  vim.o.clipboard = "unnamedplus"
+end)
