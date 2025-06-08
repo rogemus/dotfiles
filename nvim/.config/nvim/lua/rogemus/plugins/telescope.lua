@@ -80,7 +80,7 @@ return {
         },
       },
       defaults = {
-        path_display = { "shorten" },
+        path_display = { "smart" },
         file_ignore_patterns = { "^.git/", "^node_modules/", "yarn.lock" },
         mappings = {
           i = {
