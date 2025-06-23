@@ -16,6 +16,7 @@ alias cat='bat --paging=never --style="header,grid"'
 alias catf='bat --paging=never'
 alias cd="z"
 alias t="touch"
+alias pass="motus random"
 
 alias lzg="lazygit"
 alias lzd="lazydocker"
