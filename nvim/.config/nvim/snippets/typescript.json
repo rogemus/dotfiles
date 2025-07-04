@@ -1,0 +1,18 @@
+{
+  "component type": {
+    "prefix": "ctype",
+    "body": "export type ${1:typeName}Props = {\n}"
+  },
+  "export * from ...": {
+    "prefix": "ex",
+    "body": "export * from \"./${1:filename}\";"
+  },
+  "export default from ...": {
+    "prefix": "exd",
+    "body": "export { default } from \"./${1:filename}\";"
+  },
+  "testing with vitest": {
+    "prefix": "testv",
+    "body": "import { expect, test, describe } from 'vitest'\nimport { ${1} } from \"./${1}\";\ndescribe(\"@name/${1}\", () => {\ntest(\"${1}\", () => {\n${0}\n});\n})"
+  }
+}

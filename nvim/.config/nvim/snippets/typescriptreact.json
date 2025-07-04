@@ -1,0 +1,22 @@
+{
+  "component boilerplate": {
+    "prefix": "comp",
+    "body": "import type { FC } from \"react\";\nimport type { ${TM_FILENAME_BASE}Props } from \"./${TM_FILENAME_BASE}.types\";\nconst ${TM_FILENAME_BASE}: FC<${TM_FILENAME_BASE}Props> = () => {\nreturn (\n<>${0}</>\n);\n};\nexport { ${TM_FILENAME_BASE} };"
+  },
+  "export * from ...": {
+    "prefix": "ex",
+    "body": "export * from \"./${1:filename}\";"
+  },
+  "export default from ...": {
+    "prefix": "exd",
+    "body": "export { default } from \"./${1:filename}\";"
+  },
+  "snapshot testing with vitest": {
+    "prefix": "snap",
+    "body": "import { expect, test, describe } from 'vitest'\nimport { render } from \"@testing-library/react\";\nimport { ${1} } from \"./${1}\";\ndescribe(\"@component/${1}\", () => {\ntest(\"renders component correctly\", () => {\nconst { container } = render(\n<${1} />\n);\nexpect(container).toMatchSnapshot();\n});\n})"
+  },
+  "storybook boilerplate": {
+    "prefix": "story",
+    "body": "import { ${1} } from \"./${1}\";\nimport type { Meta, StoryObj } from \"@storybook/react\";\nconst meta: Meta<typeof ${1}> = {\ncomponent: ${1},\ntitle: \"${1}\",\n};\nexport default meta;\ntype Story = StoryObj<typeof ${1}>;\nexport const Default: Story = {}"
+  }
+}

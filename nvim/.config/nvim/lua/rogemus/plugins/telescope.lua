@@ -47,6 +47,7 @@ return {
     { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files" },
     -- { "<leader>ff", find_files_from_project_git_root, desc = "Find File" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
+    { "0", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
     { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
     { "<leader>s/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current file" },
     { "<leader>ds", "<cmd>Telescope diagnostics<cr>", desc = "LSP diagnostics" },

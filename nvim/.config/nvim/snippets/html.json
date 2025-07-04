@@ -1,0 +1,14 @@
+{
+  "doc": {
+    "prefix": "doc",
+    "body": "!DOCTYPE html>\n<html>\n<head>\n<title>Title of the document</title>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width\">\n</head>\n<body>\n${0}\n</body>\n</html>"
+  },
+  "link:css": {
+    "prefix": "link:css",
+    "body": "<link rel=\"stylesheet\" href=\"${1:style.css}\" type=\"text/css\" media=\"${2:all}\">"
+  },
+  "link:favicon": {
+    "prefix": "link:favicon",
+    "body": "<link rel=\"shortcut icon\" href=\"${1:favicon.ico}\" type=\"image/x-icon\">"
+  }
+}

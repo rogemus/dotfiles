@@ -4,16 +4,17 @@ return {
     { "williamboman/mason.nvim", opts = {} },
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+
+    "saghen/blink.cmp",
   },
   config = function()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
-    require("lspconfig").postgres_lsp.setup({})
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     local servers = {
-      ts_ls = {},
       html = {
         filetypes = { "html", "htmldjango", "gotmpl" },
       },
@@ -24,28 +25,25 @@ return {
       lua_ls = {
         settings = {
           Lua = {
-            runtime = {
-              version = "Lua 5.4",
-              path = {
-                "?.lua",
-                "?/init.lua",
-                "/opt/homebrew/share/lua/5.4/?.lua",
-                "/opt/homebrew/share/lua/5.4/?/init.lua",
-              },
-            },
-            workspace = {
-              library = {
-                "/opt/homebrew/share/lua/5.4",
-              },
+            completion = {
+              callSnippet = "Replace",
             },
           },
         },
       },
+      postgres_lsp = {},
+      ts_ls = {},
+      -- ts_ls = {
+      --   root_dir = require("lspconfig").util.root_pattern({ "package.json", "tsconfig.json" }),
+      --   single_file_support = false,
+      --   settings = {},
+      -- },
+      -- denols = {
+      --   root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
+      --   single_file_support = false,
+      --   settings = {},
+      -- },
       -- svelte = {},
-      -- pyright = {},
-      -- ruff = {},
-      -- yamlls = {},
-      -- sqlls = {},
       gopls = {
         experimentalPostfixCompletions = true,
         analyses = {
@@ -56,13 +54,15 @@ return {
       },
     }
 
-    local formatters_linters = {
+    local ensure_installed = vim.tbl_keys(servers or {})
+
+    vim.list_extend(ensure_installed, {
       "prettier",
       "stylua",
       -- "biome",
       -- LINTERS
       "golangci-lint",
-    }
+    })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -126,9 +126,6 @@ return {
       end,
     })
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
     mason.setup({
       ui = {
         size = { width = 0.9, height = 0.4 },
@@ -140,12 +137,13 @@ return {
         },
       },
     })
+
     mason_tool_installer.setup({
-      ensure_installed = formatters_linters,
+      ensure_installed = ensure_installed,
     })
 
     mason_lspconfig.setup({
-      ensure_installed = vim.tbl_keys(servers),
+      ensure_installed = {},
       automatic_installation = true,
       handlers = {
         function(server_name)

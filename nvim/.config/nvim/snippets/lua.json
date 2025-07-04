@@ -1,0 +1,14 @@
+{
+  "fun": {
+    "prefix": "fun",
+    "body": "function ${1:fname}(${2:...})\n$0\nend"
+  },
+  "local": {
+    "prefix": "ls",
+    "body": "local ${1:functionName} = function (${2})\n${0}\nend"
+  },
+  "var": {
+    "prefix": "var",
+    "body": "local ${1:varName} = ${2:\"value\"}"
+  }
+}
