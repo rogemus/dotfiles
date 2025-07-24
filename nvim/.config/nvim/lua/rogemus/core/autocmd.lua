@@ -16,14 +16,13 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 		local is_modified = vim.api.nvim_get_option_value("modified", {})
 
 		local disabled_for = {
-			"Telescope",
-			"TelescopeResults",
-			"TelescopePrompt",
 			"NeoTree",
 			"neo-tree-popup",
 			"neo-tree",
 			"NuiText",
 			"ProjectsPrompt",
+			-- Add fzf-lua filetypes if needed:
+			"FzfLua",
 		}
 
 		local disbaled = vim.tbl_contains(disabled_for, buf_ft) or buf_ft == ""
