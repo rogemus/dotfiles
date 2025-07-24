@@ -1,5 +1,5 @@
 -- Mouse
-vim.opt.mouse = "a"
+vim.opt.mouse = ""
 
 -- Line Number
 vim.opt.number = true
@@ -39,3 +39,8 @@ vim.o.undofile = true
 vim.schedule(function()
   vim.o.clipboard = "unnamedplus"
 end)
+
+-- File Explorer
+vim.g.netrw_keepdir = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 30

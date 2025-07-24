@@ -31,3 +31,5 @@ vim.keymap.set(
   "<Cmd>WipeWindowlessBufs<CR>",
   { desc = "[B]uffer [D]elete [A]ll (close buffer all)" }
 )
+
+-- vim.keymap.set("n", "\\", "<Cmd>Explore<CR>", { desc = "Open files explorer" })
