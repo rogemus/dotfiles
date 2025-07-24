@@ -16,6 +16,7 @@ return {
     require("fzf-lua").setup({
       files = {
         path_shorten = 3,
+        formatter = "path.filename_first",
         fd_opts = "--type f --color never --hidden --exclude .git",
       },
       grep = {
@@ -23,10 +24,14 @@ return {
       },
       buffers = {
         path_shorten = 3,
+        formatter = "path.filename_first",
         sort_lastused = true,
         show_unlisted = true,
       },
-      keymap = {},
+      oldfiles = {
+        path_shorten = 3,
+        formatter = "path.filename_first",
+      },
       fzf_opts = {
         ["--ansi"] = "",
         ["--prompt"] = "❯ ",
