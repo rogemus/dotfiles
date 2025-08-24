@@ -20,7 +20,9 @@ return {
         fd_opts = "--type f --color never --hidden --exclude .git",
       },
       grep = {
-        rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096",
+        path_shorten = 3,
+        formatter = "path.filename_first",
+        rg_opts = "--column --line-number --hidden --no-heading --color=always --smart-case --max-columns=4096",
       },
       buffers = {
         path_shorten = 3,
@@ -38,6 +40,11 @@ return {
         ["--pointer"] = "▶",
         ["--marker"] = "✓",
         ["--info"] = "inline",
+      },
+      winopts = {
+        preview = {
+          horizontal = "right:40%",
+        },
       },
     })
   end,

@@ -1,3 +1,38 @@
+-- return {
+--   config = function()
+--     vim.keymap.set("n", "\\", "<Cmd>Explore<CR>", { desc = "Open file explorer (netrw)" })
+--
+--     vim.api.nvim_create_autocmd("FileType", {
+--       pattern = "netrw",
+--       callback = function()
+--         vim.keymap.set("n", "\\", function()
+--           vim.cmd("b#") -- Go to the previous buffer
+--         end, { buffer = true, silent = true, desc = "Close netrw and go back" })
+--       end,
+--     })
+--   end,
+-- }
+
+-- return {
+--   "prichrd/netrw.nvim",
+--   config = function()
+--     require("netrw").setup({
+--       use_devicons = true, -- enable if using 'nvim-web-devicons'
+--     })
+--
+--     vim.keymap.set("n", "\\", "<Cmd>Explore<CR>", { desc = "Open file explorer (netrw)" })
+--
+--     vim.api.nvim_create_autocmd("FileType", {
+--       pattern = "netrw",
+--       callback = function()
+--         vim.keymap.set("n", "\\", function()
+--           vim.cmd("b#") -- Go to the previous buffer
+--         end, { buffer = true, silent = true, desc = "Close netrw and go back" })
+--       end,
+--     })
+--   end,
+-- }
+--
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
