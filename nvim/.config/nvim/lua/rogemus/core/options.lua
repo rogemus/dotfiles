@@ -1,5 +1,5 @@
 -- Mouse
-vim.opt.mouse = ""
+vim.opt.mouse = "a"
 
 -- Line Number
 vim.opt.number = true

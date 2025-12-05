@@ -11,24 +11,16 @@ taps=(
 
 packages=(
   bat
-  curl
   eza
-  fdupes
-  fnm
+  nvm
   fzf
-  git
   git-delta
   go
   grep
-  mas
   neovim
-  python3
   ripgrep
   tree
   zoxide
-  docker
-  colima
-  eddieantonio/eddieantonio/imgcat
 )
 
 configure_tabs() {

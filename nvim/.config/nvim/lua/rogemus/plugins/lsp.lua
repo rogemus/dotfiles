@@ -32,12 +32,11 @@ return {
         },
       },
       postgres_lsp = {},
-      ts_ls = {},
-      -- ts_ls = {
-      --   root_dir = require("lspconfig").util.root_pattern({ "package.json", "tsconfig.json" }),
-      --   single_file_support = false,
-      --   settings = {},
-      -- },
+      -- ts_ls = {},
+      ts_ls = {
+        root_dir = require("lspconfig").util.root_pattern({ "package.json", "yarn.lock" }),
+        single_file_support = false,
+      },
       -- denols = {
       --   root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
       --   single_file_support = false,
@@ -52,6 +51,7 @@ return {
         },
         staticcheck = true,
       },
+      eslint = {},
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})
@@ -99,6 +99,8 @@ return {
         end
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
+        client.server_capabilities.documentFormatingProvider = true
+
         if
           client
           and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)

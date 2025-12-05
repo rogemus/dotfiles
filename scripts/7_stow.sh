@@ -13,12 +13,11 @@ cleanup_dotfiles() {
     "~/.config/nvim"
     "~/.config/zsh"
     "~/.config/git"
-    "~/.config/yazi"
     "~/.config/lazygit"
-    "~/.config/iTerm"
-    "~/.config/kitty"
-    # "~/Library/Application Support/iTerm2/DynamicProfiles",
-    "~/Library/Application Support/Rectangle"
+    "~/.config/tmux"
+    "~/.config/alacritty"
+    "~/.config/ghostty"
+    "~/.config/lazydocker"
   )
 
   # info "Removing existing config files"
@@ -29,16 +28,17 @@ cleanup_dotfiles() {
 }
 
 stow_dotfiles() {
-  local dotfiles="nvim zsh git iTerm rectangle lazygit kitty zellij"
+  local dotfiles="nvim zsh git lazygit tmux ghostty lazydocker"
   local dirPath=$(pwd)
   # info "Stowing: $dotfiles"
   stow --verbose 1 --target ~/ $dotfiles
 }
 
 unstow_dotfiles() {
-  local dotfiles="nvim zsh git iTerm rectangle lazygit kitty zellij"
+  local dotfiles="nvim zsh git lazygit tmux ghostty lazydocker"
   stow --delete --verbose 1 --target ~/ $dotfiles
 }
 
 cleanup_dotfiles
 stow_dotfiles
+# unstow_dotfiles 
