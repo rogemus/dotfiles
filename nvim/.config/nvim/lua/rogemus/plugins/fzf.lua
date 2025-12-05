@@ -11,25 +11,43 @@ return {
     { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent Files" },
     { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Git Status" },
     { "<leader>/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Find in current file" },
+    { "<leader>m", "<cmd>FzfLua marks<cr>", desc = "Marks" },
+  },
+  opts = {
+    file_ignore_patterns = {
+      "node_modules/",
+      "dist/",
+      ".next/",
+      ".git/",
+      "build/",
+      "target/",
+      "package-lock.json",
+      "pnpm-lock.yaml",
+      "yarn.lock",
+    },
   },
   config = function()
     require("fzf-lua").setup({
       files = {
-        path_shorten = 3,
+        path_shorten = 6,
         formatter = "path.filename_first",
         fd_opts = "--type f --color never --hidden --exclude .git",
       },
       grep = {
-        rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096",
+        rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --glob !yarn.lock --glob !.yarn/* --glob !common/.yarn/* ",
+        git_icons = true,
+        no_ignore = false,
+        hidden = true,
       },
       buffers = {
-        path_shorten = 3,
+        -- path_shorten = 3,
         formatter = "path.filename_first",
         sort_lastused = true,
-        show_unlisted = true,
+        show_unlisted = false,
+        cwd_only = true,
       },
       oldfiles = {
-        path_shorten = 3,
+        -- path_shorten = 3,
         formatter = "path.filename_first",
       },
       fzf_opts = {

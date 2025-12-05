@@ -1,0 +1,9 @@
+theme = Catppuccin Mocha
+font-family = Fira Code Nerd Font Mono
+font-size = 15 
+background = #000000
+macos-icon-frame = plastic
+# window-decoration = none
+window-padding-x = 7
+window-padding-y = 5
+macos-option-as-alt = true
