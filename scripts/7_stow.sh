@@ -40,5 +40,5 @@ unstow_dotfiles() {
 }
 
 cleanup_dotfiles
-stow_dotfiles
+# stow_dotfiles
 # unstow_dotfiles 
