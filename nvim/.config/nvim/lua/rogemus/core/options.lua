@@ -25,6 +25,8 @@ vim.opt.showmode = false
 
 -- vim.opt.wrap = false
 -- vim.opt.updatetime = 50
+--
+vim.opt.swapfile = false
 
 -- Search
 vim.opt.hlsearch = false
