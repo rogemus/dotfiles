@@ -39,6 +39,7 @@ return {
       extension = {
         templ = "templ",
         tmpl = "gotmpl",
+        tpl = "gotmpl",
       },
     })
 
