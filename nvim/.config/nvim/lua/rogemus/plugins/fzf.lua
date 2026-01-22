@@ -13,19 +13,6 @@ return {
     { "<leader>/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Find in current file" },
     { "<leader>m", "<cmd>FzfLua marks<cr>", desc = "Marks" },
   },
-  opts = {
-    file_ignore_patterns = {
-      "node_modules/",
-      "dist/",
-      ".next/",
-      ".git/",
-      "build/",
-      "target/",
-      "package-lock.json",
-      "pnpm-lock.yaml",
-      "yarn.lock",
-    },
-  },
   config = function()
     require("fzf-lua").setup({
       files = {
@@ -34,7 +21,7 @@ return {
         fd_opts = "--type f --color never --hidden --exclude .git",
       },
       grep = {
-        rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --glob !yarn.lock --glob !.yarn/* --glob !common/.yarn/* ",
+        rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --glob !yarn.lock --glob !.yarn/* --glob !common/.yarn/* --glob !.git/*",
         git_icons = true,
         no_ignore = false,
         hidden = true,

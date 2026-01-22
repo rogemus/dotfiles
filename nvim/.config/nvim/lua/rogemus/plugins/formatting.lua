@@ -36,7 +36,7 @@ return {
         bash = { "shfmt" },
         sh = { "shfmt" },
         go = { "gofmt", "goimports" },
-        sql = { "pgformatter" },
+        sql = { "pg_format" },
       },
       format_on_save = function()
         if not vim.g.auto_formater_enabled then
