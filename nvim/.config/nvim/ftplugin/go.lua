@@ -23,3 +23,16 @@ vim.keymap.set("n", "<leader>js", function()
 
   vim.api.nvim_set_current_line(new_line)
 end, { desc = "Add JSON filed tags" })
+
+vim.keymap.set("n", "<leader>lo", function()
+  local word = vim.fn.expand("<cword>")
+
+  if word == "" then
+    vim.notify("No word under cursor", vim.log.levels.WARN)
+    return
+  end
+
+  local line_nr = vim.api.nvim_win_get_cursor(0)[1]
+  local console_text = 'print("' .. word .. ':", ' .. word .. ', "\\n"' .. ");"
+  vim.api.nvim_buf_set_lines(0, line_nr, line_nr, false, { console_text })
+end, { desc = "Add debug print" })

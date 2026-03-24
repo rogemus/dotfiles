@@ -32,4 +32,6 @@ vim.keymap.set(
   { desc = "[B]uffer [D]elete [A]ll (close buffer all)" }
 )
 
+-- Refresh file
+vim.keymap.set("n", "<leader>R", "<Cmd>checktime<CR>", { desc = "Update file for external updates" })
 -- vim.keymap.set("n", "\\", "<Cmd>Explore<CR>", { desc = "Open files explorer" })

@@ -12,6 +12,13 @@ return {
     { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Git Status" },
     { "<leader>/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Find in current file" },
     { "<leader>m", "<cmd>FzfLua marks<cr>", desc = "Marks" },
+    {
+      "<leader>td",
+      function()
+        require("fzf-lua").grep({ search = "TODO|HACK|PERF|NOTE|FIX|FIXMEs", no_esc = true })
+      end,
+      desc = "List todos",
+    },
   },
   config = function()
     require("fzf-lua").setup({
