@@ -4,12 +4,12 @@ source ./utils.sh
 
 create_project_dir() {
   info "Creating projects directory..."
-  mkdir ~/Desktop/Projects
+  mkdir ~/Developer
 }
 
 create_random_dir() {
   info "Creating random directory..."
-  mkdir ~/Desktop/Projects/random
+  mkdir ~/Developer/random
 }
 
 create_project_dir

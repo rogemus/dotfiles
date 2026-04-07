@@ -10,16 +10,41 @@ taps=(
 )
 
 packages=(
+  awscli
   bat
+  cloc
+  docker
+  docker-compose
+  docker-credential-helper
+  duckdb
   eza
-  nvm
+  fd
+  fx
   fzf
+  gh
   git-delta
   go
+  gotestsum
   grep
+  helm
+  hey
+  hugo
+  just
+  kubeconform
+  kubernetes-cli
+  lazydocker
+  lazygit
+  lua
+  luarocks
   neovim
+  nvm
+  opencode
   ripgrep
+  stow
+  terraform
+  tmux
   tree
+  wget
   zoxide
 )
 

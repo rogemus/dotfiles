@@ -3,31 +3,25 @@
 source ./utils.sh 
 
 apps=(
-  alt-tab
-  bruno
   google-chrome
-  hiddenbar
-  itsycal
   microsoft-edge
   microsoft-office
   microsoft-teams
   rectangle
   slack
-  telegram
-  the-unarchiver
-  transmission
   visual-studio-code
-  vlc
-  kitty
   whatsapp
+  ghostty
+  firefox
+  cloude-code
+  copilot-cli
+  # transmission
+  # alt-tab
+  # hiddenbar
 )
 
 masApps=(
-  "937984704"    # Amphetamine
-  "1287239339"   # ColorSlurp
   "1284863847"   # Unsplash Wallpapers
-  "570549457"    # Spotica Menu
-  "1423210932"   # Flow - Focus & Pomodoro Timer
 )
 
 install_apps() {

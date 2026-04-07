@@ -1,0 +1,70 @@
+{
+  "order": 0,
+  "name": "default",
+  "windows": [
+    {
+      "order": 1,
+      "name": "editor",
+      "layout": "5f97,198x53,0,0,37",
+      "sessionName": "TEMP_VALUE",
+      "sessionWindow": "TEMP_VALUE",
+      "panes": [
+        {
+          "order": 1,
+          "name": "nvim",
+          "path": "TEMP_VALUE",
+          "sessionName": "TEMP_VALUE",
+          "sessionWindow": "TEMP_VALUE"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "name": "dev:scripts",
+      "layout": "5f98,198x53,0,0,38",
+      "sessionName": "TEMP_VALUE",
+      "sessionWindow": "TEMP_VALUE",
+      "panes": [
+        {
+          "order": 1,
+          "name": "dev",
+          "path": "TEMP_VALUE",
+          "sessionName": "TEMP_VALUE",
+          "sessionWindow": "TEMP_VALUE"
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "name": "git",
+      "layout": "5f99,198x53,0,0,39",
+      "sessionName": "TEMP_VALUE",
+      "sessionWindow": "TEMP_VALUE",
+      "panes": [
+        {
+          "order": 1,
+          "name": "LazyGit",
+          "path": "TEMP_VALUE",
+          "sessionName": "TEMP_VALUE",
+          "sessionWindow": "TEMP_VALUE"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "name": "AI",
+      "layout": "5f9b,198x53,0,0,79",
+      "sessionName": "TEMP_VALUE",
+      "sessionWindow": "TEMP_VALUE",
+      "panes": [
+        {
+          "order": 1,
+          "name": "AI",
+          "path": "TEMP_VALUE",
+          "sessionName": "TEMP_VALUE",
+          "sessionWindow": "TEMP_VALUE"
+        }
+      ]
+    }
+  ]
+}
