@@ -26,7 +26,7 @@ masApps=(
 
 install_apps() {
   info "Installing Brew apps..."
-  brew install --cask "${packages[@]}"
+  brew install --cask "${apps[@]}"
 }
 
 install_macapps() {
