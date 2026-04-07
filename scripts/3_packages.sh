@@ -36,6 +36,7 @@ packages=(
   lazygit
   lua
   luarocks
+  mas
   neovim
   nvm
   opencode
