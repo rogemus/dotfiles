@@ -47,7 +47,8 @@ return {
 
       custom_highlights = function()
         return {
-          LineNrAbove = { fg = "#282828" },
+          -- LineNrAbove = { fg = "#282828" },
+          LineNrAbove = { fg = "#4e4e4e" },
           LineNrBelow = { fg = "#4e4e4e" },
         }
       end,
