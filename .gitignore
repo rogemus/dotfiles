@@ -11,3 +11,4 @@ rectangle
 .tmux-sessions
 .zsh_sessions
 tmux-sessions.json
+undodir
