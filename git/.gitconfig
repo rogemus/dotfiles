@@ -36,6 +36,7 @@
 
 [core]
   pager = delta
+	hooksPath = ~/.config/git/hooks
 
 [interactive]
   diffFilter = delta --color-only
@@ -70,8 +71,6 @@
   conflictstyle = diff3
 	tool = nvimdiff3
 
-[mergetool "nvimdiff3"]
-  cmd = nvim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+[pull]
+  rebase = true
 
-[mergetool]
-  prompt = false

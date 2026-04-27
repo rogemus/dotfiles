@@ -1,0 +1,12 @@
+#!/bin/sh
+
+prev_ref="$1"
+new_ref="$2"
+checkout_type="$3" # 1 = branch, 0 = file checkout
+
+if [ "$checkout_type" -eq 1 ]; then
+  new_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+  echo "Branch changed to: $new_branch. Adding to worklog"
+  worklog new --git
+fi
+
