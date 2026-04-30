@@ -76,3 +76,6 @@ alias dockerdie="docker system prune --volumes -a -f"
 ## Tmux
 alias txu="tmux-utils"
 alias tx="tmux"
+
+## AI
+alias ai="opencode"
