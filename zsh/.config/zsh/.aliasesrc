@@ -16,15 +16,12 @@ alias cat='bat --paging=never --style="header,grid"'
 alias catf='bat --paging=never'
 alias cd="z"
 alias t="touch"
-alias pass="motus random"
+
+alias vi="nvim"
+alias vim="nvim"
 
 alias lzg="lazygit"
 alias lzd="lazydocker"
-
-## zellij
-alias zeli="ls ~/.config/zellij/layouts --icons=never --absolute=on | fzf --bind 'enter:execute(zellij --layout {})' --height=20%"
-alias zel="zellij -l welcome"
-alias zelij="zellij"
 
 ## fzf
 alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
@@ -34,11 +31,8 @@ alias fzfv="fzf --bind 'enter:become(nvim {})'"
 alias pgsqlStart="pg_ctl -D '~/.config/pgsql/data' -l logfile start"
 alias pgsqlStop="pg_ctl -D '~/.config/pgsql/data' -l logfile stop"
 
-## Configs
-alias dotconfig="cd ~/Desktop/Projects/random/dotfiles && nvim ."
-
-## Notes
-alias notes="cd ~/Desktop/notes && nvim ."
+## Worklog
+alias work="worklog new --git"
 
 ## Git
 alias gut="git"
@@ -59,23 +53,12 @@ alias greset="git reset --hard HEAD"
 alias gb="git checkout \$(git branch | fzf --height=30% --border --info=inline)"
 alias gd="git diff"
 
-## AEM
-alias aemUp="./gradlew :aemUp"
-alias aemup="aemUp"
-alias aemDown="./gradlew :aemDown"
-alias aemdown="aemDown"
-
-## BG
-alias dbuild="docker-compose up --build"
-alias gbuild="./gradlew bootRun -S -i"
-alias azlogin="az login && az acr login -n dbgcontainers"
-
 ## Docker
 alias dockerdie="docker system prune --volumes -a -f"
 
 ## Tmux
-alias txu="tmux-utils"
+alias txu="tmxu"
 alias tx="tmux"
 
 ## AI
-alias ai="opencode"
+alias ai="claude"
