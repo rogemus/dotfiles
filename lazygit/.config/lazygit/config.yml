@@ -48,3 +48,18 @@ confirmOnQuit: true
 notARepository: skip
 refresher:
   fetchInterval: 300
+
+customCommands:
+  - key: 'E'
+    context: 'files'
+    description: 'Commit with prefilled AI co-author message'
+    command: 'git commit -m "{{.Form.Message}}" -m "{{.Form.Description}}"'
+    prompts:
+      - type: 'input'
+        title: 'Commit message'
+        key: 'Message'
+        initialValue: ''
+      - type: 'input'
+        title: 'Commit description'
+        key: 'Description'
+        initialValue: 'Co-authored-by: Claude <noreply@anthropic.com>'
