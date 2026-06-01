@@ -52,14 +52,10 @@ refresher:
 customCommands:
   - key: 'E'
     context: 'files'
-    description: 'Commit with prefilled AI co-author message'
-    command: 'git commit -m "{{.Form.Message}}" -m "{{.Form.Description}}"'
+    description: 'Commit with prefilled AI co-author description'
+    command: 'git commit -m "{{.Form.Message}}" -m "Co-authored-by: Claude <noreply@anthropic.com>"'
     prompts:
       - type: 'input'
         title: 'Commit message'
         key: 'Message'
         initialValue: ''
-      - type: 'input'
-        title: 'Commit description'
-        key: 'Description'
-        initialValue: 'Co-authored-by: Claude <noreply@anthropic.com>'
