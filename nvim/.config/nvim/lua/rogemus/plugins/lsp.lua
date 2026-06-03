@@ -1,14 +1,4 @@
-return {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    { "williamboman/mason.nvim", opts = {} },
-    "williamboman/mason-lspconfig.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-
-    "saghen/blink.cmp",
-  },
-  config = function()
-    local mason = require("mason")
+local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
@@ -186,5 +176,3 @@ return {
         end,
       },
     })
-  end,
-}

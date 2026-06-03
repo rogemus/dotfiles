@@ -1,48 +1,24 @@
-return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {
-        "bash",
-        "comment",
-        "css",
-        "diff",
-        "dot",
-        "git_config",
-        "gitignore",
-        "go",
-        "gosum",
-        "gotmpl",
-        "html",
-        "javascript",
-        "jsdoc",
-        "json",
-        "lua",
-        "luadoc",
-        "markdown",
-        "typescript",
-        "vim",
-        "vimdoc",
-      },
-      auto_install = true,
-      sync_install = false,
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
-    })
+-- Neovim 0.12+ has built-in treesitter support
+-- Syntax highlighting is enabled by default
+-- The nvim-treesitter plugin has been archived and is no longer needed
 
-    vim.filetype.add({
-      extension = {
-        templ = "templ",
-        tmpl = "gotmpl",
-        tpl = "gotmpl",
-      },
-    })
+-- Custom filetype mappings
+vim.filetype.add({
+  extension = {
+    templ = 'templ',
+    tmpl = 'gotmpl',
+    tpl = 'gotmpl',
+  },
+})
 
-    vim.treesitter.language.register("gotmpl", "gotmpl")
-  end,
-}
+-- Register gotmpl language
+vim.treesitter.language.register('gotmpl', 'gotmpl')
+
+-- Note: To install additional parsers for languages not bundled with Neovim 0.12:
+-- 1. Install tree-sitter-cli: npm install -g tree-sitter-cli
+-- 2. Run: :TSInstall <language>
+--
+-- Bundled parsers in Neovim 0.12 include:
+-- bash, c, lua, markdown, python, query, vim, vimdoc
+--
+-- For other languages (javascript, typescript, go, etc.), use :TSInstall as needed
