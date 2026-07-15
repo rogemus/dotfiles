@@ -1,16 +1,16 @@
-require('lualine').setup({
+require("lualine").setup({
   options = {
-    theme = 'catppuccin',
-    section_separators = '',
-    component_separators = '',
-    disabled_filetypes = { 'neo-tree' },
+    theme = "auto",
+    section_separators = "",
+    component_separators = "",
+    disabled_filetypes = { "neo-tree" },
     globalstatus = true,
   },
   sections = {
-    lualine_a = { 'mode' },
-    lualine_c = { 'filename' },
-    lualine_x = { 'diagnostics', 'filetype' },
-    lualine_y = { 'branch', 'diff' },
-    lualine_z = { 'location' },
+    lualine_a = { "mode" },
+    lualine_c = { "filename" },
+    lualine_x = { "diagnostics", "filetype" },
+    lualine_y = { "branch", "diff" },
+    lualine_z = { "location" },
   },
 })

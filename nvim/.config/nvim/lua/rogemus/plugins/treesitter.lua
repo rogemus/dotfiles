@@ -2,23 +2,29 @@
 -- Syntax highlighting is enabled by default
 -- The nvim-treesitter plugin has been archived and is no longer needed
 
--- Custom filetype mappings
-vim.filetype.add({
-  extension = {
-    templ = 'templ',
-    tmpl = 'gotmpl',
-    tpl = 'gotmpl',
-  },
+-- Enable highlighting + indentation for every filetype
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
 })
 
--- Register gotmpl language
-vim.treesitter.language.register('gotmpl', 'gotmpl')
-
--- Note: To install additional parsers for languages not bundled with Neovim 0.12:
--- 1. Install tree-sitter-cli: npm install -g tree-sitter-cli
--- 2. Run: :TSInstall <language>
---
--- Bundled parsers in Neovim 0.12 include:
--- bash, c, lua, markdown, python, query, vim, vimdoc
---
--- For other languages (javascript, typescript, go, etc.), use :TSInstall as needed
+-- Install parsers on startup (skips already-installed ones)
+local want = { "lua", "python", "javascript", "typescript", "bash" }
+vim.defer_fn(function()
+  local ok, ts = pcall(require, "nvim-treesitter")
+  if not ok then
+    return
+  end
+  local have = require("nvim-treesitter.config").get_installed()
+  local missing = vim
+    .iter(want)
+    :filter(function(p)
+      return not vim.tbl_contains(have, p)
+    end)
+    :totable()
+  if #missing > 0 then
+    ts.install(missing)
+  end
+end, 100)

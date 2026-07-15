@@ -1,28 +1,28 @@
 vim.g.auto_formater_enabled = false
 
-vim.api.nvim_create_user_command('FormatToggle', function()
+vim.api.nvim_create_user_command("FormatToggle", function()
   vim.g.auto_formater_enabled = not vim.g.auto_formater_enabled
-  local msg = vim.g.auto_formater_enabled and 'Format on Save enabled!' or 'Format on Save disabled!'
+  local msg = vim.g.auto_formater_enabled and "Format on Save enabled!" or "Format on Save disabled!"
   print(msg)
-end, { desc = 'Toggle AutoFormatter' })
+end, { desc = "Toggle AutoFormatter" })
 
-local conform = require('conform')
+local conform = require("conform")
 
 conform.setup({
   formatters_by_ft = {
-    html = { 'prettierd', 'prettier', stop_after_first = true },
-    javascript = { 'prettierd', 'prettier', stop_after_first = true },
-    typescript = { 'prettierd', 'prettier', stop_after_first = true },
-    javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-    typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-    css = { 'prettierd', 'prettier', stop_after_first = true },
-    markdown = { 'prettierd', 'prettier', stop_after_first = true },
-    yaml = { 'yamlfmt' },
-    lua = { 'stylua' },
-    bash = { 'shfmt' },
-    sh = { 'shfmt' },
-    go = { 'gofmt', 'goimports' },
-    sql = { 'pg_format' },
+    html = { "prettierd", "prettier", stop_after_first = true },
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+    typescript = { "prettierd", "prettier", stop_after_first = true },
+    javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+    typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+    css = { "prettierd", "prettier", stop_after_first = true },
+    markdown = { "prettierd", "prettier", stop_after_first = true },
+    yaml = { "yamlfmt" },
+    lua = { "stylua" },
+    bash = { "shfmt" },
+    sh = { "shfmt" },
+    go = { "gofmt", "goimports" },
+    sql = { "pg_format" },
   },
   format_on_save = function()
     if not vim.g.auto_formater_enabled then
@@ -42,7 +42,7 @@ local format_buffer = function()
     async = false,
     timeout_ms = 3000,
   })
-  print('File formatted!')
+  print("File formatted!")
 end
 
-vim.keymap.set('n', '<leader>F', format_buffer, { desc = '[F]ormat file or range (in visual mode)' })
+vim.keymap.set("n", "<leader>F", format_buffer, { desc = "[F]ormat file or range (in visual mode)" })

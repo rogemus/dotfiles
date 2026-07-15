@@ -1,8 +1,8 @@
-require('blink.cmp').setup({
+require("blink.cmp").setup({
   keymap = {
-    preset = 'enter',
-    ['<Tab>'] = { 'select_next', 'fallback' },
-    ['<S-Tab>'] = { 'select_prev', 'fallback' },
+    preset = "enter",
+    ["<Tab>"] = { "select_next", "fallback" },
+    ["<S-Tab>"] = { "select_prev", "fallback" },
   },
 
   completion = {
@@ -18,13 +18,13 @@ require('blink.cmp').setup({
       },
     },
     menu = {
-      border = 'rounded',
-      winhighlight = 'Normal:CmpNormal',
+      border = "rounded",
+      winhighlight = "Normal:CmpNormal",
     },
     documentation = {
       window = {
-        border = 'rounded',
-        winhighlight = 'Normal:CmpNormal',
+        border = "rounded",
+        winhighlight = "Normal:CmpNormal",
       },
       auto_show = true,
     },
@@ -32,17 +32,17 @@ require('blink.cmp').setup({
   signature = {
     enabled = true,
     window = {
-      border = 'rounded',
-      winhighlight = 'Normal:CmpNormal',
+      border = "rounded",
+      winhighlight = "Normal:CmpNormal",
     },
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = { "lsp", "path", "snippets", "buffer" },
   },
 
   cmdline = {
-    keymap = { preset = 'inherit' },
+    keymap = { preset = "inherit" },
     completion = {
       menu = {
         auto_show = true,
@@ -50,5 +50,5 @@ require('blink.cmp').setup({
     },
   },
 
-  fuzzy = { implementation = 'prefer_rust_with_warning' },
+  fuzzy = { implementation = "prefer_rust_with_warning" },
 })

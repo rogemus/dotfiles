@@ -9,34 +9,34 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Auto save files after edit
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-	pattern = "*",
-	desc = "Auto save files after edit",
-	callback = function()
-		local buf_ft = vim.api.nvim_get_option_value("filetype", {})
-		local is_modified = vim.api.nvim_get_option_value("modified", {})
+  pattern = "*",
+  desc = "Auto save files after edit",
+  callback = function()
+    local buf_ft = vim.api.nvim_get_option_value("filetype", {})
+    local is_modified = vim.api.nvim_get_option_value("modified", {})
 
-		local disabled_for = {
-			"NeoTree",
-			"neo-tree-popup",
-			"neo-tree",
-			"NuiText",
-			"ProjectsPrompt",
-			-- Add fzf-lua filetypes if needed:
-			"FzfLua",
-		}
+    local disabled_for = {
+      "NeoTree",
+      "neo-tree-popup",
+      "neo-tree",
+      "NuiText",
+      "ProjectsPrompt",
+      -- Add fzf-lua filetypes if needed:
+      "FzfLua",
+    }
 
-		local disbaled = vim.tbl_contains(disabled_for, buf_ft) or buf_ft == ""
-		if not disbaled and is_modified then
-			local time = os.date("%H:%M:%S")
-			local filename = vim.fn.expand("%:t")
+    local disbaled = vim.tbl_contains(disabled_for, buf_ft) or buf_ft == ""
+    if not disbaled and is_modified then
+      local time = os.date("%H:%M:%S")
+      local filename = vim.fn.expand("%:t")
 
-			vim.cmd("silent! write")
-			vim.api.nvim_echo({ { "Auto-saved at " .. time .. ": " .. filename, "MoreMsg" } }, false, {})
+      vim.cmd("silent! write")
+      vim.api.nvim_echo({ { "Auto-saved at " .. time .. ": " .. filename, "MoreMsg" } }, false, {})
 
-			-- Clear message after 1 s
-			vim.defer_fn(function()
-				vim.api.nvim_echo({ { "", "" } }, false, {})
-			end, 1000)
-		end
-	end,
+      -- Clear message after 1 s
+      vim.defer_fn(function()
+        vim.api.nvim_echo({ { "", "" } }, false, {})
+      end, 1000)
+    end
+  end,
 })
