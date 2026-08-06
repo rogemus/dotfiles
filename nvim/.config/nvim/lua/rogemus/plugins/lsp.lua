@@ -42,6 +42,7 @@ local servers = {
     staticcheck = true,
   },
   eslint = {},
+  biome = {},
 }
 
 local ensure_installed = vim.tbl_keys(servers or {})
@@ -49,9 +50,11 @@ local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
   "prettier",
   "stylua",
-  -- "biome",
+  "biome",
   -- LINTERS
   "golangci-lint",
+  -- oxc_language_server (oxlint) is not in Mason registry; install manually:
+  -- npm i -g oxc-language-server  OR  cargo install oxc_language_server
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -149,6 +152,9 @@ mason_lspconfig.setup({
     end,
   },
 })
+
+-- oxfmt (oxc formatter/linter LSP) - install via: npm i -g oxfmt
+vim.lsp.enable("oxfmt")
 
 vim.diagnostic.config({
   severity_sort = true,

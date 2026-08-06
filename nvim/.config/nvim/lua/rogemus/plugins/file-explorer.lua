@@ -3,29 +3,6 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignW
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
-local function url_encode(str)
-  str = str:gsub("\n", "\r\n")
-  str = str:gsub("([^%w%-_%.~])", function(c)
-    return string.format("%%%02X", string.byte(c))
-  end)
-  return str
-end
-
-local function extract_git_domain(remote_url)
-  local domain = remote_url:match("^https?://([^/]+)/")
-  if not domain then
-    domain = remote_url:match("@([^:]+):")
-  end
-  return domain
-end
-
-local function run_cmd(cmd)
-  local handle = io.popen(cmd)
-  local result = handle:read("*a")
-  handle:close()
-  return result:gsub("%s+", "")
-end
-
 require("neo-tree").setup({
   commands = {
     open_in_finder = function(state)
@@ -49,42 +26,6 @@ require("neo-tree").setup({
       vim.cmd("wincmd l")
       vim.cmd("Neotree toggle")
     end,
-    open_file_in_web_git = function(state)
-      local node = state.tree:get_node()
-      local file_path = node.id
-
-      local remote_url = run_cmd("git remote get-url origin")
-      local branch = run_cmd("git rev-parse --abbrev-ref HEAD")
-      local repo_root = run_cmd("git rev-parse --show-toplevel")
-
-      local url
-      if remote_url:match("github") then
-        local owner, repo = remote_url:match("github.com.-/(.-)%.git")
-        url = string.format("https://github.com/%s/%s/blob/%s/%s", owner, repo, branch, file_path)
-      elseif remote_url:match("bitbucket") then
-        if remote_url:match("/scm/") or remote_url:match("/projects/") then
-          local domain = remote_url:match("@(.-):") or remote_url:match("https?://(.-)/")
-          local project, repo = remote_url:match("/scm/(.-)/(.-)%.git")
-            or remote_url:match("/projects/(.-)/repos/(.-)%.git")
-          url = string.format(
-            "https://%s/projects/%s/repos/%s/browse/%s?at=refs/heads/%s",
-            domain,
-            project,
-            repo,
-            file_path,
-            branch
-          )
-        else
-          local owner, repo = remote_url:match("bitbucket.org.-/(.-)%.git")
-          url = string.format("https://bitbucket.org/%s/%s/src/%s/%s", owner, repo, branch, file_path)
-        end
-      else
-        print("Unsupported platform or unknown remote URL")
-        return
-      end
-
-      vim.fn.systemlist({ "open", url })
-    end,
   },
   window = {
     mappings = {
@@ -100,7 +41,6 @@ require("neo-tree").setup({
           use_image_nvim = false,
         },
       },
-      ["oo"] = "open_file_in_web_git",
       ["O"] = "open_in_finder",
       ["U"] = "focus_parent",
     },
