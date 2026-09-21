@@ -1,7 +1,3 @@
--- Neovim 0.12+ has built-in treesitter support
--- Syntax highlighting is enabled by default
--- The nvim-treesitter plugin has been archived and is no longer needed
-
 -- Enable highlighting + indentation for every filetype
 vim.api.nvim_create_autocmd("FileType", {
   callback = function()
@@ -11,7 +7,34 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Install parsers on startup (skips already-installed ones)
-local want = { "lua", "python", "javascript", "typescript", "bash" }
+local want = {
+  "bash",
+  "css",
+  "go",
+  "groovy",
+  "html",
+  "javascript",
+  "jsdoc",
+  "json",
+  "json5",
+  "just",
+  "lua",
+  "make",
+  "markdown",
+  "markdown_inline",
+  "python",
+  "python",
+  "robot",
+  "templ",
+  "terraform",
+  "toml",
+  "tsx",
+  "typescript",
+  "vim",
+  "xml",
+  "yaml",
+  "zsh",
+}
 vim.defer_fn(function()
   local ok, ts = pcall(require, "nvim-treesitter")
   if not ok then
@@ -28,3 +51,11 @@ vim.defer_fn(function()
     ts.install(missing)
   end
 end, 100)
+
+vim.filetype.add({
+  extension = {
+    mdx = "mdx",
+  },
+})
+
+vim.treesitter.language.register("markdown", "mdx")

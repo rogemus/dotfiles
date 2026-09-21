@@ -1,5 +1,5 @@
 -- Close all buffers
-vim.api.nvim_create_user_command("WipeWindowlessBufs", function()
+vim.api.nvim_create_user_command("WipeBuffers", function()
   local bufinfos = vim.fn.getbufinfo({ buflisted = true })
   vim.tbl_map(function(bufinfo)
     if bufinfo.changed == 0 and (not bufinfo.windows or #bufinfo.windows == 0) then

@@ -50,14 +50,14 @@ export PGDATA="/var/lib/pgsql/data"
 # export COLIMA_HOME="${HOME}/.config/colima"
 # export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
 
+# pnpm
+export PNPM_HOME='/Users/kacper.rogowski/.local/share/pnpm'
+export PATH="$PNPM_HOME/bin:$PATH"
+
 # CURL
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
-
-# tools
-export TOOLS_PATH=$ZDOTDIR/tools
-export PATH=$PATH:$TOOLS_PATH/tmux-utils
 
 # Paths
 export PATH="$M2_HOME/bin:$PATH"

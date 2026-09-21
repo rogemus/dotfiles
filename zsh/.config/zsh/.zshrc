@@ -50,6 +50,3 @@ PS1='%B%F{green}%2~%f ${vcs_info_msg_0_}
 >%b '
 RPROMPT=""
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
-
-# bun completions
-[ -s "/Users/kacper.rogowski/.bun/_bun" ] && source "/Users/kacper.rogowski/.bun/_bun"
