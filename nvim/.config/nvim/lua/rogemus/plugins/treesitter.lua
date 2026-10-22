@@ -10,6 +10,7 @@ vim.api.nvim_create_autocmd("FileType", {
 local want = {
   "bash",
   "css",
+  "comment",
   "go",
   "groovy",
   "html",

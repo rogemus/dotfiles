@@ -7,3 +7,4 @@ macos-icon-frame = plastic
 window-padding-x = 7
 window-padding-y = 5
 macos-option-as-alt = true
+keybind = ctrl+tab=text:\x1b[27;5;9~
