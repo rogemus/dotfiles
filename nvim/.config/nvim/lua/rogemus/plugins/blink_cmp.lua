@@ -47,8 +47,24 @@ local opts = {
     },
   },
 
-  -- Native completion on the command line
-  cmdline = { enabled = false },
+  -- Command line: show the suggestions, but select and insert nothing until you pick one
+  cmdline = {
+    keymap = { preset = "inherit" },
+    completion = {
+      list = {
+        selection = {
+          preselect = false,
+          auto_insert = false,
+        },
+      },
+      menu = {
+        auto_show = true,
+      },
+      ghost_text = {
+        enabled = false,
+      },
+    },
+  },
 
   fuzzy = { implementation = "prefer_rust_with_warning" },
 }
