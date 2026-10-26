@@ -1,5 +1,5 @@
 -- ─── Completion (blink.cmp) ───────────────────────────────────────
-require("blink.cmp").setup({
+local opts = {
   keymap = {
     preset = "enter",
     ["<Tab>"] = { "select_next", "fallback" },
@@ -57,4 +57,24 @@ require("blink.cmp").setup({
   },
 
   fuzzy = { implementation = "prefer_rust_with_warning" },
+}
+
+local M = {}
+
+-- Add blink.cmp to 'runtimepath' and configure it on first use, returns the module
+function M.get()
+  require("rogemus.lazy").once("blink.cmp", { "blink.cmp" }, function()
+    require("blink.cmp").setup(opts)
+  end)
+  return require("blink.cmp")
+end
+
+-- lsp.lua loads it right after startup, this covers typing or the command line before that
+vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
+  once = true,
+  callback = function()
+    M.get()
+  end,
 })
+
+return M

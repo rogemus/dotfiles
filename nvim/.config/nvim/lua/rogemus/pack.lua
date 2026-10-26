@@ -14,12 +14,6 @@ vim.pack.add({
   { src = "https://github.com/williamboman/mason.nvim" },
   { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 
-  -- Completion
-  {
-    src = "https://github.com/saghen/blink.cmp",
-    version = vim.version.range("1.0"),
-  },
-
   -- Statusline
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
 
@@ -32,6 +26,12 @@ vim.pack.add({
 -- ─── Lazy plugins ─────────────────────────────────────────────────
 -- Installed, but only added to 'runtimepath' on first use, see rogemus/lazy.lua
 vim.pack.add({
+  -- Completion
+  {
+    src = "https://github.com/saghen/blink.cmp",
+    version = vim.version.range("1.0"),
+  },
+
   -- Fuzzy finder
   { src = "https://github.com/ibhagwan/fzf-lua" },
 

@@ -1,8 +1,6 @@
 local mason = require("mason")
 local mason_tool_installer = require("mason-tool-installer")
 
-local capabilities = require("blink.cmp").get_lsp_capabilities()
-
 -- ─── Language servers ─────────────────────────────────────────────
 local servers = {
   html = {
@@ -162,17 +160,28 @@ mason_tool_installer.setup({
 })
 
 -- ─── Enable servers ───────────────────────────────────────────────
-for name, cfg in pairs(servers) do
-  -- Only values explicitly set above override the defaults. Useful when disabling
-  -- certain features of an LSP (for example, turning off formatting for ts_ls)
-  cfg.capabilities = vim.tbl_deep_extend("force", {}, capabilities, cfg.capabilities or {})
-  vim.lsp.config(name, cfg)
-end
-vim.lsp.enable(vim.tbl_keys(servers))
+-- Runs right after startup: needs blink.cmp for the capabilities, which is loaded lazily.
+-- vim.lsp.enable also starts the servers for buffers that are already open
+local function enable_servers()
+  local capabilities = require("rogemus.plugins.blink_cmp").get().get_lsp_capabilities()
+  for name, cfg in pairs(servers) do
+    -- Only values explicitly set above override the defaults. Useful when disabling
+    -- certain features of an LSP (for example, turning off formatting for ts_ls)
+    cfg.capabilities = vim.tbl_deep_extend("force", {}, capabilities, cfg.capabilities or {})
+    vim.lsp.config(name, cfg)
+  end
+  vim.lsp.enable(vim.tbl_keys(servers))
 
--- ─── oxfmt ────────────────────────────────────────────────────────
--- oxc formatter/linter LSP, install via: npm i -g oxfmt
-vim.lsp.enable("oxfmt")
+  -- oxc formatter/linter LSP, install via: npm i -g oxfmt
+  vim.lsp.enable("oxfmt")
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  once = true,
+  callback = function()
+    vim.schedule(enable_servers)
+  end,
+})
 
 -- ─── Diagnostics ──────────────────────────────────────────────────
 vim.diagnostic.config({
