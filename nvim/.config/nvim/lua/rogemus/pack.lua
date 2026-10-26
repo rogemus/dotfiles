@@ -12,7 +12,6 @@ vim.pack.add({
   -- LSP ecosystem
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/williamboman/mason.nvim" },
-  { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
   { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 
   -- Completion

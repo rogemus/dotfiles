@@ -1,5 +1,4 @@
 local mason = require("mason")
-local mason_lspconfig = require("mason-lspconfig")
 local mason_tool_installer = require("mason-tool-installer")
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -50,9 +49,21 @@ local servers = {
 }
 
 -- ─── Tools to install ─────────────────────────────────────────────
-local ensure_installed = vim.tbl_keys(servers or {})
-
-vim.list_extend(ensure_installed, {
+-- Mason package names, keep the servers in sync with `servers` above.
+-- Not installed on startup, run :MasonToolsInstall after changing this list
+local ensure_installed = {
+  -- LSP servers
+  "html-lsp",
+  "css-lsp",
+  "bash-language-server",
+  "dot-language-server",
+  "json-lsp",
+  "lua-language-server",
+  "postgres-language-server",
+  "typescript-language-server",
+  "gopls",
+  "eslint-lsp",
+  -- Formatters
   "prettier",
   "stylua",
   "biome",
@@ -60,7 +71,7 @@ vim.list_extend(ensure_installed, {
   "golangci-lint",
   -- oxc_language_server (oxlint) is not in Mason registry; install manually:
   -- npm i -g oxc-language-server  OR  cargo install oxc_language_server
-})
+}
 
 -- ─── LSP keymaps and attach ───────────────────────────────────────
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -142,11 +153,7 @@ mason.setup({
 
 mason_tool_installer.setup({
   ensure_installed = ensure_installed,
-})
-
-mason_lspconfig.setup({
-  ensure_installed = {},
-  automatic_enable = false,
+  run_on_start = false,
 })
 
 -- ─── Enable servers ───────────────────────────────────────────────
