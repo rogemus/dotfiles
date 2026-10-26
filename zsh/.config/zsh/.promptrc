@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+# ─── Prompt ────────────────────────────────────────────────────────
+# The git segment comes from modules/git.zsh, source that first
+autoload -Uz add-zsh-hook
+zmodload zsh/datetime
+setopt prompt_subst
+
+# ─── Command duration ──────────────────────────────────────────────
+_prompt_preexec() { _prompt_t0=$EPOCHREALTIME }
+
+_prompt_precmd() {
+  _prompt_dur=
+  if [[ -n $_prompt_t0 ]]; then
+    local -i s=$(( EPOCHREALTIME - _prompt_t0 ))
+    _prompt_t0=
+    if (( s >= 2 )); then
+      (( s >= 3600 )) && _prompt_dur+="$(( s / 3600 ))h"
+      (( s >= 60 ))   && _prompt_dur+="$(( s % 3600 / 60 ))m"
+      _prompt_dur+="$(( s % 60 ))s"
+    fi
+  fi
+  _prompt_git_start
+}
+
+add-zsh-hook preexec _prompt_preexec
+add-zsh-hook precmd _prompt_precmd
+
+# ─── Layout ────────────────────────────────────────────────────────
+PS1='%B%F{green}%2~%f ${_prompt_git}
+%(?.%F{green}.%F{red})>%f%b '
+RPROMPT='%F{242}${_prompt_dur}%f'

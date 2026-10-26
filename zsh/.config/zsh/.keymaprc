@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # ─── Line editing ──────────────────────────────────────────────────
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line

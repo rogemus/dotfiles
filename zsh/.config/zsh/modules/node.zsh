@@ -1,9 +1,8 @@
-#!/bin/bash
-
-# ─── Hooks ─────────────────────────────────────────────────────────
-autoload -U add-zsh-hook
+#!/usr/bin/env zsh
 
 # ─── Node version (lazy nvm) ───────────────────────────────────────
+autoload -Uz add-zsh-hook
+
 # nvm is loaded lazily: only on first `nvm` call or when a project asks for another Node version
 load_nvm() {
   unset -f nvm load_nvm
@@ -32,3 +31,5 @@ function detect-node-version {
 
 add-zsh-hook chpwd detect-node-version
 
+# Pick up .nvmrc when a terminal opens inside a project
+detect-node-version

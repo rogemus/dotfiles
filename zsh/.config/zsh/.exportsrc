@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # ─── History ───────────────────────────────────────────────────────
 export HISTFILE=$ZDOTDIR/.zsh_history
@@ -35,7 +35,7 @@ export LC_CTYPE=en_US.UTF-8
 
 # ─── Node (nvm) ────────────────────────────────────────────────────
 export NVM_DIR="$HOME/.nvm"
-# Put the newest installed Node on PATH without loading nvm (nvm.sh is loaded lazily, see .hooksrc)
+# Put the newest installed Node on PATH without loading nvm (nvm.sh is loaded lazily, see modules/node.zsh)
 () {
   setopt local_options numeric_glob_sort
   local -a versions=($NVM_DIR/versions/node/v*(N/On))

@@ -40,7 +40,7 @@ Machine-specific zsh settings go in `~/.config/zsh/.workrc` and `~/.config/zsh/.
 setup.sh            runs scripts/1..7
 scripts/            install steps
 nvim/               ~/.config/nvim
-zsh/                ~/.config/zsh and ~/.zprofile
+zsh/                ~/.config/zsh and ~/.zprofile (rc files plus modules/: node, completion, git)
 tmux/               ~/.config/tmux
 ghostty/            ~/.config/ghostty
 lazygit/            ~/.config/lazygit
@@ -106,6 +106,7 @@ Commands and behaviour:
 | `cdi`                      | Interactive zoxide picker                                                                        |
 | `gclear`                   | Delete merged local branches except the current one, `develop`, `main` and `master`              |
 | `zshtime`                  | Time an interactive shell start                                                                  |
+| `update-comp`              | Rebuild the completion cache (`~/.cache/zsh`) and restart zsh. Run it after installing a new tool |
 | `AUTO_CD`, `AUTO_PUSHD`    | Type a directory name to enter it. `dirs -v` lists the directory stack, `cd ~2` jumps to entry 2 |
 | `.nvmrc` / `.node-version` | Checked on `cd` and at shell start. nvm loads only when a different Node version is needed       |
 
