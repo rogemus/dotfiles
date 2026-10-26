@@ -21,6 +21,7 @@ vim.opt.list = true
 vim.opt.listchars = {
   space = "·",
   tab = "⇾ ",
+  nbsp = "␣",
 }
 
 -- Search settings

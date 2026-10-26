@@ -60,7 +60,7 @@ conform.setup({
       return
     end
     return {
-      lsp_fallback = true,
+      lsp_format = "fallback",
       async = false,
       timeout_ms = 3000,
     }
@@ -69,7 +69,7 @@ conform.setup({
 
 local format_buffer = function()
   conform.format({
-    lsp_fallback = true,
+    lsp_format = "fallback",
     async = false,
     timeout_ms = 3000,
   })

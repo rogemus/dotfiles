@@ -9,9 +9,9 @@ source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 repos=(
   zsh-users/zsh-completions
   romkatv/zsh-defer
+  zsh-users/zsh-autosuggestions
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-history-substring-search
-  zsh-users/zsh-autosuggestions
 )
 
 plugin-load $repos
@@ -25,8 +25,9 @@ source $ZDOTDIR/.keymap
 source $ZDOTDIR/.aliasesrc
 source $ZDOTDIR/.hooksrc
 source $ZDOTDIR/.exportsrc
-source $ZDOTDIR/.workrc
-source $ZDOTDIR/.personalrc
+for f in .workrc .personalrc; do
+  [[ -f $ZDOTDIR/$f ]] && source $ZDOTDIR/$f
+done
 source $ZDOTDIR/.appsrc
 
 # Prompt
