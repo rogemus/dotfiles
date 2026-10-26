@@ -24,12 +24,6 @@ local servers = {
     root_markers = { "package.json", "yarn.lock" },
     workspace_required = true,
   },
-  -- denols = {
-  --   root_markers = { "deno.json", "deno.jsonc" },
-  --   workspace_required = true,
-  --   settings = {},
-  -- },
-  -- svelte = {},
   gopls = {
     settings = {
       gopls = {
@@ -73,7 +67,7 @@ local ensure_installed = {
 
 -- ─── LSP keymaps and attach ───────────────────────────────────────
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+  group = vim.api.nvim_create_augroup("rogemus-lsp-attach", { clear = true }),
   callback = function(event)
     local map = function(keys, func, desc, mode)
       mode = mode or "n"
@@ -103,21 +97,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.buf.signature_help({ border = "rounded" })
     end, "Show signature help", "i")
 
-    local function client_supports_method(client, method, bufnr)
-      if vim.fn.has("nvim-0.11") == 1 then
-        return client:supports_method(method, bufnr)
-      else
-        return client.supports_method(method, { bufnr = bufnr })
-      end
-    end
-
     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-    if
-      client
-      and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
-    then
-      local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+      local highlight_augroup = vim.api.nvim_create_augroup("rogemus-lsp-highlight", { clear = false })
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         buffer = event.buf,
         group = highlight_augroup,
@@ -131,10 +114,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
 
       vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+        group = vim.api.nvim_create_augroup("rogemus-lsp-detach", { clear = true }),
         callback = function(event2)
           vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+          vim.api.nvim_clear_autocmds({ group = "rogemus-lsp-highlight", buffer = event2.buf })
         end,
       })
     end

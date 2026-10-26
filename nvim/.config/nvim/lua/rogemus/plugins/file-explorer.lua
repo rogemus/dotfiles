@@ -1,9 +1,3 @@
--- ─── Diagnostic signs ─────────────────────────────────────────────
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
 -- ─── neo-tree ─────────────────────────────────────────────────────
 local opts = {
   commands = {
@@ -31,7 +25,7 @@ local opts = {
   },
   window = {
     mappings = {
-      ["\\"] = "filetree_toggle",
+      ["\\"] = { "filetree_toggle", desc = "Hide file tree" },
       ["<space>"] = {
         "toggle_node",
         nowait = true,
@@ -78,20 +72,13 @@ local opts = {
     use_libuv_file_watcher = true,
     find_command = "fd",
     find_args = {
-      fd = {
-        "--exclude",
-        ".git",
-        "--exclude",
-        "dist",
-        "--exclude",
-        "node_modules",
-        "--exclude",
-        ".idea",
-        "--exclude",
-        "storybook-static",
-        "--exclude",
-        "coverage",
-      },
+      fd = vim
+        .iter({ ".git", "dist", "node_modules", ".idea", "storybook-static", "coverage" })
+        :map(function(dir)
+          return { "--exclude", dir }
+        end)
+        :flatten()
+        :totable(),
     },
     filtered_items = {
       visible = false,
@@ -124,4 +111,4 @@ require("rogemus.lazy").command("Neotree", load_neotree)
 vim.keymap.set("n", "\\", function()
   load_neotree()
   vim.cmd("Neotree float reveal")
-end)
+end, { desc = "Open file tree" })

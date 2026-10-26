@@ -26,7 +26,6 @@ local test_globs = {
   "*.test.ts",
   "*.test.tsx",
   "*.po.ts",
-  "*.po.ts",
   "*.assertion.ts",
 }
 
@@ -113,7 +112,7 @@ vim.keymap.set("n", "<leader>gs", fzf_cmd("git_status"), { desc = "Git Status" }
 vim.keymap.set("n", "<leader>/", fzf_cmd("grep_curbuf"), { desc = "Find in current file" })
 vim.keymap.set("n", "<leader>m", fzf_cmd("marks"), { desc = "Marks" })
 vim.keymap.set("n", "<leader>td", function()
-  M.get().grep({ search = "TODO|HACK|PERF|NOTE|FIX|FIXMEs", no_esc = true, rg_opts = search_opts().rg_opts })
+  M.get().grep({ search = "TODO|HACK|PERF|NOTE|FIX|FIXME", no_esc = true, rg_opts = search_opts().rg_opts })
 end, { desc = "List todos" })
 
 return M
