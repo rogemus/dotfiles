@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # ─── Completion ────────────────────────────────────────────────────
-# Sourced after plugin-load so zsh-completions is on fpath.
+# Sourced after zsh-plugin-load so zsh-completions is on fpath.
 # The dump is reused as-is and compiled once. Run `update-comp` after installing a tool.
 _zcache=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
 [[ -d $_zcache ]] || mkdir -p $_zcache

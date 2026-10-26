@@ -5,7 +5,7 @@ macOS (Apple Silicon) setup for web development, centred on the terminal: **ghos
 | Tool       | Config                                     | Notes                                                |
 | ---------- | ------------------------------------------ | ---------------------------------------------------- |
 | ghostty    | `ghostty/.config/ghostty/config`           | Fira Code Nerd Font, Option acts as Alt              |
-| zsh        | `zsh/.config/zsh/`, `zsh/.zprofile`        | zsh_unplugged plugins, fzf, zoxide, lazy nvm         |
+| zsh        | `zsh/.config/zsh/`, `zsh/.zprofile`        | own plugin loader, fzf, zoxide, lazy nvm         |
 | tmux       | `tmux/.config/tmux/tmux.conf`              | Prefix `Ctrl-A`, vi copy mode                        |
 | neovim     | `nvim/.config/nvim/`                       | Neovim 0.12 with `vim.pack`, LSP, fzf-lua, blink.cmp |
 | lazygit    | `lazygit/.config/lazygit/config.yml`       | delta diffs, Catppuccin theme                        |
@@ -31,6 +31,8 @@ It runs the scripts in `scripts/` in order and skips steps that are already done
 7. `7_stow.sh` – stows `nvim zsh git lazygit tmux ghostty lazydocker`
 
 > `7_stow.sh` **deletes** the existing `~/.zprofile`, `~/.zshrc`, `~/.zshenv`, `~/.gitconfig`, `~/.hushlogin` and the matching folders in `~/.config` before linking. Back up anything you want to keep.
+
+`zsh-plugin-load` is adapted from [zsh_unplugged](https://github.com/mattmc3/zsh_unplugged) by mattmc3 (Unlicense), see `zsh/.config/zsh/modules/plugins.zsh`.
 
 Machine-specific zsh settings go in `~/.config/zsh/.workrc` and `~/.config/zsh/.personalrc`. Both are optional and git-ignored.
 
@@ -107,6 +109,9 @@ Commands and behaviour:
 | `gclear`                   | Delete merged local branches except the current one, `develop`, `main` and `master`              |
 | `zshtime`                  | Time an interactive shell start                                                                  |
 | `update-comp`              | Rebuild the completion cache (`~/.cache/zsh`) and restart zsh. Run it after installing a new tool |
+| `zsh-plugin-load <owner/repo[@sha]>` | Clone a GitHub plugin, link its init file and source it. Used in `.zshrc`                |
+| `zsh-plugin-update`            | `git pull` every cloned plugin (pinned ones are skipped). Restart zsh afterwards                  |
+| `zsh-plugin-outdated`      | List every plugin with current hash, date and status (up to date, outdated, pinned)                         |
 | `AUTO_CD`, `AUTO_PUSHD`    | Type a directory name to enter it. `dirs -v` lists the directory stack, `cd ~2` jumps to entry 2 |
 | `.nvmrc` / `.node-version` | Checked on `cd` and at shell start. nvm loads only when a different Node version is needed       |
 
