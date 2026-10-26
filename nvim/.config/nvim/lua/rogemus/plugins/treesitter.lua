@@ -1,6 +1,7 @@
 -- ─── Highlight and indent ─────────────────────────────────────────
 -- Enabled for every filetype
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("rogemus-treesitter", { clear = true }),
   callback = function()
     pcall(vim.treesitter.start)
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

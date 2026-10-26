@@ -47,14 +47,8 @@ local opts = {
     },
   },
 
-  cmdline = {
-    keymap = { preset = "inherit" },
-    completion = {
-      menu = {
-        auto_show = true,
-      },
-    },
-  },
+  -- Native completion on the command line
+  cmdline = { enabled = false },
 
   fuzzy = { implementation = "prefer_rust_with_warning" },
 }
@@ -69,8 +63,8 @@ function M.get()
   return require("blink.cmp")
 end
 
--- lsp.lua loads it right after startup, this covers typing or the command line before that
-vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
+-- lsp.lua loads it right after startup, this covers typing before that
+vim.api.nvim_create_autocmd("InsertEnter", {
   once = true,
   callback = function()
     M.get()

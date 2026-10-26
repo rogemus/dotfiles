@@ -8,3 +8,20 @@ vim.api.nvim_create_user_command("WipeBuffers", function()
     end
   end, bufinfos)
 end, { desc = "Wipeout all buffers not shown in a window" })
+
+-- ─── Plugins ──────────────────────────────────────────────────────
+vim.api.nvim_create_user_command("Pack", function()
+  require("rogemus.pack.outdated").open()
+end, { desc = "Show plugins with available updates in a floating window" })
+
+-- ─── Config ───────────────────────────────────────────────────────
+vim.api.nvim_create_user_command("NvimRefresh", function()
+  -- Forget every module of the config, so `require` runs the files again
+  for name in pairs(package.loaded) do
+    if name == "rogemus" or vim.startswith(name, "rogemus.") then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.fn.stdpath("config") .. "/init.lua")
+  vim.notify("Config reloaded")
+end, { desc = "Reload the nvim config without restarting" })

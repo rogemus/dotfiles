@@ -176,12 +176,17 @@ local function enable_servers()
   vim.lsp.enable("oxfmt")
 end
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  once = true,
-  callback = function()
-    vim.schedule(enable_servers)
-  end,
-})
+-- :NvimRefresh runs this file again after VimEnter has already fired
+if vim.v.vim_did_enter == 1 then
+  vim.schedule(enable_servers)
+else
+  vim.api.nvim_create_autocmd("VimEnter", {
+    once = true,
+    callback = function()
+      vim.schedule(enable_servers)
+    end,
+  })
+end
 
 -- ─── Diagnostics ──────────────────────────────────────────────────
 vim.diagnostic.config({

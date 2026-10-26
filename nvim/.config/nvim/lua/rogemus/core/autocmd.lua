@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- ─── Auto save ────────────────────────────────────────────────────
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+  group = vim.api.nvim_create_augroup("rogemus-auto-save", { clear = true }),
   pattern = "*",
   desc = "Auto save files after edit",
   callback = function()
