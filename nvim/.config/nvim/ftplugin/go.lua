@@ -24,7 +24,7 @@ vim.keymap.set("n", "<leader>js", function()
   local new_line = current_line .. fieldTag
 
   vim.api.nvim_set_current_line(new_line)
-end, { desc = "Add JSON filed tags" })
+end, { buffer = true, desc = "Add JSON filed tags" })
 
 -- ─── Keymap: debug print ──────────────────────────────────────────
 vim.keymap.set("n", "<leader>lo", function()
@@ -38,4 +38,4 @@ vim.keymap.set("n", "<leader>lo", function()
   local line_nr = vim.api.nvim_win_get_cursor(0)[1]
   local console_text = 'print("' .. word .. ':", ' .. word .. ', "\\n"' .. ");"
   vim.api.nvim_buf_set_lines(0, line_nr, line_nr, false, { console_text })
-end, { desc = "Add debug print" })
+end, { buffer = true, desc = "Add debug print" })

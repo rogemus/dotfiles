@@ -10,7 +10,7 @@ vim.keymap.set("n", "<leader>lo", function()
   local line_nr = vim.api.nvim_win_get_cursor(0)[1]
   local console_text = 'console.log("' .. word .. ':", ' .. word .. ");"
   vim.api.nvim_buf_set_lines(0, line_nr, line_nr, false, { console_text })
-end, { desc = "Add debug console.log" })
+end, { buffer = true, desc = "Add debug console.log" })
 
 -- ─── Keymap: console.dir ──────────────────────────────────────────
 vim.keymap.set("n", "<leader>di", function()
@@ -24,4 +24,4 @@ vim.keymap.set("n", "<leader>di", function()
   local line_nr = vim.api.nvim_win_get_cursor(0)[1]
   local console_text = "console.dir(" .. word .. ", { depth: null, showHidden: true });"
   vim.api.nvim_buf_set_lines(0, line_nr, line_nr, false, { console_text })
-end, { desc = "Add debug console.dir" })
+end, { buffer = true, desc = "Add debug console.dir" })
