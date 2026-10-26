@@ -20,11 +20,20 @@ vim.pack.add({
     version = vim.version.range("1.0"),
   },
 
-  -- Fuzzy finder
-  { src = "https://github.com/ibhagwan/fzf-lua" },
-
   -- Statusline
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
+
+  -- Navigation
+  { src = "https://github.com/folke/flash.nvim" },
+}, {
+  load = true,
+})
+
+-- ─── Lazy plugins ─────────────────────────────────────────────────
+-- Installed, but only added to 'runtimepath' on first use, see rogemus/lazy.lua
+vim.pack.add({
+  -- Fuzzy finder
+  { src = "https://github.com/ibhagwan/fzf-lua" },
 
   -- Git integration
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
@@ -34,13 +43,10 @@ vim.pack.add({
   { src = "https://github.com/nvim-lua/plenary.nvim" },
   { src = "https://github.com/MunifTanjim/nui.nvim" },
 
-  -- Navigation
-  { src = "https://github.com/folke/flash.nvim" },
-
   -- Formatting
   { src = "https://github.com/stevearc/conform.nvim" },
 }, {
-  load = true,
+  load = function() end,
 })
 
 -- ─── Plugin configuration ─────────────────────────────────────────

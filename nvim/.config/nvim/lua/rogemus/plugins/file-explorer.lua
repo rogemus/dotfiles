@@ -5,7 +5,7 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignI
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 -- ─── neo-tree ─────────────────────────────────────────────────────
-require("neo-tree").setup({
+local opts = {
   commands = {
     open_in_finder = function(state)
       local node = state.tree:get_node()
@@ -109,7 +109,19 @@ require("neo-tree").setup({
       leave_dirs_open = false,
     },
   },
-})
+}
+
+-- Add neo-tree and its dependencies to 'runtimepath' and configure it on first use
+local function load_neotree()
+  require("rogemus.lazy").once("neo-tree", { "plenary.nvim", "nui.nvim", "neo-tree.nvim" }, function()
+    require("neo-tree").setup(opts)
+  end)
+end
+
+require("rogemus.lazy").command("Neotree", load_neotree)
 
 -- ─── Keymaps ──────────────────────────────────────────────────────
-vim.keymap.set("n", "\\", "<Cmd>Neotree float reveal<CR>")
+vim.keymap.set("n", "\\", function()
+  load_neotree()
+  vim.cmd("Neotree float reveal")
+end)

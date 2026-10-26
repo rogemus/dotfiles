@@ -82,13 +82,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
     end
 
-    local fzf = require("fzf-lua")
-    map("gd", fzf.lsp_definitions, "[G]oto [D]efinition")
-    map("<leader>gr", fzf.lsp_references, "[G]oto [R]eferences")
-    map("gI", fzf.lsp_implementations, "[G]oto [I]mplementation")
-    map("<leader>D", fzf.lsp_typedefs, "Type [D]efinition")
-    map("<leader>ds", fzf.lsp_document_symbols, "[D]ocument [S]ymbols")
-    map("<leader>ws", fzf.lsp_workspace_symbols, "[W]orkspace [S]ymbols")
+    -- fzf-lua is loaded on first use
+    local function fzf(name)
+      return function()
+        require("rogemus.plugins.fzf").get()[name]()
+      end
+    end
+    map("gd", fzf("lsp_definitions"), "[G]oto [D]efinition")
+    map("<leader>gr", fzf("lsp_references"), "[G]oto [R]eferences")
+    map("gI", fzf("lsp_implementations"), "[G]oto [I]mplementation")
+    map("<leader>D", fzf("lsp_typedefs"), "Type [D]efinition")
+    map("<leader>ds", fzf("lsp_document_symbols"), "[D]ocument [S]ymbols")
+    map("<leader>ws", fzf("lsp_workspace_symbols"), "[W]orkspace [S]ymbols")
     map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
     map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")

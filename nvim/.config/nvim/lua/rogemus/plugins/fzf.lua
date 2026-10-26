@@ -47,7 +47,7 @@ local function toggle_tests()
 end
 
 -- ─── Setup ────────────────────────────────────────────────────────
-require("fzf-lua").setup({
+local opts = {
   files = {
     path_shorten = 6,
     formatter = "path.filename_first",
@@ -76,23 +76,44 @@ require("fzf-lua").setup({
     ["--marker"] = "✓",
     ["--info"] = "inline",
   },
-})
+}
+
+local M = {}
+
+-- Add fzf-lua to 'runtimepath' and configure it on first use, returns the module
+function M.get()
+  require("rogemus.lazy").once("fzf-lua", { "fzf-lua" }, function()
+    require("fzf-lua").setup(opts)
+  end)
+  return require("fzf-lua")
+end
+
+require("rogemus.lazy").command("FzfLua", M.get)
 
 -- ─── Keymaps ──────────────────────────────────────────────────────
-vim.keymap.set("n", "=", "<cmd>FzfLua buffers<cr>", { desc = "Open files" })
+local function fzf_cmd(args)
+  return function()
+    M.get()
+    vim.cmd("FzfLua " .. args)
+  end
+end
+
+vim.keymap.set("n", "=", fzf_cmd("buffers"), { desc = "Open files" })
 vim.keymap.set("n", "<leader>fs", function()
-  require("fzf-lua").live_grep({ rg_opts = search_opts().rg_opts })
+  M.get().live_grep({ rg_opts = search_opts().rg_opts })
 end, { desc = "Grep in files (Find in Files)" })
 vim.keymap.set("n", "-", function()
-  require("fzf-lua").files({ fd_opts = search_opts().fd_opts })
+  M.get().files({ fd_opts = search_opts().fd_opts })
 end, { desc = "Find File" })
 vim.keymap.set("n", "<leader>ft", toggle_tests, { desc = "Toggle ignoring test files in fzf" })
 vim.api.nvim_create_user_command("FzfToggleTests", toggle_tests, { desc = "Toggle ignoring test files in fzf" })
-vim.keymap.set("n", "0", "<cmd>FzfLua oldfiles<cr>", { desc = "Recent Files" })
-vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua oldfiles<cr>", { desc = "Recent Files" })
-vim.keymap.set("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" })
-vim.keymap.set("n", "<leader>/", "<cmd>FzfLua grep_curbuf<cr>", { desc = "Find in current file" })
-vim.keymap.set("n", "<leader>m", "<cmd>FzfLua marks<cr>", { desc = "Marks" })
+vim.keymap.set("n", "0", fzf_cmd("oldfiles"), { desc = "Recent Files" })
+vim.keymap.set("n", "<leader>fr", fzf_cmd("oldfiles"), { desc = "Recent Files" })
+vim.keymap.set("n", "<leader>gs", fzf_cmd("git_status"), { desc = "Git Status" })
+vim.keymap.set("n", "<leader>/", fzf_cmd("grep_curbuf"), { desc = "Find in current file" })
+vim.keymap.set("n", "<leader>m", fzf_cmd("marks"), { desc = "Marks" })
 vim.keymap.set("n", "<leader>td", function()
-  require("fzf-lua").grep({ search = "TODO|HACK|PERF|NOTE|FIX|FIXMEs", no_esc = true, rg_opts = search_opts().rg_opts })
+  M.get().grep({ search = "TODO|HACK|PERF|NOTE|FIX|FIXMEs", no_esc = true, rg_opts = search_opts().rg_opts })
 end, { desc = "List todos" })
+
+return M

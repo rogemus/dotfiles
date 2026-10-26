@@ -1,15 +1,7 @@
--- ─── Format on save toggle ────────────────────────────────────────
+-- ─── Format on save ───────────────────────────────────────────────
 vim.g.auto_formater_enabled = false
 
-vim.api.nvim_create_user_command("FormatToggle", function()
-  vim.g.auto_formater_enabled = not vim.g.auto_formater_enabled
-  local msg = vim.g.auto_formater_enabled and "Format on Save enabled!" or "Format on Save disabled!"
-  print(msg)
-end, { desc = "Toggle AutoFormatter" })
-
 -- ─── Formatters ───────────────────────────────────────────────────
-local conform = require("conform")
-
 local prettier_configs = {
   ".prettierrc",
   ".prettierrc.json",
@@ -32,12 +24,7 @@ local function has_biome(_, ctx)
   return vim.fs.find({ "biome.json", "biome.jsonc" }, { path = ctx.filename, upward = true })[1] ~= nil
 end
 
--- conditions gate each formatter to its own project type
-conform.formatters.prettierd = { condition = has_prettier }
-conform.formatters.prettier = { condition = has_prettier }
-conform.formatters.biome = { condition = has_biome }
-
-conform.setup({
+local opts = {
   formatters_by_ft = {
     -- prettier first (condition-gated), then biome, then oxfmt as unconditional fallback
     html = { "prettierd", "prettier", "biome", "oxfmt", stop_after_first = true },
@@ -67,11 +54,33 @@ conform.setup({
       timeout_ms = 3000,
     }
   end,
-})
+}
+
+-- Add conform to 'runtimepath' and configure it on first use, returns the module
+local function load_conform()
+  require("rogemus.lazy").once("conform", { "conform.nvim" }, function()
+    local conform = require("conform")
+    -- conditions gate each formatter to its own project type
+    conform.formatters.prettierd = { condition = has_prettier }
+    conform.formatters.prettier = { condition = has_prettier }
+    conform.formatters.biome = { condition = has_biome }
+    conform.setup(opts)
+  end)
+  return require("conform")
+end
+
+-- ─── Format on save toggle ────────────────────────────────────────
+-- Loading conform here registers its format_on_save autocmd
+vim.api.nvim_create_user_command("FormatToggle", function()
+  load_conform()
+  vim.g.auto_formater_enabled = not vim.g.auto_formater_enabled
+  local msg = vim.g.auto_formater_enabled and "Format on Save enabled!" or "Format on Save disabled!"
+  print(msg)
+end, { desc = "Toggle AutoFormatter" })
 
 -- ─── Format keymap ────────────────────────────────────────────────
 local format_buffer = function()
-  conform.format({
+  load_conform().format({
     lsp_format = "fallback",
     async = false,
     timeout_ms = 3000,
