@@ -1,26 +1,52 @@
 # Dotfiles
 
-macOS (Apple Silicon) setup for web development, centred on the terminal: **ghostty + zsh + tmux + neovim + lazygit**. Everything uses the Catppuccin Mocha palette on a black background. Packages are symlinked into `$HOME` with [GNU Stow](https://www.gnu.org/software/stow/).
+⚡ This repo houses my main personal development setup with dotfiles for Neovim, Zsh, Git, and more.
 
-| Tool       | Config                                     | Notes                                                |
-| ---------- | ------------------------------------------ | ---------------------------------------------------- |
-| ghostty    | `ghostty/.config/ghostty/config`           | Fira Code Nerd Font, Option acts as Alt              |
-| zsh        | `zsh/.config/zsh/`, `zsh/.zshenv`, `zsh/.zprofile` | own plugin loader, fzf, zoxide, lazy nvm         |
-| tmux       | `tmux/.config/tmux/tmux.conf`              | Prefix `Ctrl-A`, vi copy mode                        |
-| neovim     | `nvim/.config/nvim/`                       | Neovim 0.12 with `vim.pack`, LSP, fzf-lua, blink.cmp |
-| lazygit    | `lazygit/.config/lazygit/config.yml`       | delta diffs, Catppuccin theme                        |
-| lazydocker | `lazydocker/.config/lazydocker/config.yml` |                                                      |
-| git        | `git/.gitconfig`, `git/.config/git/`       | delta pager, ignore and attributes, hook templates   |
+It targets macOS on Apple Silicon and lives in the terminal, with ghostty, tmux and lazygit alongside the rest. Everything uses Catppuccin Mocha on a black background. Each tool's config sits in its own folder, and [GNU Stow](https://www.gnu.org/software/stow/) symlinks them into `$HOME`.
+
+## Table of contents
+
+- [What's inside](#whats-inside)
+- [Requirements](#requirements)
+- [Installation](#installation)
+  - [Git identity](#git-identity)
+- [Repo layout](#repo-layout)
+- [Keybinds](#keybinds)
+  - [ghostty](#ghostty)
+  - [tmux](#tmux)
+  - [zsh](#zsh)
+  - [neovim](#neovim)
+  - [lazygit](#lazygit)
+
+## What's inside
+
+| Tool       | Config                                             | Notes                                                |
+| ---------- | -------------------------------------------------- | ---------------------------------------------------- |
+| ghostty    | `ghostty/.config/ghostty/config`                   | Fira Code Nerd Font, Option acts as Alt              |
+| zsh        | `zsh/.config/zsh/`, `zsh/.zshenv`, `zsh/.zprofile` | own plugin loader, fzf, zoxide, lazy nvm             |
+| tmux       | `tmux/.config/tmux/tmux.conf`                      | Prefix `Ctrl-A`, vi copy mode                        |
+| neovim     | `nvim/.config/nvim/`                               | Neovim 0.12 with `vim.pack`, LSP, fzf-lua, blink.cmp |
+| lazygit    | `lazygit/.config/lazygit/config.yml`               | delta diffs, Catppuccin theme                        |
+| lazydocker | `lazydocker/.config/lazydocker/config.yml`         |                                                      |
+| git        | `git/.gitconfig`, `git/.config/git/`               | delta pager, ignore and attributes, hook templates   |
+
+## Requirements
+
+- macOS on Apple Silicon.
+- An internet connection. Homebrew, packages, fonts and apps are all downloaded.
+- An admin account. The Xcode and Homebrew steps ask for `sudo`.
+- `git` to clone the repo. On a fresh Mac, running `git` prompts you to install the Xcode command line tools.
+- Signed in to the App Store, so `mas` can install the App Store apps in `5_apps.sh`.
 
 ## Installation
 
-Clone the repository (the setup expects projects under `~/Developer/random`), then run:
+Clone the repo into `~/Developer/random` (that's where the setup expects it), then run:
 
 ```sh
 ./setup.sh
 ```
 
-It runs the scripts in `scripts/` in order and skips steps that are already done:
+It runs the scripts in `scripts/` in order. Steps that are already done get skipped, so it's safe to run again:
 
 1. `1_xcode.sh` – Xcode command line tools
 2. `2_homebrew.sh` – Homebrew
@@ -31,22 +57,22 @@ It runs the scripts in `scripts/` in order and skips steps that are already done
 7. `7_git_user.sh` – asks for your git name and email (see [Git identity](#git-identity))
 8. `8_stow.sh` – stows `nvim zsh git lazygit tmux ghostty lazydocker`
 
-> `8_stow.sh` **deletes** the existing `~/.zprofile`, `~/.zshrc`, `~/.zshenv`, `~/.gitconfig`, `~/.hushlogin` and the matching folders in `~/.config` before linking. Back up anything you want to keep.
+> **Heads up:** `8_stow.sh` **deletes** your existing `~/.zprofile`, `~/.zshrc`, `~/.zshenv`, `~/.gitconfig`, `~/.hushlogin` and the matching folders in `~/.config` before linking. Back up anything you want to keep.
 
-`zsh-plugin-load` is adapted from [zsh_unplugged](https://github.com/mattmc3/zsh_unplugged) by mattmc3 (Unlicense), see `zsh/.config/zsh/modules/plugins.zsh`.
+`zsh-plugin-load` is adapted from [zsh_unplugged](https://github.com/mattmc3/zsh_unplugged) by mattmc3 (Unlicense). See `zsh/.config/zsh/modules/plugins.zsh`.
 
-Machine-specific zsh settings go in `~/.config/zsh/.workrc` and `~/.config/zsh/.personalrc`. Both are optional and git-ignored.
+For settings that only apply to one machine, use `~/.config/zsh/.workrc` and `~/.config/zsh/.personalrc`. Both are optional and git-ignored.
 
 ### Git identity
 
-`git/.gitconfig` has no `[user]` block, so the repo holds no personal data. It ends with `[include] path = ~/.gitconfig-user`, and that file holds your name and email.
+I keep my name and email out of the repo. `git/.gitconfig` has no `[user]` block. It ends with `[include] path = ~/.gitconfig-user`, and that file holds your name and email.
 
 - `git/.gitconfig-user` is git-ignored and stowed to `~/.gitconfig-user`.
 - `git/.gitconfig-user.example` is the committed template.
-- `scripts/7_git_user.sh` asks for name and email and creates `git/.gitconfig-user` (skipped if it exists). `setup.sh` runs it before stowing. Run it by hand on an already set up machine, then `stow git`.
+- `scripts/7_git_user.sh` creates `git/.gitconfig-user` (skipped if it exists). On an already set up machine, run it by hand, then `stow git`.
 - Change the identity by editing `~/.gitconfig-user` or with `git config --file ~/.gitconfig-user user.email <email>`. `git config --global` writes to `~/.gitconfig`, but the include sits at the end of that file, so the included value still wins.
 
-## Layout
+## Repo layout
 
 ```
 setup.sh            runs scripts/1..8
@@ -113,18 +139,18 @@ Windows and panes start at 1. `focus-events` is on so nvim reloads files changed
 
 Commands and behaviour:
 
-| Command                    | Action                                                                                           |
-| -------------------------- | ------------------------------------------------------------------------------------------------ |
-| `cd <name>`                | zoxide jump to the best match (a real path still works as plain `cd`)                            |
-| `cdi`                      | Interactive zoxide picker                                                                        |
-| `gclear`                   | Delete merged local branches except the current one, `develop`, `main` and `master`              |
-| `zshtime`                  | Time an interactive shell start                                                                  |
-| `update-comp`              | Rebuild the completion and fzf, zoxide, just init caches (`~/.cache/zsh`) and restart zsh. Run it after installing a tool |
-| `zsh-plugin-load <owner/repo[@sha]>` | Clone a GitHub plugin, link its init file and source it. Used in `.zshrc`                |
-| `zsh-plugin-update`            | `git pull` every cloned plugin, one by one, with a spinner (pinned skipped). Restart zsh afterwards|
-| `zsh-plugin-outdated`      | List every plugin with current hash, date and status (up to date, outdated, pinned)                         |
-| `AUTO_CD`                  | Type a directory name to enter it, no `cd` needed                                                |
-| `.nvmrc` / `.node-version` | Checked on `cd` and at shell start. nvm loads only when a different Node version is needed       |
+| Command                              | Action                                                                                                                    |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| `cd <name>`                          | zoxide jump to the best match (a real path still works as plain `cd`)                                                     |
+| `cdi`                                | Interactive zoxide picker                                                                                                 |
+| `gclear`                             | Delete merged local branches except the current one, `develop`, `main` and `master`                                       |
+| `zshtime`                            | Time an interactive shell start                                                                                           |
+| `update-comp`                        | Rebuild the completion and fzf, zoxide, just init caches (`~/.cache/zsh`) and restart zsh. Run it after installing a tool |
+| `zsh-plugin-load <owner/repo[@sha]>` | Clone a GitHub plugin, link its init file and source it. Used in `.zshrc`                                                 |
+| `zsh-plugin-update`                  | `git pull` every cloned plugin, one by one, with a spinner (pinned skipped). Restart zsh afterwards                       |
+| `zsh-plugin-outdated`                | List every plugin with current hash, date and status (up to date, outdated, pinned)                                       |
+| `AUTO_CD`                            | Type a directory name to enter it, no `cd` needed                                                                         |
+| `.nvmrc` / `.node-version`           | Checked on `cd` and at shell start. nvm loads only when a different Node version is needed                                |
 
 Main aliases from `.aliasesrc`:
 
@@ -134,7 +160,7 @@ Main aliases from `.aliasesrc`:
 | `cat`, `catf`                                 | bat (with header and grid / plain)                             |
 | `vi`, `vim`                                   | nvim                                                           |
 | `lzg`, `lzd`                                  | lazygit, lazydocker                                            |
-| `tx`, `txu`                                   | tmux, tmxu                                                     |
+| `tx`, `txu`                                   | tmux, [tmxu](https://github.com/rogemus/tmxu)                  |
 | `g`, `gs`, `gd`, `gl`, `gf`, `gp`, `gP`, `gm` | git, status, diff, log, fetch, pull, push, merge               |
 | `gc`, `gC`, `gA`, `gb`, `greset`              | commit -am, checkout, add ., fzf branch checkout, reset --hard |
 | `fzfp`, `fzfv`                                | fzf with preview, fzf opening the file in nvim                 |
