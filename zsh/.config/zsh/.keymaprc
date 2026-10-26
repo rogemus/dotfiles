@@ -9,3 +9,9 @@ bindkey "^[[1;5D" backward-word
 # ─── History substring search ──────────────────────────────────────
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# ─── Edit command in $EDITOR ───────────────────────────────────────
+# Option-X (Alt-X, see ghostty macos-option-as-alt): edit the current line in the editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^[x' edit-command-line

@@ -96,6 +96,7 @@ Windows and panes start at 1. `focus-events` is on so nvim reloads files changed
 | `Ctrl-R` or `Option-R` | fzf history search                                       |
 | `Option-F`             | fzf file picker (bat preview), pastes the path           |
 | `Option-D`             | fzf directory picker (eza tree preview), changes into it |
+| `Option-X`             | Edit the current command line in nvim                    |
 | `↑` / `↓`              | History search by what you have typed                    |
 | `Home` / `End`         | Start / end of line                                      |
 | `Ctrl-←` / `Ctrl-→`    | Previous / next word                                     |

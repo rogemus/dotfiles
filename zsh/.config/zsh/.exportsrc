@@ -27,13 +27,13 @@ setopt AUTO_CD
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=#a6e3a1,fg=#11111b,bold'
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=#f38ba8,fg=#11111b,bold'
 
+# ─── Editor ────────────────────────────────────────────────────────
+export EDITOR=nvim
+
 # ─── Locale ────────────────────────────────────────────────────────
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-
-# ─── Maven ─────────────────────────────────────────────────────────
-# export M2_HOME=/Applications/maven
 
 # ─── Node (nvm) ────────────────────────────────────────────────────
 export NVM_DIR="$HOME/.nvm"
@@ -64,12 +64,8 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export GOROOT="/opt/homebrew/opt/golang/libexec"
 
-# ─── Docker ────────────────────────────────────────────────────────
-# export COLIMA_HOME="${HOME}/.config/colima"
-# export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
-
 # ─── pnpm ──────────────────────────────────────────────────────────
-export PNPM_HOME='/Users/kacper.rogowski/.local/share/pnpm'
+export PNPM_HOME="$HOME/.local/share/pnpm"
 
 # ─── curl ──────────────────────────────────────────────────────────
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"

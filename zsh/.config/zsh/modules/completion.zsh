@@ -50,6 +50,6 @@ _zsh_cache_init zoxide zoxide zoxide init zsh --cmd cd
 _zsh_cache_init just just env JUST_COMPLETE=zsh just
 
 # ─── bun completions ───────────────────────────────────────────────
-[ -s "/Users/kacper.rogowski/.bun/_bun" ] && source "/Users/kacper.rogowski/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 unset _zcache
