@@ -22,24 +22,27 @@ local servers = {
     },
   },
   postgres_lsp = {},
-  -- ts_ls = {},
   ts_ls = {
-    root_dir = require("lspconfig").util.root_pattern({ "package.json", "yarn.lock" }),
-    single_file_support = false,
+    root_markers = { "package.json", "yarn.lock" },
+    workspace_required = true,
   },
   -- denols = {
-  --   root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
-  --   single_file_support = false,
+  --   root_markers = { "deno.json", "deno.jsonc" },
+  --   workspace_required = true,
   --   settings = {},
   -- },
   -- svelte = {},
   gopls = {
-    experimentalPostfixCompletions = true,
-    analyses = {
-      unusedparams = true,
-      shadow = true,
+    settings = {
+      gopls = {
+        experimentalPostfixCompletions = true,
+        analyses = {
+          unusedparams = true,
+          shadow = true,
+        },
+        staticcheck = true,
+      },
     },
-    staticcheck = true,
   },
   eslint = {},
   biome = {},
@@ -92,7 +95,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    client.server_capabilities.documentFormatingProvider = true
 
     if
       client
@@ -140,18 +142,16 @@ mason_tool_installer.setup({
 
 mason_lspconfig.setup({
   ensure_installed = {},
-  automatic_installation = true,
-  handlers = {
-    function(server_name)
-      local server = servers[server_name] or {}
-      -- This handles overriding only values explicitly passed
-      -- by the server configuration above. Useful when disabling
-      -- certain features of an LSP (for example, turning off formatting for ts_ls)
-      server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-      require("lspconfig")[server_name].setup(server)
-    end,
-  },
+  automatic_enable = false,
 })
+
+for name, cfg in pairs(servers) do
+  -- Only values explicitly set above override the defaults. Useful when disabling
+  -- certain features of an LSP (for example, turning off formatting for ts_ls)
+  cfg.capabilities = vim.tbl_deep_extend("force", {}, capabilities, cfg.capabilities or {})
+  vim.lsp.config(name, cfg)
+end
+vim.lsp.enable(vim.tbl_keys(servers))
 
 -- oxfmt (oxc formatter/linter LSP) - install via: npm i -g oxfmt
 vim.lsp.enable("oxfmt")

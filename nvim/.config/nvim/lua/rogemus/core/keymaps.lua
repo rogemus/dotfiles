@@ -16,7 +16,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 vim.keymap.set("n", "]t", "<Cmd>tabnext<CR>", { desc = "Go to next tab" })
 vim.keymap.set("n", "[t", "<Cmd>tabprev<CR>", { desc = "Go to prev tab" })
-vim.keymap.set("n", "]T", "<Cmd>tabfir<CR>", { desc = "Go to first tab" })
+vim.keymap.set("n", "[T", "<Cmd>tabfirst<CR>", { desc = "Go to first tab" })
 vim.keymap.set("n", "]T", "<Cmd>tablast<CR>", { desc = "Go to last tab" })
 
 -- Buffer
@@ -28,7 +28,7 @@ vim.keymap.set("n", "<leader>}", "<Cmd>blast<CR>", { desc = "Go to last buffer" 
 vim.keymap.set(
   "n",
   "<leader>bD",
-  "<Cmd>WipeWindowlessBufs<CR>",
+  "<Cmd>WipeBuffers<CR>",
   { desc = "[B]uffer [D]elete [A]ll (close buffer all)" }
 )
 

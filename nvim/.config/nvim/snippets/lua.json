@@ -1,11 +1,19 @@
 {
-  "fun": {
-    "prefix": "fun",
-    "body": "function ${1:fname}(${2:...})\n$0\nend"
-  },
   "local": {
     "prefix": "ls",
-    "body": "local ${1:functionName} = function (${2})\n${0}\nend"
+    "body": [
+      "local ${1:functionName} = function (${2})",
+      "  ${0}",
+      "end"
+    ]
+  },
+  "fun": {
+    "prefix": "fun",
+    "body": [
+      "function ${1:fname}(${2:...})",
+      "  $0",
+      "end"
+    ]
   },
   "var": {
     "prefix": "var",

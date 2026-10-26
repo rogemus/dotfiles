@@ -32,13 +32,10 @@ vim.opt.incsearch = true -- Show matches as you type
 -- vim.opt.wrap = false
 -- vim.opt.updatetime = 50
 vim.opt.swapfile = false
-vim.opt.autoread = true
-vim.opt.autowrite = true
 
 -- Save undo history
 vim.opt.backup = false -- Don't create backup files
 vim.opt.writebackup = false -- Don't create backup before writing
-vim.opt.swapfile = false -- Don't create swap files
 vim.opt.undofile = true -- Persistent undo
 vim.opt.undolevels = 10000
 vim.opt.undodir = vim.fn.expand("~/.config/nvim/undodir") -- Undo directory

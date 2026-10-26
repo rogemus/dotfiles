@@ -48,10 +48,9 @@ alias gs="git status"
 alias gd="git diff"
 alias gl="git lg"
 alias gf="git fetch"
-alias gclear="git branch | grep -v "develop" | xargs git branch -d"
+alias gclear='git branch | grep -vE "^\*|develop|main|master" | xargs git branch -d'
 alias greset="git reset --hard HEAD"
 alias gb="git checkout \$(git branch | fzf --height=30% --border --info=inline)"
-alias gd="git diff"
 
 ## Docker
 alias dockerdie="docker system prune --volumes -a -f"

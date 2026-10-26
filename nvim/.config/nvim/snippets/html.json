@@ -1,7 +1,19 @@
 {
   "doc": {
     "prefix": "doc",
-    "body": "!DOCTYPE html>\n<html>\n<head>\n<title>Title of the document</title>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width\">\n</head>\n<body>\n${0}\n</body>\n</html>"
+    "body": [
+      "<!DOCTYPE html>",
+      "<html>",
+      "  <head>",
+      "    <title>Title of the document</title>",
+      "    <meta charset=\"utf-8\">",
+      "    <meta name=\"viewport\" content=\"width=device-width\">",
+      "  </head>",
+      "  <body>",
+      "    ${0}",
+      "  </body>",
+      "</html>"
+    ]
   },
   "link:css": {
     "prefix": "link:css",

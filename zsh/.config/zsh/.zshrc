@@ -16,6 +16,12 @@ repos=(
 
 plugin-load $repos
 
+# Completion (after plugin-load so zsh-completions is on fpath)
+autoload -Uz compinit && compinit -C
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu select
+
+source $ZDOTDIR/.keymap
 source $ZDOTDIR/.aliasesrc
 source $ZDOTDIR/.hooksrc
 source $ZDOTDIR/.exportsrc
