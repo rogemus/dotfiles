@@ -59,5 +59,18 @@ alias dockerdie="docker system prune --volumes -a -f"
 alias txu="tmxu"
 alias tx="tmux"
 
+# Pick a project from zoxide history, create or switch to its tmux session
+tms() {
+  local dir name
+  dir=$(zoxide query -l | fzf --preview 'eza --tree --color=always --level=1 {}') || return
+  name=$(basename "$dir" | tr . _)
+  if [[ -n $TMUX ]]; then
+    tmux has-session -t "=$name" 2>/dev/null || tmux new-session -d -s "$name" -c "$dir"
+    tmux switch-client -t "=$name"
+  else
+    tmux new-session -A -s "$name" -c "$dir"
+  fi
+}
+
 ## AI
 alias ai="claude"

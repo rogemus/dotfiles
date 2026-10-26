@@ -30,6 +30,9 @@ for f in .workrc .personalrc; do
 done
 source $ZDOTDIR/.appsrc
 
+# Pick up .nvmrc when a terminal opens inside a project
+detect-node-version
+
 # Prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }

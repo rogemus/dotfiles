@@ -3,23 +3,30 @@
 # Hooks
 autoload -U add-zsh-hook
 
-function switch_to_new_version {
-  echo "Switching to new version..."
-  if command -v fnm &> /dev/null; then 
-    fnm use
-  elif command -v nvm &> /dev/null; then
-    nvm use
-  fi
+# nvm is loaded lazily: only on first `nvm` call or when a project asks for another Node version
+load_nvm() {
+  unset -f nvm load_nvm
+  source /opt/homebrew/opt/nvm/nvm.sh
+  source /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
 }
+nvm() { load_nvm && nvm "$@" }
 
 function detect-node-version {
-  if [ -f ./.nvmrc ]; then
-    echo "Detected $fg_bold[white].nvmrc$reset_color."
-    switch_to_new_version 
-  elif [ -f ./.node-version ]; then 
-    echo "Detected $fg_bold[white].node-version$reset_color."
-    switch_to_new_version
-  fi
+  setopt local_options extended_glob
+  local file required current
+  for file in .nvmrc .node-version; do [[ -f $file ]] && break; done
+  [[ -f $file ]] || return
+
+  required=${$(<$file)#v}
+  required=${required//[[:space:]]/}
+
+  # Current version, read from the node path (no subprocess)
+  [[ $commands[node] == */versions/node/v(#b)([0-9.]##)/bin/node ]] && current=$match[1]
+  [[ $current == $required ]] && return
+
+  echo "Detected $fg_bold[white]$file$reset_color. Switching to $required..."
+  (( $+functions[load_nvm] )) && load_nvm
+  nvm use "$required"
 }
 
 add-zsh-hook chpwd detect-node-version

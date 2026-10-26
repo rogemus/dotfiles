@@ -2,6 +2,10 @@
 
 # fzf
 eval "$(fzf --zsh)"
+bindkey -r '^T' '^[c'
+bindkey '^[r' fzf-history-widget # Option-R: recent commands (Ctrl-R stays)
+bindkey '^[f' fzf-file-widget    # Option-F: files
+bindkey '^[d' fzf-cd-widget      # Option-D: directories
 
 # Zoxide
 eval "$(zoxide init zsh)"
