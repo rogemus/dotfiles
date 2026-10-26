@@ -44,7 +44,7 @@ git:
     - develop
 os:
   editPreset: "nvim"
-confirmOnQuit: true
+confirmOnQuit: false
 notARepository: skip
 refresher:
   fetchInterval: 300
