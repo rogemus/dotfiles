@@ -12,3 +12,4 @@ rectangle
 .zsh_sessions
 tmux-sessions.json
 undodir
+.gitconfig-user

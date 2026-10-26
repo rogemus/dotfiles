@@ -28,18 +28,28 @@ It runs the scripts in `scripts/` in order and skips steps that are already done
 4. `4_fonts.sh` – fonts
 5. `5_apps.sh` – apps (ghostty, rectangle, ...)
 6. `6_projectsdir.sh` – creates `~/Developer` and `~/Developer/random`
-7. `7_stow.sh` – stows `nvim zsh git lazygit tmux ghostty lazydocker`
+7. `7_git_user.sh` – asks for your git name and email (see [Git identity](#git-identity))
+8. `8_stow.sh` – stows `nvim zsh git lazygit tmux ghostty lazydocker`
 
-> `7_stow.sh` **deletes** the existing `~/.zprofile`, `~/.zshrc`, `~/.zshenv`, `~/.gitconfig`, `~/.hushlogin` and the matching folders in `~/.config` before linking. Back up anything you want to keep.
+> `8_stow.sh` **deletes** the existing `~/.zprofile`, `~/.zshrc`, `~/.zshenv`, `~/.gitconfig`, `~/.hushlogin` and the matching folders in `~/.config` before linking. Back up anything you want to keep.
 
 `zsh-plugin-load` is adapted from [zsh_unplugged](https://github.com/mattmc3/zsh_unplugged) by mattmc3 (Unlicense), see `zsh/.config/zsh/modules/plugins.zsh`.
 
 Machine-specific zsh settings go in `~/.config/zsh/.workrc` and `~/.config/zsh/.personalrc`. Both are optional and git-ignored.
 
+### Git identity
+
+`git/.gitconfig` has no `[user]` block, so the repo holds no personal data. It ends with `[include] path = ~/.gitconfig-user`, and that file holds your name and email.
+
+- `git/.gitconfig-user` is git-ignored and stowed to `~/.gitconfig-user`.
+- `git/.gitconfig-user.example` is the committed template.
+- `scripts/7_git_user.sh` asks for name and email and creates `git/.gitconfig-user` (skipped if it exists). `setup.sh` runs it before stowing. Run it by hand on an already set up machine, then `stow git`.
+- Change the identity by editing `~/.gitconfig-user` or with `git config --file ~/.gitconfig-user user.email <email>`. `git config --global` writes to `~/.gitconfig`, but the include sits at the end of that file, so the included value still wins.
+
 ## Layout
 
 ```
-setup.sh            runs scripts/1..7
+setup.sh            runs scripts/1..8
 scripts/            install steps
 nvim/               ~/.config/nvim
 zsh/                ~/.config/zsh, ~/.zshenv and ~/.zprofile (rc files plus modules/: node, completion, git, paths, plugins, spinner)

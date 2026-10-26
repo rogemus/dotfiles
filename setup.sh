@@ -42,7 +42,7 @@ run_script() {
 }
 
 # 1. Install Xcode Command Line Tools
-banner "Step 1/7: Xcode Command Line Tools"
+banner "Step 1/8: Xcode Command Line Tools"
 if xcode_installed; then
   info "Xcode Command Line Tools already installed, skipping..."
   echo ""
@@ -51,7 +51,7 @@ else
 fi
 
 # 2. Install Homebrew
-banner "Step 2/7: Homebrew"
+banner "Step 2/8: Homebrew"
 if command_exists brew; then
   info "Homebrew already installed, skipping..."
   echo ""
@@ -66,19 +66,19 @@ else
 fi
 
 # 3. Install Packages
-banner "Step 3/7: Homebrew Packages"
+banner "Step 3/8: Homebrew Packages"
 run_script "3_packages.sh"
 
 # 4. Install Fonts
-banner "Step 4/7: Fonts"
+banner "Step 4/8: Fonts"
 run_script "4_fonts.sh"
 
 # 5. Install Applications
-banner "Step 5/7: Applications"
+banner "Step 5/8: Applications"
 run_script "5_apps.sh"
 
 # 6. Create Project Directories
-banner "Step 6/7: Project Directories"
+banner "Step 6/8: Project Directories"
 if [ -d "$HOME/Developer" ]; then
   info "Project directories already exist, skipping..."
   echo ""
@@ -86,9 +86,13 @@ else
   run_script "6_projectsdir.sh"
 fi
 
-# 7. Stow Dotfiles
-banner "Step 7/7: Stowing Dotfiles"
-run_script "7_stow.sh"
+# 7. Git Identity
+banner "Step 7/8: Git Identity"
+run_script "7_git_user.sh"
+
+# 8. Stow Dotfiles
+banner "Step 8/8: Stowing Dotfiles"
+run_script "8_stow.sh"
 
 # Completion
 banner "Dotfiles Setup Complete!"

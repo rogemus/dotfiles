@@ -64,11 +64,6 @@
 [push]
   autoSetupRemote = true
 
-# ─── User ──────────────────────────────────────────────────────────
-[user]
-	name = Kacper Rogowski
-	email = rogemus@gmail.com
-
 # ─── Help ──────────────────────────────────────────────────────────
 [help]
 	autocorrect = prompt
@@ -96,3 +91,7 @@
 # ─── URL rewrites ──────────────────────────────────────────────────
 [url "ssh://git@github.com/example/repo"]
 	insteadOf = https://github.com/example/repo
+
+# ─── User (machine-specific, gitignored) ───────────────────────────
+[include]
+  path = ~/.gitconfig-user
