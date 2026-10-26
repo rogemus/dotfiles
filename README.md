@@ -182,6 +182,7 @@ Leader is `Space`.
 | `<leader>rn`                | Rename                                    |
 | `<leader>ca`                | Code action                               |
 | `K`                         | Hover documentation                       |
+| `Ctrl-s` (insert)           | Signature help                            |
 
 **Diagnostics**
 

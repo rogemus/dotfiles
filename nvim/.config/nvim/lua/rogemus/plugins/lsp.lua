@@ -99,9 +99,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.buf.hover({ border = "rounded" })
     end, "Hover Documentation")
 
-    map("CTRL-S", function()
+    map("<C-s>", function()
       vim.lsp.buf.signature_help({ border = "rounded" })
-    end, "Show signature help")
+    end, "Show signature help", "i")
 
     local function client_supports_method(client, method, bufnr)
       if vim.fn.has("nvim-0.11") == 1 then
