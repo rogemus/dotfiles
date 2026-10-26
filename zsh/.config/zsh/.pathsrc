@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# ─── PATH ──────────────────────────────────────────────────────────
+# First entry wins. Missing directories are skipped. Sourced after .exportsrc, which
+# defines PNPM_HOME, GOPATH and GOROOT
+paths=(
+  /opt/homebrew/opt/grep/libexec/gnubin
+  /opt/homebrew/opt/curl/bin
+  /opt/homebrew/bin
+  $HOME/.bun/bin
+  $PNPM_HOME/bin
+  $GOPATH/bin
+  $GOROOT/bin
+)
+
+zsh-path-add $paths

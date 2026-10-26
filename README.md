@@ -5,7 +5,7 @@ macOS (Apple Silicon) setup for web development, centred on the terminal: **ghos
 | Tool       | Config                                     | Notes                                                |
 | ---------- | ------------------------------------------ | ---------------------------------------------------- |
 | ghostty    | `ghostty/.config/ghostty/config`           | Fira Code Nerd Font, Option acts as Alt              |
-| zsh        | `zsh/.config/zsh/`, `zsh/.zprofile`        | own plugin loader, fzf, zoxide, lazy nvm         |
+| zsh        | `zsh/.config/zsh/`, `zsh/.zshenv`, `zsh/.zprofile` | own plugin loader, fzf, zoxide, lazy nvm         |
 | tmux       | `tmux/.config/tmux/tmux.conf`              | Prefix `Ctrl-A`, vi copy mode                        |
 | neovim     | `nvim/.config/nvim/`                       | Neovim 0.12 with `vim.pack`, LSP, fzf-lua, blink.cmp |
 | lazygit    | `lazygit/.config/lazygit/config.yml`       | delta diffs, Catppuccin theme                        |
@@ -42,7 +42,7 @@ Machine-specific zsh settings go in `~/.config/zsh/.workrc` and `~/.config/zsh/.
 setup.sh            runs scripts/1..7
 scripts/            install steps
 nvim/               ~/.config/nvim
-zsh/                ~/.config/zsh and ~/.zprofile (rc files plus modules/: node, completion, git, plugins, spinner)
+zsh/                ~/.config/zsh, ~/.zshenv and ~/.zprofile (rc files plus modules/: node, completion, git, paths, plugins, spinner)
 tmux/               ~/.config/tmux
 ghostty/            ~/.config/ghostty
 lazygit/            ~/.config/lazygit
@@ -108,11 +108,11 @@ Commands and behaviour:
 | `cdi`                      | Interactive zoxide picker                                                                        |
 | `gclear`                   | Delete merged local branches except the current one, `develop`, `main` and `master`              |
 | `zshtime`                  | Time an interactive shell start                                                                  |
-| `update-comp`              | Rebuild the completion cache (`~/.cache/zsh`) and restart zsh. Run it after installing a new tool |
+| `update-comp`              | Rebuild the completion and fzf, zoxide, just init caches (`~/.cache/zsh`) and restart zsh. Run it after installing a tool |
 | `zsh-plugin-load <owner/repo[@sha]>` | Clone a GitHub plugin, link its init file and source it. Used in `.zshrc`                |
 | `zsh-plugin-update`            | `git pull` every cloned plugin, one by one, with a spinner (pinned skipped). Restart zsh afterwards|
 | `zsh-plugin-outdated`      | List every plugin with current hash, date and status (up to date, outdated, pinned)                         |
-| `AUTO_CD`, `AUTO_PUSHD`    | Type a directory name to enter it. `dirs -v` lists the directory stack, `cd ~2` jumps to entry 2 |
+| `AUTO_CD`                  | Type a directory name to enter it, no `cd` needed                                                |
 | `.nvmrc` / `.node-version` | Checked on `cd` and at shell start. nvm loads only when a different Node version is needed       |
 
 Main aliases from `.aliasesrc`:

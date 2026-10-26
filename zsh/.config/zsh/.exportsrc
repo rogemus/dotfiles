@@ -17,9 +17,6 @@ setopt SHARE_HISTORY
 
 # ─── Directory navigation ──────────────────────────────────────────
 setopt AUTO_CD
-setopt AUTO_PUSHD
-setopt PUSHD_IGNORE_DUPS
-setopt PUSHD_SILENT
 
 # ─── History substring search highlight ────────────────────────────
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=#a6e3a1,fg=#11111b,bold'
@@ -68,21 +65,8 @@ export GOROOT="/opt/homebrew/opt/golang/libexec"
 
 # ─── pnpm ──────────────────────────────────────────────────────────
 export PNPM_HOME='/Users/kacper.rogowski/.local/share/pnpm'
-export PATH="$PNPM_HOME/bin:$PATH"
 
 # ─── curl ──────────────────────────────────────────────────────────
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
-
-# ─── Paths ─────────────────────────────────────────────────────────
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.bun/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH=$PATH:$FQJ_PATH
-export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
-export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"

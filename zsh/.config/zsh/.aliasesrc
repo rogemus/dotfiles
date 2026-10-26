@@ -2,9 +2,6 @@
 
 # ─── Misc ──────────────────────────────────────────────────────────
 alias c="clear"
-alias adPass="cat ~/.gradle/gradle.properties | grep nexusPassword= | cut -d '=' -f 2"
-alias adpass="adPass"
-alias fixpref='killall -u kacperrogowski cfprefsd'
 alias zshtime="time  zsh -i -c exit"
 alias ls="eza --icons=always --group-directories-first"
 alias ll="eza --icons=always --group-directories-first -la --no-user"
