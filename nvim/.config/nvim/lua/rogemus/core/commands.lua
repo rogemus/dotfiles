@@ -1,4 +1,4 @@
--- Close all buffers
+-- ─── Buffers ──────────────────────────────────────────────────────
 vim.api.nvim_create_user_command("WipeBuffers", function()
   local bufinfos = vim.fn.getbufinfo({ buflisted = true })
   vim.tbl_map(function(bufinfo)

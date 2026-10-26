@@ -1,3 +1,4 @@
+-- ─── Format on save toggle ────────────────────────────────────────
 vim.g.auto_formater_enabled = false
 
 vim.api.nvim_create_user_command("FormatToggle", function()
@@ -6,6 +7,7 @@ vim.api.nvim_create_user_command("FormatToggle", function()
   print(msg)
 end, { desc = "Toggle AutoFormatter" })
 
+-- ─── Formatters ───────────────────────────────────────────────────
 local conform = require("conform")
 
 local prettier_configs = {
@@ -67,6 +69,7 @@ conform.setup({
   end,
 })
 
+-- ─── Format keymap ────────────────────────────────────────────────
 local format_buffer = function()
   conform.format({
     lsp_format = "fallback",

@@ -1,3 +1,4 @@
+-- ─── Completion (blink.cmp) ───────────────────────────────────────
 require("blink.cmp").setup({
   keymap = {
     preset = "enter",

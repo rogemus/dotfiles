@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Hooks
+# ─── Hooks ─────────────────────────────────────────────────────────
 autoload -U add-zsh-hook
 
+# ─── Node version (lazy nvm) ───────────────────────────────────────
 # nvm is loaded lazily: only on first `nvm` call or when a project asks for another Node version
 load_nvm() {
   unset -f nvm load_nvm

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# History in cache directory
+# ─── History ───────────────────────────────────────────────────────
 export HISTFILE=$ZDOTDIR/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=50000
@@ -15,23 +15,25 @@ setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
-# Directory navigation
+# ─── Directory navigation ──────────────────────────────────────────
 setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 
-# History substring search highlight (Catppuccin)
+# ─── History substring search highlight ────────────────────────────
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=#a6e3a1,fg=#11111b,bold'
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=#f38ba8,fg=#11111b,bold'
 
+# ─── Locale ────────────────────────────────────────────────────────
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+# ─── Maven ─────────────────────────────────────────────────────────
 # export M2_HOME=/Applications/maven
 
-# NVM
+# ─── Node (nvm) ────────────────────────────────────────────────────
 export NVM_DIR="$HOME/.nvm"
 # Put the newest installed Node on PATH without loading nvm (nvm.sh is loaded lazily, see .hooksrc)
 () {
@@ -40,10 +42,10 @@ export NVM_DIR="$HOME/.nvm"
   (( $#versions )) && export PATH="${versions[1]}/bin:$PATH"
 }
 
-# Scripts
+# ─── Scripts ───────────────────────────────────────────────────────
 export FQJ_PATH=/usr/local/bin/fjq.sh
 
-# FZF
+# ─── fzf ───────────────────────────────────────────────────────────
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git --exclude node_modules'
@@ -55,25 +57,25 @@ export FZF_DEFAULT_OPTS="
   --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
   --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
-# GO
+# ─── Go ────────────────────────────────────────────────────────────
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export GOROOT="/opt/homebrew/opt/golang/libexec"
 
-# docker
+# ─── Docker ────────────────────────────────────────────────────────
 # export COLIMA_HOME="${HOME}/.config/colima"
 # export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
 
-# pnpm
+# ─── pnpm ──────────────────────────────────────────────────────────
 export PNPM_HOME='/Users/kacper.rogowski/.local/share/pnpm'
 export PATH="$PNPM_HOME/bin:$PATH"
 
-# CURL
+# ─── curl ──────────────────────────────────────────────────────────
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
-# Paths
+# ─── Paths ─────────────────────────────────────────────────────────
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"

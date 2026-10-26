@@ -1,20 +1,21 @@
 #!/bin/bash
 
-# fzf
+# ─── fzf ───────────────────────────────────────────────────────────
 eval "$(fzf --zsh)"
 bindkey -r '^T' '^[c'
 bindkey '^[r' fzf-history-widget # Option-R: recent commands (Ctrl-R stays)
 bindkey '^[f' fzf-file-widget    # Option-F: files
 bindkey '^[d' fzf-cd-widget      # Option-D: directories
 
-# Zoxide
-eval "$(zoxide init zsh)"
+# ─── zoxide (replaces cd) ──────────────────────────────────────────
+eval "$(zoxide init zsh --cmd cd)"
 
+# ─── just completions ──────────────────────────────────────────────
 #compdef just
 source <(JUST_COMPLETE=zsh just)
 if [ "$funcstack[1]" = "_just" ]; then
   _clap_dynamic_completer_just "$@"
 fi
 
-# bun completions
+# ─── bun completions ───────────────────────────────────────────────
 [ -s "/Users/kacper.rogowski/.bun/_bun" ] && source "/Users/kacper.rogowski/.bun/_bun"

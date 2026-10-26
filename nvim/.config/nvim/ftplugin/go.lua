@@ -1,3 +1,4 @@
+-- ─── Helpers ──────────────────────────────────────────────────────
 local function to_snake(pascal_case_string)
   local snake_case_string = string.gsub(pascal_case_string, "%u", function(c)
     return "_" .. string.lower(c)
@@ -10,6 +11,7 @@ local function to_snake(pascal_case_string)
   return snake_case_string
 end
 
+-- ─── Keymap: JSON field tag ───────────────────────────────────────
 vim.keymap.set("n", "<leader>js", function()
   local current_line = vim.api.nvim_get_current_line()
   local word = string.match(current_line, "^%s*(%w+)")
@@ -24,6 +26,7 @@ vim.keymap.set("n", "<leader>js", function()
   vim.api.nvim_set_current_line(new_line)
 end, { desc = "Add JSON filed tags" })
 
+-- ─── Keymap: debug print ──────────────────────────────────────────
 vim.keymap.set("n", "<leader>lo", function()
   local word = vim.fn.expand("<cword>")
 

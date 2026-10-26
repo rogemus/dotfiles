@@ -1,4 +1,5 @@
--- Enable highlighting + indentation for every filetype
+-- ─── Highlight and indent ─────────────────────────────────────────
+-- Enabled for every filetype
 vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     pcall(vim.treesitter.start)
@@ -6,7 +7,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Install parsers on startup (skips already-installed ones)
+-- ─── Parsers ──────────────────────────────────────────────────────
+-- Installed on startup, skipping ones already installed
 local want = {
   "bash",
   "css",
@@ -53,6 +55,7 @@ vim.defer_fn(function()
   end
 end, 100)
 
+-- ─── MDX filetype ─────────────────────────────────────────────────
 vim.filetype.add({
   extension = {
     mdx = "mdx",

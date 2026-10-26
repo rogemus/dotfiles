@@ -1,6 +1,9 @@
+# ─── GUI ───────────────────────────────────────────────────────────
 gui:
   language: "en"
   expandFocusedSidePanel: true
   returnImmediately: true
+
+# ─── Command templates ─────────────────────────────────────────────
 commandTemplates:
   dockerCompose: docker compose

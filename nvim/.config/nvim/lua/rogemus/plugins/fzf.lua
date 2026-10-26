@@ -1,3 +1,4 @@
+-- ─── Search options ───────────────────────────────────────────────
 local base_fd = {
   "--type f",
   "--color never",
@@ -45,6 +46,7 @@ local function toggle_tests()
   vim.notify("FZF test files: " .. (ignore_tests and "ignored" or "shown"), vim.log.levels.INFO)
 end
 
+-- ─── Setup ────────────────────────────────────────────────────────
 require("fzf-lua").setup({
   files = {
     path_shorten = 6,
@@ -75,7 +77,7 @@ require("fzf-lua").setup({
   },
 })
 
--- Keymaps
+-- ─── Keymaps ──────────────────────────────────────────────────────
 vim.keymap.set("n", "=", "<cmd>FzfLua buffers<cr>", { desc = "Open files" })
 vim.keymap.set("n", "<leader>fs", function()
   require("fzf-lua").live_grep({ rg_opts = search_opts().rg_opts })

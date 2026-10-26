@@ -4,6 +4,7 @@ local mason_tool_installer = require("mason-tool-installer")
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+-- ─── Language servers ─────────────────────────────────────────────
 local servers = {
   html = {
     filetypes = { "html", "htmldjango", "gotmpl" },
@@ -48,6 +49,7 @@ local servers = {
   biome = {},
 }
 
+-- ─── Tools to install ─────────────────────────────────────────────
 local ensure_installed = vim.tbl_keys(servers or {})
 
 vim.list_extend(ensure_installed, {
@@ -60,6 +62,7 @@ vim.list_extend(ensure_installed, {
   -- npm i -g oxc-language-server  OR  cargo install oxc_language_server
 })
 
+-- ─── LSP keymaps and attach ───────────────────────────────────────
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
   callback = function(event)
@@ -124,6 +127,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- ─── Mason ────────────────────────────────────────────────────────
 mason.setup({
   ui = {
     size = { width = 0.9, height = 0.4 },
@@ -145,6 +149,7 @@ mason_lspconfig.setup({
   automatic_enable = false,
 })
 
+-- ─── Enable servers ───────────────────────────────────────────────
 for name, cfg in pairs(servers) do
   -- Only values explicitly set above override the defaults. Useful when disabling
   -- certain features of an LSP (for example, turning off formatting for ts_ls)
@@ -153,9 +158,11 @@ for name, cfg in pairs(servers) do
 end
 vim.lsp.enable(vim.tbl_keys(servers))
 
--- oxfmt (oxc formatter/linter LSP) - install via: npm i -g oxfmt
+-- ─── oxfmt ────────────────────────────────────────────────────────
+-- oxc formatter/linter LSP, install via: npm i -g oxfmt
 vim.lsp.enable("oxfmt")
 
+-- ─── Diagnostics ──────────────────────────────────────────────────
 vim.diagnostic.config({
   severity_sort = true,
   float = { border = "rounded", source = "if_many" },

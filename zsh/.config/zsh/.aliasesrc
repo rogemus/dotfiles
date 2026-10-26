@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Aliasses
-## Misc
+# ─── Misc ──────────────────────────────────────────────────────────
 alias c="clear"
 alias adPass="cat ~/.gradle/gradle.properties | grep nexusPassword= | cut -d '=' -f 2"
 alias adpass="adPass"
@@ -14,7 +13,6 @@ alias lt="eza --icons=always --group-directories-first -T -L=2"
 alias cat='bat --paging=never --style="header,grid"'
 # cat full
 alias catf='bat --paging=never'
-alias cd="z"
 alias t="touch"
 
 alias vi="nvim"
@@ -23,18 +21,18 @@ alias vim="nvim"
 alias lzg="lazygit"
 alias lzd="lazydocker"
 
-## fzf
+# ─── fzf ───────────────────────────────────────────────────────────
 alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 alias fzfv="fzf --bind 'enter:become(nvim {})'"
 
-## PostgreSQL
+# ─── PostgreSQL ────────────────────────────────────────────────────
 alias pgsqlStart="pg_ctl -D '~/.config/pgsql/data' -l logfile start"
 alias pgsqlStop="pg_ctl -D '~/.config/pgsql/data' -l logfile stop"
 
-## Worklog
+# ─── Worklog ───────────────────────────────────────────────────────
 alias work="worklog new --git"
 
-## Git
+# ─── Git ───────────────────────────────────────────────────────────
 alias gut="git"
 alias got="git"
 alias g="git"
@@ -52,25 +50,12 @@ alias gclear='git branch | grep -vE "^\*|develop|main|master" | xargs git branch
 alias greset="git reset --hard HEAD"
 alias gb="git checkout \$(git branch | fzf --height=30% --border --info=inline)"
 
-## Docker
+# ─── Docker ────────────────────────────────────────────────────────
 alias dockerdie="docker system prune --volumes -a -f"
 
-## Tmux
+# ─── Tmux ──────────────────────────────────────────────────────────
 alias txu="tmxu"
 alias tx="tmux"
 
-# Pick a project from zoxide history, create or switch to its tmux session
-tms() {
-  local dir name
-  dir=$(zoxide query -l | fzf --preview 'eza --tree --color=always --level=1 {}') || return
-  name=$(basename "$dir" | tr . _)
-  if [[ -n $TMUX ]]; then
-    tmux has-session -t "=$name" 2>/dev/null || tmux new-session -d -s "$name" -c "$dir"
-    tmux switch-client -t "=$name"
-  else
-    tmux new-session -A -s "$name" -c "$dir"
-  fi
-}
-
-## AI
+# ─── AI ────────────────────────────────────────────────────────────
 alias ai="claude"

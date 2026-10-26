@@ -1,3 +1,4 @@
+-- ─── Keymap: console.log ──────────────────────────────────────────
 vim.keymap.set("n", "<leader>lo", function()
   local word = vim.fn.expand("<cword>")
 
@@ -11,6 +12,7 @@ vim.keymap.set("n", "<leader>lo", function()
   vim.api.nvim_buf_set_lines(0, line_nr, line_nr, false, { console_text })
 end, { desc = "Add debug console.log" })
 
+-- ─── Keymap: console.dir ──────────────────────────────────────────
 vim.keymap.set("n", "<leader>di", function()
   local word = vim.fn.expand("<cword>")
 

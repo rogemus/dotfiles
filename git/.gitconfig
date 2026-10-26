@@ -1,3 +1,4 @@
+# ─── Delta theme: arctic-fox ───────────────────────────────────────
 [delta "arctic-fox"]
   # author: https://github.com/anthony-halim
   dark = true
@@ -34,6 +35,7 @@
   merge-conflict-theirs-diff-header-style = yellow bold
   merge-conflict-theirs-diff-header-decoration-style = "#5E81AC" box
 
+# ─── Core and pager ────────────────────────────────────────────────
 [core]
   pager = delta
 	hooksPath = ~/.config/git/hooks
@@ -41,6 +43,7 @@
 [interactive]
   diffFilter = delta --color-only
 
+# ─── Delta ─────────────────────────────────────────────────────────
 [delta]
   navigate = true
   light = false
@@ -48,38 +51,48 @@
   side-by-side = true
   true-color = always
 
+# ─── Diff ──────────────────────────────────────────────────────────
 [diff]
   colorMoved = default
 
+# ─── Init ──────────────────────────────────────────────────────────
 [init]
   templatedir = ~/.config/git/templates
 	defaultBranch = main
 
+# ─── Push ──────────────────────────────────────────────────────────
 [push]
   autoSetupRemote = true
 
+# ─── User ──────────────────────────────────────────────────────────
 [user]
 	name = Kacper Rogowski
 	email = rogemus@gmail.com
 
+# ─── Help ──────────────────────────────────────────────────────────
 [help]
 	autocorrect = prompt
 
+# ─── Image diff ────────────────────────────────────────────────────
 [diff "image"]
     textconv = imgcat
 
+# ─── Merge ─────────────────────────────────────────────────────────
 [merge]
   conflictstyle = diff3
 	tool = nvimdiff3
 
+# ─── Pull ──────────────────────────────────────────────────────────
 [pull]
   rebase = true
 
+# ─── Git LFS ───────────────────────────────────────────────────────
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 
+# ─── URL rewrites ──────────────────────────────────────────────────
 [url "ssh://git@github.com/example/repo"]
 	insteadOf = https://github.com/example/repo

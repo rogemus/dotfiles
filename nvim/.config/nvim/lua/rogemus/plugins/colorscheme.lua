@@ -1,3 +1,4 @@
+-- ─── Catppuccin ───────────────────────────────────────────────────
 require("catppuccin").setup({
   flavor = "mocha",
   background = {
@@ -49,4 +50,5 @@ require("catppuccin").setup({
   end,
 })
 
+-- ─── Apply colorscheme ────────────────────────────────────────────
 vim.cmd.colorscheme("catppuccin")

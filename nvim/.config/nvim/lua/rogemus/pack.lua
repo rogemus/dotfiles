@@ -1,4 +1,4 @@
--- Install all plugins
+-- ─── Install plugins ──────────────────────────────────────────────
 vim.pack.add({
   -- TreeSitter
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
@@ -44,7 +44,8 @@ vim.pack.add({
   load = true,
 })
 
--- Load plugin configurations (after vim.pack.add so plugins are available)
+-- ─── Plugin configuration ─────────────────────────────────────────
+-- After vim.pack.add so plugins are available
 require("rogemus.plugins.icons")
 require("rogemus.plugins.colorscheme")
 require("rogemus.plugins.treesitter")

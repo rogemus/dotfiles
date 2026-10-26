@@ -1,10 +1,17 @@
+# ─── Theme ─────────────────────────────────────────────────────────
 theme = Catppuccin Mocha
+
+# ─── Font ──────────────────────────────────────────────────────────
 font-family = Fira Code Nerd Font Mono
 font-size = 15 
+
+# ─── Window ────────────────────────────────────────────────────────
 background = #000000
 macos-icon-frame = plastic
 # window-decoration = none
 window-padding-x = 7
 window-padding-y = 5
+
+# ─── Keys (Ctrl-Tab opens the tmux session switcher) ───────────────
 macos-option-as-alt = true
 keybind = ctrl+tab=text:\x1b[27;5;9~

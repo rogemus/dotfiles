@@ -1,5 +1,3 @@
 ## TODO
 
-- [ ] Update readme
-- [ ] Disable mouse and remove hardtime
-- [ ] clean up formater config
+- [ ] Clean up formatter config (`nvim/.config/nvim/lua/rogemus/plugins/formatting.lua`)
