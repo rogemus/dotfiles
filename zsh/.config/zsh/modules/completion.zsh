@@ -9,6 +9,9 @@ autoload -Uz compinit && compinit -C -d $_zcache/zcompdump
 [[ -s $_zcache/zcompdump && ( ! -s $_zcache/zcompdump.zwc || $_zcache/zcompdump -nt $_zcache/zcompdump.zwc ) ]] \
   && zcompile $_zcache/zcompdump
 
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' completer _complete _approximate
 zstyle ':completion:*' menu select

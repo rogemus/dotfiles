@@ -11,9 +11,14 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
-setopt INC_APPEND_HISTORY
+setopt HIST_VERIFY
 setopt SHARE_HISTORY
+
+# ─── Shell behaviour ───────────────────────────────────────────────
+setopt INTERACTIVE_COMMENTS
+setopt NO_BEEP
 
 # ─── Directory navigation ──────────────────────────────────────────
 setopt AUTO_CD
