@@ -7,6 +7,7 @@ vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.cursorline = true -- Highlight current line
 vim.opt.scrolloff = 10 -- Keep 10 lines above/below cursor
 vim.opt.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
+vim.opt.signcolumn = "yes" -- Always show the sign column, no text shifting
 
 -- ─── Indentation ──────────────────────────────────────────────────
 vim.opt.tabstop = 2 -- Tab width
@@ -29,6 +30,7 @@ vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- Case sensitive if uppercase in search
 vim.opt.hlsearch = false -- Don't highlight search results
 vim.opt.incsearch = true -- Show matches as you type
+vim.opt.inccommand = "split" -- Live preview of :s in a split
 
 -- ─── Files and timing ─────────────────────────────────────────────
 -- vim.opt.wrap = false
@@ -61,3 +63,6 @@ vim.opt.foldlevel = 99
 vim.opt.splitbelow = true -- Horizontal splits go below
 vim.opt.splitright = true -- Vertical splits go right
 vim.opt.splitkeep = "screen"
+
+-- ─── Floating windows ─────────────────────────────────────────────
+vim.opt.winborder = "rounded"

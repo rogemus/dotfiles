@@ -133,7 +133,7 @@ Leader is `Space`.
 | ------------------ | -------------------------------------------- |
 | `-`                | Find file                                    |
 | `=`                | Open buffers                                 |
-| `0` / `<leader>fr` | Recent files                                 |
+| `0` / `<leader>fr` | Recent files (current directory only)        |
 | `<leader>fs`       | Grep in files                                |
 | `<leader>/`        | Grep in the current file                     |
 | `<leader>ft`       | Toggle ignoring test files in the pickers    |
@@ -175,6 +175,13 @@ Leader is `Space`.
 | `<leader>rn`                | Rename                                    |
 | `<leader>ca`                | Code action                               |
 | `K`                         | Hover documentation                       |
+
+**Diagnostics**
+
+| Key         | Action                                    |
+| ----------- | ----------------------------------------- |
+| `]d` / `[d` | Next / previous diagnostic (nvim default) |
+| `<leader>e` | Show the diagnostics for the current line |
 
 **Jump (flash)**
 

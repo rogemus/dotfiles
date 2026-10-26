@@ -36,3 +36,7 @@ vim.keymap.set(
 -- ─── Refresh file ─────────────────────────────────────────────────
 vim.keymap.set("n", "<leader>R", "<Cmd>checktime<CR>", { desc = "Update file for external updates" })
 -- vim.keymap.set("n", "\\", "<Cmd>Explore<CR>", { desc = "Open files explorer" })
+
+-- ─── Diagnostics ──────────────────────────────────────────────────
+-- ]d and [d are nvim defaults
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show line diagnostics" })

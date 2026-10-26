@@ -67,6 +67,7 @@ require("fzf-lua").setup({
   },
   oldfiles = {
     formatter = "path.filename_first",
+    cwd_only = true,
   },
   fzf_opts = {
     ["--ansi"] = "",
