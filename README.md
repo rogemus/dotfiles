@@ -42,7 +42,7 @@ Machine-specific zsh settings go in `~/.config/zsh/.workrc` and `~/.config/zsh/.
 setup.sh            runs scripts/1..7
 scripts/            install steps
 nvim/               ~/.config/nvim
-zsh/                ~/.config/zsh and ~/.zprofile (rc files plus modules/: node, completion, git)
+zsh/                ~/.config/zsh and ~/.zprofile (rc files plus modules/: node, completion, git, plugins, spinner)
 tmux/               ~/.config/tmux
 ghostty/            ~/.config/ghostty
 lazygit/            ~/.config/lazygit
@@ -110,7 +110,7 @@ Commands and behaviour:
 | `zshtime`                  | Time an interactive shell start                                                                  |
 | `update-comp`              | Rebuild the completion cache (`~/.cache/zsh`) and restart zsh. Run it after installing a new tool |
 | `zsh-plugin-load <owner/repo[@sha]>` | Clone a GitHub plugin, link its init file and source it. Used in `.zshrc`                |
-| `zsh-plugin-update`            | `git pull` every cloned plugin (pinned ones are skipped). Restart zsh afterwards                  |
+| `zsh-plugin-update`            | `git pull` every cloned plugin, one by one, with a spinner (pinned skipped). Restart zsh afterwards|
 | `zsh-plugin-outdated`      | List every plugin with current hash, date and status (up to date, outdated, pinned)                         |
 | `AUTO_CD`, `AUTO_PUSHD`    | Type a directory name to enter it. `dirs -v` lists the directory stack, `cd ~2` jumps to entry 2 |
 | `.nvmrc` / `.node-version` | Checked on `cd` and at shell start. nvm loads only when a different Node version is needed       |

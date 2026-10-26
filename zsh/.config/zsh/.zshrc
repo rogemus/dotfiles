@@ -1,4 +1,5 @@
 # ─── Plugins ───────────────────────────────────────────────────────
+source $ZDOTDIR/modules/spinner.zsh
 source $ZDOTDIR/modules/plugins.zsh
 
 repos=(
