@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# ─── Plugins ───────────────────────────────────────────────────────
+# Add owner/repo, or owner/repo@sha to pin a commit. Sourced first: the keymap needs
+# history-substring-search and completion needs zsh-completions on fpath
+repos=(
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+)
+
+zsh-plugin-load $repos
+
+# ─── Autosuggestions ───────────────────────────────────────────────
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
