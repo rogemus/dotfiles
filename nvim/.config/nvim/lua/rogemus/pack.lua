@@ -29,7 +29,7 @@ vim.pack.add({
   -- Completion
   {
     src = "https://github.com/saghen/blink.cmp",
-    version = vim.version.range("1.0"),
+    version = vim.version.range("1"),
   },
 
   -- Fuzzy finder
