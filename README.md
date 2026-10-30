@@ -222,10 +222,11 @@ Leader is `Space`.
 
 **Diagnostics**
 
-| Key         | Action                                    |
-| ----------- | ----------------------------------------- |
-| `]d` / `[d` | Next / previous diagnostic (nvim default) |
-| `<leader>e` | Show the diagnostics for the current line |
+| Key                         | Action                                       |
+| --------------------------- | -------------------------------------------- |
+| `]d` / `[d`                 | Next / previous diagnostic (nvim default)    |
+| `<leader>e`                 | Show the diagnostics for the current line    |
+| `<leader>xx` / `<leader>xd` | Errors in workspace / current file (fzf-lua) |
 
 **Jump (flash)**
 
