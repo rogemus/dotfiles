@@ -1,10 +1,15 @@
 #!/usr/bin/env zsh
 
 # ─── Line editing ──────────────────────────────────────────────────
+# Emacs keymap: zsh picks vi mode on its own because EDITOR=nvim contains "vi"
+bindkey -e
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word
+bindkey '^[[3~' delete-char
 
 # ─── History substring search ──────────────────────────────────────
 bindkey '^[[A' history-substring-search-up
