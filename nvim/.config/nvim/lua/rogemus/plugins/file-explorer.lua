@@ -17,6 +17,15 @@ local opts = {
       local node = state.tree:get_node()
       require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
     end,
+    add_to_quickfix = function(state)
+      local node = state.tree:get_node()
+      if node.type ~= "file" then
+        return
+      end
+      local path = node:get_id()
+      vim.fn.setqflist({}, "a", { items = { { filename = path, lnum = 1, text = vim.fn.fnamemodify(path, ":t") } } })
+      vim.notify("Added to quickfix: " .. vim.fn.fnamemodify(path, ":."), vim.log.levels.INFO)
+    end,
     filetree_toggle = function()
       vim.cmd("Neotree reveal")
       vim.cmd("wincmd l")
@@ -39,6 +48,7 @@ local opts = {
       },
       ["O"] = "open_in_finder",
       ["U"] = "focus_parent",
+      ["Q"] = { "add_to_quickfix", desc = "Add file to quickfix" },
     },
   },
   source_selector = {

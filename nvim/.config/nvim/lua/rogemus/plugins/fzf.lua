@@ -85,6 +85,15 @@ local M = {}
 -- Add fzf-lua to 'runtimepath' and configure it on first use, returns the module
 function M.get()
   require("rogemus.lazy").once("fzf-lua", { "fzf-lua" }, function()
+    local actions = require("fzf-lua").actions
+    -- A plain table replaces the defaults, so extend them to keep enter and the alt-* keys
+    opts.actions = {
+      files = vim.tbl_extend("force", require("fzf-lua.defaults").defaults.actions.files, {
+        ["ctrl-s"] = actions.file_vsplit,
+        ["ctrl-v"] = actions.file_vsplit,
+        ["ctrl-t"] = actions.file_tabedit,
+      }),
+    }
     require("fzf-lua").setup(opts)
   end)
   return require("fzf-lua")

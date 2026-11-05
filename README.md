@@ -97,6 +97,7 @@ Config files are split into sections with `# ─── Section ───` (`-- �
 | -------------- | ----------------------------------------------------------------- |
 | `Ctrl-Tab`     | Sends the sequence tmux binds to its session switcher             |
 | `Option-<key>` | Sent as `Alt-<key>` (`macos-option-as-alt`), used by tmux and zsh |
+| `Ctrl-1` … `Ctrl-0` | Sends the sequence neovim maps to tabs 1–10                  |
 
 ### tmux
 
@@ -184,6 +185,20 @@ Leader is `Space`.
 | `<leader>m`        | Marks                                        |
 | `<leader>td`       | List TODO, HACK, PERF, NOTE and FIX comments |
 
+In a file picker:
+
+| Key                 | Action                                         |
+| ------------------- | ---------------------------------------------- |
+| `Ctrl-s` / `Ctrl-v` | Open in a vertical split on the right          |
+| `Ctrl-t`            | Open in a new tab                              |
+| `Alt-q`             | Send the marked entries to the quickfix list   |
+| `Alt-Q`             | Send the marked entries to the location list   |
+| `Alt-i`             | Toggle ignore rules (`.gitignore`)             |
+| `Alt-h`             | Toggle hidden files                            |
+| `Alt-f`             | Toggle following symlinks                      |
+
+`Alt` is `Option` on the Mac (see [ghostty](#ghostty)). `Tab` marks an entry.
+
 **Buffers and tabs**
 
 | Key                       | Action                                      |
@@ -195,6 +210,7 @@ Leader is `Space`.
 | `<leader>R`               | Reload the file after an external change    |
 | `]t` / `[t`               | Next / previous tab                         |
 | `]T` / `[T`               | Last / first tab                            |
+| `Ctrl-1` … `Ctrl-0`       | Go to tab 1–10 (needs the ghostty keybinds) |
 
 **Windows and editing**
 
@@ -248,6 +264,7 @@ Leader is `Space`.
 | `P`                   | Toggle preview                                           |
 | `O`                   | Open in Finder                                           |
 | `U`                   | Focus the parent directory                               |
+| `Q`                   | Add the file to the quickfix list                        |
 
 **Completion (blink.cmp)**
 

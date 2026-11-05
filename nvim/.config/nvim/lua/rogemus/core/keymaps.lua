@@ -19,6 +19,10 @@ vim.keymap.set("n", "]t", "<Cmd>tabnext<CR>", { desc = "Go to next tab" })
 vim.keymap.set("n", "[t", "<Cmd>tabprev<CR>", { desc = "Go to prev tab" })
 vim.keymap.set("n", "[T", "<Cmd>tabfirst<CR>", { desc = "Go to first tab" })
 vim.keymap.set("n", "]T", "<Cmd>tablast<CR>", { desc = "Go to last tab" })
+for i = 1, 9 do
+  vim.keymap.set("n", "<C-" .. i .. ">", "<Cmd>tabn " .. i .. "<CR>", { desc = "Go to tab " .. i })
+end
+vim.keymap.set("n", "<C-0>", "<Cmd>tabn 10<CR>", { desc = "Go to tab 10" })
 
 -- ─── Buffers ──────────────────────────────────────────────────────
 vim.keymap.set("n", "L", "<Cmd>b#<CR>", { desc = "Go to last seen buffer" })
