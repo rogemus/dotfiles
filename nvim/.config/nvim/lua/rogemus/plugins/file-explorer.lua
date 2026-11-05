@@ -17,14 +17,20 @@ local opts = {
       local node = state.tree:get_node()
       require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
     end,
-    add_to_quickfix = function(state)
+    toggle_quickfix = function(state)
       local node = state.tree:get_node()
       if node.type ~= "file" then
         return
       end
       local path = node:get_id()
-      vim.fn.setqflist({}, "a", { items = { { filename = path, lnum = 1, text = vim.fn.fnamemodify(path, ":t") } } })
-      vim.notify("Added to quickfix: " .. vim.fn.fnamemodify(path, ":."), vim.log.levels.INFO)
+      local items = vim.tbl_filter(function(item)
+        return vim.api.nvim_buf_get_name(item.bufnr) ~= path
+      end, vim.fn.getqflist())
+      if #items == #vim.fn.getqflist() then
+        table.insert(items, { filename = path, lnum = 1, text = vim.fn.fnamemodify(path, ":t") })
+      end
+      vim.fn.setqflist({}, "r", { items = items })
+      require("neo-tree.sources.manager").refresh("filesystem")
     end,
     filetree_toggle = function()
       vim.cmd("Neotree reveal")
@@ -48,7 +54,7 @@ local opts = {
       },
       ["O"] = "open_in_finder",
       ["U"] = "focus_parent",
-      ["Q"] = { "add_to_quickfix", desc = "Add file to quickfix" },
+      ["Q"] = { "toggle_quickfix", desc = "Toggle file in quickfix" },
     },
   },
   source_selector = {
@@ -77,6 +83,19 @@ local opts = {
     },
   },
   filesystem = {
+    components = {
+      -- Marks files that are in the quickfix list
+      quickfix = function(_, node)
+        local paths = {}
+        for _, item in ipairs(vim.fn.getqflist()) do
+          paths[vim.api.nvim_buf_get_name(item.bufnr)] = true
+        end
+        if node.type == "file" and paths[node:get_id()] then
+          return { text = " ", highlight = "DiagnosticWarn" }
+        end
+        return {}
+      end,
+    },
     check_gitignore_in_search = true,
     hijack_netrw_behavior = "disabled",
     use_libuv_file_watcher = true,
@@ -111,6 +130,18 @@ local opts = {
 -- Add neo-tree and its dependencies to 'runtimepath' and configure it on first use
 local function load_neotree()
   require("rogemus.lazy").once("neo-tree", { "plenary.nvim", "nui.nvim", "neo-tree.nvim" }, function()
+    -- Show the quickfix marker right after the file name
+    opts.renderers = { file = vim.deepcopy(require("neo-tree.defaults").renderers.file) }
+    for _, item in ipairs(opts.renderers.file) do
+      if item[1] == "container" then
+        for i, comp in ipairs(item.content) do
+          if comp[1] == "clipboard" then
+            table.insert(item.content, i + 1, { "quickfix", zindex = 10 })
+            break
+          end
+        end
+      end
+    end
     require("neo-tree").setup(opts)
   end)
 end
