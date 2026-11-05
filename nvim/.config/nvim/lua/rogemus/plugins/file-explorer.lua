@@ -23,11 +23,16 @@ local opts = {
         return
       end
       local path = node:get_id()
+      local rel = vim.fn.fnamemodify(path, ":.")
+      local current = vim.fn.getqflist()
       local items = vim.tbl_filter(function(item)
         return vim.api.nvim_buf_get_name(item.bufnr) ~= path
-      end, vim.fn.getqflist())
-      if #items == #vim.fn.getqflist() then
+      end, current)
+      if #items == #current then
         table.insert(items, { filename = path, lnum = 1, text = vim.fn.fnamemodify(path, ":t") })
+        vim.notify("Quickfix added (" .. #items .. "): " .. rel, vim.log.levels.INFO)
+      else
+        vim.notify("Quickfix removed (" .. #items .. "): " .. rel, vim.log.levels.WARN)
       end
       vim.fn.setqflist({}, "r", { items = items })
       require("neo-tree.sources.manager").refresh("filesystem")
