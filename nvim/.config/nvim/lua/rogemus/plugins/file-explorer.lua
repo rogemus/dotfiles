@@ -59,7 +59,7 @@ local opts = {
       },
       ["O"] = "open_in_finder",
       ["U"] = "focus_parent",
-      ["Q"] = { "toggle_quickfix", desc = "Toggle file in quickfix" },
+      ["q"] = { "toggle_quickfix", desc = "Toggle file in quickfix" },
     },
   },
   source_selector = {

@@ -92,6 +92,19 @@ function M.get()
         ["ctrl-s"] = actions.file_vsplit,
         ["ctrl-v"] = actions.file_vsplit,
         ["ctrl-t"] = actions.file_tabedit,
+        -- Add to the quickfix list and keep the picker open
+        ["alt-q"] = {
+          fn = function(selected, o)
+            local items = {}
+            for _, entry in ipairs(selected) do
+              local file = require("fzf-lua.path").entry_to_file(entry, o)
+              items[#items + 1] = { filename = file.path, lnum = file.line or 1, col = file.col }
+            end
+            vim.fn.setqflist({}, "a", { items = items })
+            vim.notify("Quickfix: added " .. #items .. " (" .. #vim.fn.getqflist() .. " total)", vim.log.levels.INFO)
+          end,
+          exec_silent = true,
+        },
       }),
     }
     require("fzf-lua").setup(opts)
@@ -123,6 +136,7 @@ vim.keymap.set("n", "<leader>fr", fzf_cmd("oldfiles"), { desc = "Recent Files" }
 vim.keymap.set("n", "<leader>gs", fzf_cmd("git_status"), { desc = "Git Status" })
 vim.keymap.set("n", "<leader>/", fzf_cmd("grep_curbuf"), { desc = "Find in current file" })
 vim.keymap.set("n", "<leader>m", fzf_cmd("marks"), { desc = "Marks" })
+vim.keymap.set("n", "Q", fzf_cmd("quickfix"), { desc = "Quickfix list" })
 vim.keymap.set("n", "<leader>xx", function()
   M.get().diagnostics_workspace()
 end, { desc = "Workspace diagnostics (errors)" })

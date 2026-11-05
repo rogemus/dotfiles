@@ -191,7 +191,7 @@ In a file picker:
 | ------------------- | ---------------------------------------------- |
 | `Ctrl-s` / `Ctrl-v` | Open in a vertical split on the right          |
 | `Ctrl-t`            | Open in a new tab                              |
-| `Alt-q`             | Send the marked entries to the quickfix list   |
+| `Alt-q`             | Add the marked entries to the quickfix list, picker stays open |
 | `Alt-Q`             | Send the marked entries to the location list   |
 | `Alt-i`             | Toggle ignore rules (`.gitignore`)             |
 | `Alt-h`             | Toggle hidden files                            |
@@ -211,6 +211,19 @@ In a file picker:
 | `]t` / `[t`               | Next / previous tab                         |
 | `]T` / `[T`               | Last / first tab                            |
 | `Ctrl-1` … `Ctrl-0`       | Go to tab 1–10 (needs the ghostty keybinds) |
+
+**Quickfix**
+
+| Key         | Action                                                                  |
+| ----------- | ----------------------------------------------------------------------- |
+| `<leader>q` | Toggle the quickfix window                                              |
+| `]q` / `[q` | Next / previous entry (nvim default)                                    |
+| `Alt-q`     | In a file picker, send the marked entries to the list                   |
+| `Q`         | Fuzzy-search the quickfix list (fzf-lua)                                |
+| `q`         | In the file explorer, add or remove the file (see the explorer section) |
+| `dd`        | In the quickfix window, remove the entry under the cursor               |
+| `d` (visual) | In the quickfix window, remove the selected entries                    |
+| `D`         | In the quickfix window, remove all entries                              |
 
 **Windows and editing**
 
@@ -264,7 +277,7 @@ In a file picker:
 | `P`                   | Toggle preview                                           |
 | `O`                   | Open in Finder                                           |
 | `U`                   | Focus the parent directory                               |
-| `Q`                   | Add / remove the file in the quickfix list (marked with `●`) |
+| `q`                   | Add / remove the file in the quickfix list (marked with `●`) |
 
 **Completion (blink.cmp)**
 

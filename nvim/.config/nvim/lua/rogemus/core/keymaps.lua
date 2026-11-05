@@ -37,6 +37,12 @@ vim.keymap.set(
   { desc = "[B]uffer [D]elete [A]ll (close buffer all)" }
 )
 
+-- ─── Quickfix ─────────────────────────────────────────────────────
+vim.keymap.set("n", "<leader>q", function()
+  local open = vim.fn.getqflist({ winid = 0 }).winid ~= 0
+  vim.cmd(open and "cclose" or "copen")
+end, { desc = "Toggle quickfix" })
+
 -- ─── Refresh file ─────────────────────────────────────────────────
 vim.keymap.set("n", "<leader>R", "<Cmd>checktime<CR>", { desc = "Update file for external updates" })
 -- vim.keymap.set("n", "\\", "<Cmd>Explore<CR>", { desc = "Open files explorer" })
