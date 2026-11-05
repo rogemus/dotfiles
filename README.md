@@ -264,7 +264,7 @@ In a file picker:
 | `P`                   | Toggle preview                                           |
 | `O`                   | Open in Finder                                           |
 | `U`                   | Focus the parent directory                               |
-| `Q`                   | Add / remove the file in the quickfix list (marked with ` `) |
+| `Q`                   | Add / remove the file in the quickfix list (marked with `●`) |
 
 **Completion (blink.cmp)**
 

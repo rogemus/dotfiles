@@ -91,7 +91,7 @@ local opts = {
           paths[vim.api.nvim_buf_get_name(item.bufnr)] = true
         end
         if node.type == "file" and paths[node:get_id()] then
-          return { text = " ", highlight = "DiagnosticWarn" }
+          return { text = " ●", highlight = "DiagnosticWarn" }
         end
         return {}
       end,
