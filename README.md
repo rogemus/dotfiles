@@ -93,11 +93,11 @@ Config files are split into sections with `# ─── Section ───` (`-- �
 
 ### ghostty
 
-| Key            | Action                                                            |
-| -------------- | ----------------------------------------------------------------- |
-| `Ctrl-Tab`     | Sends the sequence tmux binds to its session switcher             |
-| `Option-<key>` | Sent as `Alt-<key>` (`macos-option-as-alt`), used by tmux and zsh |
-| `Ctrl-1` … `Ctrl-0` | Sends the sequence neovim maps to tabs 1–10                  |
+| Key                 | Action                                                            |
+| ------------------- | ----------------------------------------------------------------- |
+| `Ctrl-Tab`          | Sends the sequence tmux binds to its session switcher             |
+| `Option-<key>`      | Sent as `Alt-<key>` (`macos-option-as-alt`), used by tmux and zsh |
+| `Ctrl-1` … `Ctrl-0` | Sends the sequence neovim maps to tabs 1–10                       |
 
 ### tmux
 
@@ -187,15 +187,15 @@ Leader is `Space`.
 
 In a file picker:
 
-| Key                 | Action                                         |
-| ------------------- | ---------------------------------------------- |
-| `Ctrl-s` / `Ctrl-v` | Open in a vertical split on the right          |
-| `Ctrl-t`            | Open in a new tab                              |
+| Key                 | Action                                                         |
+| ------------------- | -------------------------------------------------------------- |
+| `Ctrl-s` / `Ctrl-v` | Open in a vertical split on the right                          |
+| `Ctrl-t`            | Open in a new tab                                              |
 | `Alt-q`             | Add the marked entries to the quickfix list, picker stays open |
-| `Alt-Q`             | Send the marked entries to the location list   |
-| `Alt-i`             | Toggle ignore rules (`.gitignore`)             |
-| `Alt-h`             | Toggle hidden files                            |
-| `Alt-f`             | Toggle following symlinks                      |
+| `Alt-Q`             | Send the marked entries to the location list                   |
+| `Alt-i`             | Toggle ignore rules (`.gitignore`)                             |
+| `Alt-h`             | Toggle hidden files                                            |
+| `Alt-f`             | Toggle following symlinks                                      |
 
 `Alt` is `Option` on the Mac (see [ghostty](#ghostty)). `Tab` marks an entry.
 
@@ -214,16 +214,16 @@ In a file picker:
 
 **Quickfix**
 
-| Key         | Action                                                                  |
-| ----------- | ----------------------------------------------------------------------- |
-| `<leader>q` | Toggle the quickfix window                                              |
-| `]q` / `[q` | Next / previous entry (nvim default)                                    |
-| `Alt-q`     | In a file picker, send the marked entries to the list                   |
-| `Q`         | Fuzzy-search the quickfix list (fzf-lua)                                |
-| `q`         | In the file explorer, add or remove the file (see the explorer section) |
-| `dd`        | In the quickfix window, remove the entry under the cursor               |
-| `d` (visual) | In the quickfix window, remove the selected entries                    |
-| `D`         | In the quickfix window, remove all entries                              |
+| Key          | Action                                                                  |
+| ------------ | ----------------------------------------------------------------------- |
+| `<leader>q`  | Toggle the quickfix window                                              |
+| `]q` / `[q`  | Next / previous entry (nvim default)                                    |
+| `Alt-q`      | In a file picker, send the marked entries to the list                   |
+| `9`          | Fuzzy-search the quickfix list (fzf-lua)                                |
+| `q`          | In the file explorer, add or remove the file (see the explorer section) |
+| `dd`         | In the quickfix window, remove the entry under the cursor               |
+| `d` (visual) | In the quickfix window, remove the selected entries                     |
+| `D`          | In the quickfix window, remove all entries                              |
 
 **Windows and editing**
 
@@ -269,14 +269,14 @@ In a file picker:
 
 **File explorer (neo-tree)**
 
-| Key                   | Action                                                   |
-| --------------------- | -------------------------------------------------------- |
-| `\`                   | Open the explorer as a float, revealing the current file |
-| `\` (in the explorer) | Close it                                                 |
-| `Space`               | Expand or collapse a node                                |
-| `P`                   | Toggle preview                                           |
-| `O`                   | Open in Finder                                           |
-| `U`                   | Focus the parent directory                               |
+| Key                   | Action                                                       |
+| --------------------- | ------------------------------------------------------------ |
+| `\`                   | Open the explorer as a float, revealing the current file     |
+| `\` (in the explorer) | Close it                                                     |
+| `Space`               | Expand or collapse a node                                    |
+| `P`                   | Toggle preview                                               |
+| `O`                   | Open in Finder                                               |
+| `U`                   | Focus the parent directory                                   |
 | `q`                   | Add / remove the file in the quickfix list (marked with `●`) |
 
 **Completion (blink.cmp)**

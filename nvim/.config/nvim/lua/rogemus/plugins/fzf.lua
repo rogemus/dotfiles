@@ -136,7 +136,7 @@ vim.keymap.set("n", "<leader>fr", fzf_cmd("oldfiles"), { desc = "Recent Files" }
 vim.keymap.set("n", "<leader>gs", fzf_cmd("git_status"), { desc = "Git Status" })
 vim.keymap.set("n", "<leader>/", fzf_cmd("grep_curbuf"), { desc = "Find in current file" })
 vim.keymap.set("n", "<leader>m", fzf_cmd("marks"), { desc = "Marks" })
-vim.keymap.set("n", "Q", fzf_cmd("quickfix"), { desc = "Quickfix list" })
+vim.keymap.set("n", "9", fzf_cmd("quickfix"), { desc = "Quickfix list" })
 vim.keymap.set("n", "<leader>xx", function()
   M.get().diagnostics_workspace()
 end, { desc = "Workspace diagnostics (errors)" })
