@@ -269,15 +269,15 @@ In a file picker:
 
 **File explorer (neo-tree)**
 
-| Key                   | Action                                                       |
-| --------------------- | ------------------------------------------------------------ |
-| `\`                   | Open the explorer as a float, revealing the current file     |
-| `\` (in the explorer) | Close it                                                     |
-| `Space`               | Expand or collapse a node                                    |
-| `P`                   | Toggle preview                                               |
-| `O`                   | Open in Finder                                               |
-| `U`                   | Focus the parent directory                                   |
-| `q`                   | Add / remove the file in the quickfix list (marked with `●`) |
+| Key                   | Action                                                   |
+| --------------------- | -------------------------------------------------------- |
+| `\`                   | Open the explorer as a float, revealing the current file |
+| `\` (in the explorer) | Close it                                                 |
+| `Space`               | Expand or collapse a node                                |
+| `P`                   | Toggle preview                                           |
+| `O`                   | Open in Finder                                           |
+| `U`                   | Focus the parent directory                               |
+| `q`                   | Add / remove the file in the quickfix list               |
 
 **Completion (blink.cmp)**
 

@@ -35,7 +35,6 @@ local opts = {
         vim.notify("Quickfix removed (" .. #items .. "): " .. rel, vim.log.levels.WARN)
       end
       vim.fn.setqflist({}, "r", { items = items })
-      require("neo-tree.sources.manager").refresh("filesystem")
     end,
     filetree_toggle = function()
       vim.cmd("Neotree reveal")
@@ -88,19 +87,6 @@ local opts = {
     },
   },
   filesystem = {
-    components = {
-      -- Marks files that are in the quickfix list
-      quickfix = function(_, node)
-        local paths = {}
-        for _, item in ipairs(vim.fn.getqflist()) do
-          paths[vim.api.nvim_buf_get_name(item.bufnr)] = true
-        end
-        if node.type == "file" and paths[node:get_id()] then
-          return { text = " ●", highlight = "DiagnosticWarn" }
-        end
-        return {}
-      end,
-    },
     check_gitignore_in_search = true,
     hijack_netrw_behavior = "disabled",
     use_libuv_file_watcher = true,
@@ -135,18 +121,6 @@ local opts = {
 -- Add neo-tree and its dependencies to 'runtimepath' and configure it on first use
 local function load_neotree()
   require("rogemus.lazy").once("neo-tree", { "plenary.nvim", "nui.nvim", "neo-tree.nvim" }, function()
-    -- Show the quickfix marker right after the file name
-    opts.renderers = { file = vim.deepcopy(require("neo-tree.defaults").renderers.file) }
-    for _, item in ipairs(opts.renderers.file) do
-      if item[1] == "container" then
-        for i, comp in ipairs(item.content) do
-          if comp[1] == "clipboard" then
-            table.insert(item.content, i + 1, { "quickfix", zindex = 10 })
-            break
-          end
-        end
-      end
-    end
     require("neo-tree").setup(opts)
   end)
 end
